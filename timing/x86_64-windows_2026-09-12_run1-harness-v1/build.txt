@@ -1,0 +1,16 @@
+   Compiling num-complex v0.4.6
+   Compiling trustdb v0.1.0 (<local-path-redacted>
+   Compiling aiep v0.1.0 (<local-path-redacted>
+   Compiling bench_common v0.1.0 (<local-path-redacted>
+   Compiling iphone-v1-format-core v0.1.0 (<local-path-redacted>
+   Compiling gnse-macros v0.1.0 (<local-path-redacted>
+   Compiling df_shelfware_macros v0.1.0 (<local-path-redacted>
+   Compiling feature_macros v0.1.0 (<local-path-redacted>
+   Compiling digital-fabric-applied-markets v0.1.0 (<local-path-redacted>
+   Compiling tempfile v3.27.0
+   Compiling rusty-fork v0.3.1
+   Compiling simba v0.9.1
+   Compiling proptest v1.11.0
+   Compiling nalgebra v0.33.3
+    Finished `release` profile [optimized] target(s) in 18m 08s
+EXIT=0

@@ -1,0 +1,24 @@
+utc: 2026-09-14T08:26:19Z
+host: Linux 7.0.0-1012-aws x86_64
+os: linux
+arch: x86_64
+cpu: Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz
+nproc: 8
+mem_gb: 30.8
+ci_runner: x86_64-ci-runner-c
+rustc: rustc 1.94.1 (e408947bf 2026-03-25)
+features: fips
+cargo: cargo 1.94.1 (29ea6fb6a 2026-03-24)
+rustc_host: x86_64-unknown-linux-gnu
+commit: 967c0a48e022dd5151870552925c3e8e618fc7b8
+branch: session/pqc-l7-compliance-bench-20260914
+uncommitted_files: 0
+profile: release
+samples_per_class: 200000
+seed: default (0x5eed000720260912)
+suite_cmd: cargo test --release --features fips --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+compiled_at: 2026-09-14T08:46:18Z
+concurrent_cargo_rustc_before_run: 0
+load_average_before_run: 9.54 8.70 6.94
+finished_at: 2026-09-14T09:09:55Z
+suite_exit: 101

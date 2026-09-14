@@ -1,0 +1,99 @@
+{
+ "siggen_tcs": [
+  166,
+  167,
+  168,
+  169,
+  170,
+  171,
+  172,
+  173,
+  174,
+  175,
+  176,
+  177,
+  178,
+  179,
+  180
+ ],
+ "sigver": [
+  {
+   "tc": 166,
+   "expected_pass": false,
+   "reason": "modified signature - z"
+  },
+  {
+   "tc": 167,
+   "expected_pass": false,
+   "reason": "modified signature - z"
+  },
+  {
+   "tc": 168,
+   "expected_pass": false,
+   "reason": "modified signature - z"
+  },
+  {
+   "tc": 169,
+   "expected_pass": true,
+   "reason": "valid signature and message - signature should verify successfully"
+  },
+  {
+   "tc": 170,
+   "expected_pass": false,
+   "reason": "modified signature - commitment"
+  },
+  {
+   "tc": 171,
+   "expected_pass": false,
+   "reason": "modified message"
+  },
+  {
+   "tc": 172,
+   "expected_pass": true,
+   "reason": "valid signature and message - signature should verify successfully"
+  },
+  {
+   "tc": 173,
+   "expected_pass": false,
+   "reason": "modified signature - commitment"
+  },
+  {
+   "tc": 174,
+   "expected_pass": true,
+   "reason": "valid signature and message - signature should verify successfully"
+  },
+  {
+   "tc": 175,
+   "expected_pass": false,
+   "reason": "modified signature - hint"
+  },
+  {
+   "tc": 176,
+   "expected_pass": false,
+   "reason": "modified message"
+  },
+  {
+   "tc": 177,
+   "expected_pass": false,
+   "reason": "modified signature - hint"
+  },
+  {
+   "tc": 178,
+   "expected_pass": false,
+   "reason": "modified signature - hint"
+  },
+  {
+   "tc": 179,
+   "expected_pass": false,
+   "reason": "modified signature - commitment"
+  },
+  {
+   "tc": 180,
+   "expected_pass": false,
+   "reason": "modified message"
+  }
+ ],
+ "sigGen_tgId": 12,
+ "sigVer_tgId": 12,
+ "vsId": 42
+}

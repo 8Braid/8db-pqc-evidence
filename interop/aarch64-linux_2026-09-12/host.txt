@@ -1,0 +1,9 @@
+run:              20260912T010411Z
+host:             Linux 7.0.0-1012-aws aarch64 [private-ip-redacted]
+commit:           673fe85cbe168578e043021bd5fe57fb228a57cd (dirty: 0 paths)
+pqc_interop:      <repo>/target/release/pqc_interop
+rustc:            rustc 1.94.1 (e408947bf 2026-03-25)
+openssl mode:     docker
+openssl version:  OpenSSL 3.5.8 25 Aug 2026 (Library: OpenSSL 3.5.8 25 Aug 2026)
+openssl kem:       { 2.16.840.1.101.3.4.4.3, id-alg-ml-kem-1024, ML-KEM-1024, MLKEM1024 } @ default
+openssl sig:       { 2.16.840.1.101.3.4.3.19, id-ml-dsa-87, ML-DSA-87, MLDSA87 } @ default

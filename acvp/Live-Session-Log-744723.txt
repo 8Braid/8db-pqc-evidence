@@ -1,0 +1,34 @@
+== ACVP live driver: Python mTLS transport + 8DB Rust crypto ==
+TOTP: 61****** (8-digit SHA-256)
+[1] login OK (token 319B)
+   (isSample override -> False)
+[2] registration: {"algorithms": [{"algorithm": "ML-KEM", "mode": "keyGen", "parameterSets": ["ML-KEM-1024"], "revision": "FIPS203"}, {"algorithm": "ML-KEM", "functions": ["encapsulation", "decapsul...
+[3] session /acvp/v1/testSessions/744723 vectorSets=3
+   + submitted ML-KEM/keyGen (vsId=3917438)
+   + submitted ML-KEM/encapDecap (vsId=3917439)
+   + submitted ML-DSA/sigVer (vsId=3917440)
+[4] submitted 3 vector set(s); skipped 0
+   ...grading pending ['incomplete', 'incomplete', 'incomplete'] (attempt 0)
+   ...grading pending ['incomplete', 'incomplete', 'incomplete'] (attempt 4)
+[5] DISPOSITION:
+{
+  "passed": true,
+  "results": [
+    {
+      "vectorSetUrl": "/acvp/v1/testSessions/744723/vectorSets/3917438",
+      "status": "passed"
+    },
+    {
+      "vectorSetUrl": "/acvp/v1/testSessions/744723/vectorSets/3917439",
+      "status": "passed"
+    },
+    {
+      "vectorSetUrl": "/acvp/v1/testSessions/744723/vectorSets/3917440",
+      "status": "passed"
+    }
+  ]
+}
+
+-- Captured 2026-06-16 from demo.acvts.nist.gov. Secrets (client cert, private key, TOTP seed)
+-- are deliberately excluded; the TOTP above is masked. This is the verbatim NIST server
+-- disposition as returned over the wire for session 744723.

@@ -1,0 +1,121 @@
+host: Linux 7.0.0-1012-aws aarch64 | AWS Graviton3 c7g.2xlarge (8 vCPU, 15.3 GB RAM) | GitHub Actions self-hosted runner aarch64-ci-runner (instance [ec2-instance-redacted], ca-central-1) | rustc: rustc 1.94.1 (e408947bf 2026-03-25) (aarch64-unknown-linux-gnu) | compiled 2026-09-12T01:37:34Z | commit: 673fe85c (CI merge commit of PR #3487 head e6fdd5ec onto main 960a20bd) | cmd: cargo test --release --features v2-mera --test cnsa_m1_bench -- --ignored --nocapture
+executed by .github/workflows/pqc-interop.yml, job "interop aarch64 + P10 evidence harness", run 34662891115, through scripts/pqc_evidence.sh; release compile 33 min 15 s on the runner; load average 9.39 9.53 8.32 immediately before the timed run (the harness's own compile had just finished; no other cargo or rustc process on the host), so this run is NOT quiesced. Workflow artifact pqc-evidence-aarch64-673fe85cbe168578e043021bd5fe57fb228a57cd; the harness's host.txt, cnsa_m1_bench.txt and KAT summary follow verbatim.
+---- host.txt ----
+utc: 2026-09-12T01:04:19Z
+host: Linux 7.0.0-1012-aws aarch64
+os: linux
+arch: aarch64
+cpu: 
+nproc: 8
+mem_gb: 15.3
+rustc: rustc 1.94.1 (e408947bf 2026-03-25)
+cargo: cargo 1.94.1 (29ea6fb6a 2026-03-24)
+rustc_host: aarch64-unknown-linux-gnu
+commit: 673fe85cbe168578e043021bd5fe57fb228a57cd
+branch: 
+uncommitted_files: 0
+profile: release
+features: v2-mera
+bench_cmd: cargo test --release --features v2-mera --test cnsa_m1_bench -- --ignored --nocapture
+kat_cmd: cargo run --release --features v2-mera --bin run_acvp_demo
+compiled_at: 2026-09-12T01:37:34Z
+concurrent_cargo_rustc_before_run: 0
+unknown
+load_average_before_run: 9.39 9.53 8.32
+---- cnsa_m1_bench.txt ----
+host: Linux 7.0.0-1012-aws aarch64 | rustc: rustc 1.94.1 (e408947bf 2026-03-25) | 2026-09-12T01:37:34Z | commit: 673fe85c | cmd: cargo test --release --features v2-mera --test cnsa_m1_bench -- --ignored --nocapture
+nproc: 8 | cpu: 
+-----
+[1m[92m    Finished[0m `release` profile [optimized] target(s) in 0.63s
+[1m[92m     Running[0m tests/cnsa_m1_bench.rs (target/release/deps/cnsa_m1_bench-1ddc7b9b30aa521d)
+
+running 3 tests
+
+==== CNSA Cat-5: four-way COST comparison (host-measured, RELEASE) ====
+N=100000 x 115B | AES-256-GCM-SIV seal med 1045 ns (ct 136 B) | ML-DSA-87 sign 0.642 ms / verify 0.529 ms
+(every value is a COST -> LOWER IS BETTER)
+
+                          unencrypted  AES-encrypted  legacy-PQC-Cat5   8DB(M1)
+storage   B/record               115          136           4763        136.07
+write     ns/record                0         1045         643349          1062
+auth-vfy  s / 100k records          0            0           52.9        0.0005
+
+capability matrix:
+  unencrypted     encrypted:NO   quantum-safe:NO            per-datum-Cat5:NO   tamper-evident:NO
+  AES-encrypted   encrypted:YES  quantum-safe:NO(classical) per-datum-Cat5:NO   tamper-evident:per-record-tag
+  legacy-PQC-Cat5 encrypted:YES  quantum-safe:YES           per-datum-Cat5:YES  tamper-evident:YES  (at ~40x storage)
+  8DB (M1)    encrypted:YES  quantum-safe:YES           per-datum-Cat5:YES  tamper-evident:YES  (+O(logN) braid)
+
+8DB vs legacy-PQC-Cat5  (higher = our win):
+  storage    :      35x less /record
+  write      :     606x less /record
+  auth-verify:  100000x less /set
+8DB vs plain AES-encrypted  (the honest 'cost of adding Cat-5'):
+  storage    : +0.073 B/record (+0.0539%)
+  write      : 1.02x of plain-encrypted write
+====================================================================
+
+test bench_four_way_unencrypted_encrypted_legacy_trustdb ... ok
+
+==== CNSA 2.0 Cat-5 M1 micro-benchmark (host-measured) ====
+provider: MlDsa87Provider (FIPS 204) | N = 100000 records of 115B
+unit sign   (ns): med=260413  (min 258189 / max 268352)
+unit verify (ns): med=529679  (min 525882 / max 543371)
+ML-DSA-87 signature: 4627 bytes | boundary-sig wire: 7332 bytes
+
+STORAGE — signature overhead:
+  row-level Cat-5 : 462700000 B (462.7 MB)  [= N x 4627]
+  MERA boundary   : 7332 B (one signature)
+  => 63107x less signature storage
+  single-record bloat: 115B -> 4742B = 4023% overhead
+
+SIGN CPU @ N:
+  row-level : 26.041 s  [= N x med sign]
+  boundary  : 0.002174 s  (BLAKE3 over N + 1 sign)
+  => 11981x less sign CPU
+
+VERIFY CPU @ N (edge / audit):
+  row-level : 52.968 s  [= N x med verify]
+  boundary  : 0.000536 s  (1 verify)
+  => 98739x less verify CPU
+===========================================================
+
+test bench_cat5_rowlevel_vs_mera_boundary ... ok
+
+==== plaintext vs classical-encrypted vs PQC: storage / speed / search (RELEASE) ====
+N=100000 x 115B records (storage/speed) | N_search=2000 terms (search demo)
+
+ONE-TIME key establishment (paid once per key/session, NOT per record):
+  classical KDF (PBKDF2-HMAC-SHA-512, NIST SP 800-132): 662954438 ns, 0 B wire (only the 16-byte salt is public)
+  PQC KEM encapsulate (ML-KEM-1024 + X25519 hybrid)   : 151716 ns, 1616 B wire (ml_kem_ciphertext 1568 B + wrapped_key 48 B)
+  PQC KEM decapsulate (recipient side)                : 148068 ns
+  => PQC key-establishment wire overhead amortized over N=100000 records: 0.012336% of total dataset size
+
+PER-RECORD storage + speed (AEAD held IDENTICAL across classical & PQC):
+                        plaintext   classical-encrypted   PQC (ours)
+  storage  B/record           115                   131          131
+  write    ns/record            0                  1176         1175
+  read     ns/record            0                  1189         1184
+  => PQC adds 0.0000% storage and -0.0850% write latency vs classical (same AEAD; the only PQC cost is the one-time KEM above)
+
+SEARCH -- can we query the data in each state, and how fast:
+  plaintext            : 1303 ns  (1 hits / 2000 terms, direct in-memory index)
+  classical-encrypted   : 1923007 ns  (1 hits / 2000 terms) -- NO purpose-built encrypted index exists for this path; this is a full decrypt-and-scan (the only secure option -- a plaintext side-index would leak)
+  PQC (ours)            : 426857 ns  (1 hits / 2000 terms) -- the search INDEX is itself sealed under the PQC-KEM-established key; one decrypt-the-index op, then native-speed search (search::sealed_content_index)
+  => our sealed-index search is 5x faster than the classical decrypt-and-scan at N_search=2000
+=================================================================================
+
+test bench_plaintext_vs_classical_vs_pqc_storage_speed_and_search ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 36.49s
+
+EXIT=0
+---- run_acvp_demo.txt (summary line) ----
+Local KAT result: 35 / 35 passed (0 failed).
+---- SHA256SUMS.txt (as produced by the harness) ----
+4a51b1a25b3c8210ad5b40ac146d1ba29fa70e3d3b6460f2fe0f14d9e09fde02  host.txt
+e3c8b097e13febf3b3d42d7fa61c6347ab4d5276e5f6f63864dafe2c3bbbd18c  build.txt
+e0d6ed650d064fb57be29c5ab69001381683b9a658a6f1fa01dbee7cb86db754  cnsa_m1_bench.txt
+4a51b1a25b3c8210ad5b40ac146d1ba29fa70e3d3b6460f2fe0f14d9e09fde02  host.txt
+9e6173270524747c219cd39cd8056b3fe4b8dc4a9d168a3edfbda6e37d634aa1  pqc_live_algorithm_swap.txt
+081997e24417abb8d020d11eaa2eac4a0804fa218f4c8dc0c34137f8b211934f  run_acvp_demo.txt

@@ -1,0 +1,1 @@
+spki-info: D_dsa_openssl_sign/vk_openssl.der: ML-DSA-87, DER 2614 bytes, raw key 2592 bytes

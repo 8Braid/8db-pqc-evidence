@@ -1,0 +1,24 @@
+utc: 2026-09-14T05:53:28Z
+host: Linux 7.0.0-1012-aws aarch64
+os: linux
+arch: aarch64
+cpu: Neoverse-V1
+nproc: 8
+mem_gb: 15.3
+ci_runner: aarch64-ci-runner
+rustc: rustc 1.94.1 (e408947bf 2026-03-25)
+features: fips
+cargo: cargo 1.94.1 (29ea6fb6a 2026-03-24)
+rustc_host: aarch64-unknown-linux-gnu
+commit: 3ba9ed6f1db42fd57b05f776869f62eede5fa456
+branch: session/pqc-l7-compliance-profile-20260914
+uncommitted_files: 0
+profile: release
+samples_per_class: 50000
+seed: default (0x5eed000720260912)
+suite_cmd: cargo test --release --features fips --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+compiled_at: 2026-09-14T06:11:31Z
+concurrent_cargo_rustc_before_run: 0
+load_average_before_run: 9.18 8.87 7.11
+finished_at: 2026-09-14T06:18:48Z
+suite_exit: 0
