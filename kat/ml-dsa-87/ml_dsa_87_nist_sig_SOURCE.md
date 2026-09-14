@@ -1,56 +1,67 @@
-# ML-DSA-87 sigGen / sigVer KAT vectors — PROVENANCE (R-ACVP-PRECISION)
+# ML-DSA-87 signature vector provenance
 
-**Status: AUTHENTIC NIST ACVP-Server vectors (NOT self-generated).**
+The `ml_dsa_87_nist_siggen_*` and `ml_dsa_87_nist_sigver_*` fixtures contain
+NIST ACVP-Server vectors for ML-DSA-87, converted from hexadecimal to raw bytes.
+They let reviewers compare signature generation and verification with the
+source vectors at the same cryptographic interface.
 
-These `ml_dsa_87_nist_siggen_*` and `ml_dsa_87_nist_sigver_*` files are the
-official NIST ACVP-Server known-answer vectors for the **ML-DSA-87** parameter
-set, extracted verbatim (hex → raw bytes) from:
+## Source
 
-- Repo: <https://github.com/usnistgov/ACVP-Server>
-- Commit: `15c0f3deeefbfa8cb6cd32a99e1ca3b738c66bf0` (master, 2026-04-16)
-- sigGen file: `gen-val/json-files/ML-DSA-sigGen-FIPS204/internalProjection.json` (vsId 42)
-- sigVer file: `gen-val/json-files/ML-DSA-sigVer-FIPS204/internalProjection.json` (vsId 42)
+- Repository: [NIST ACVP-Server](https://github.com/usnistgov/ACVP-Server)
+- Recorded commit: `15c0f3deeefbfa8cb6cd32a99e1ca3b738c66bf0` (master, 2026-04-16)
+- Signature generation: `gen-val/json-files/ML-DSA-sigGen-FIPS204/internalProjection.json`, vsId 42
+- Signature verification: `gen-val/json-files/ML-DSA-sigVer-FIPS204/internalProjection.json`, vsId 42
 
-They are the same authoritative CAVP vectors against which `aws-lc-fips`,
-`BoringSSL`, and the RustCrypto `ml-dsa` crate are validated.
+## Match the interface parameters
 
-## Which test group
+Both sets use test group 12 with these parameters:
 
-Both use the **`ML-DSA-87`, `signatureInterface: "internal"`, `deterministic:
-true`, `externalMu: false`, `preHash: "none"`** group (sigGen tgId 12, sigVer
-tgId 12). This maps byte-exactly onto the FIPS 204 internal interface exposed
-by the `ml-dsa` crate:
+```text
+parameterSet: ML-DSA-87
+signatureInterface: internal
+deterministic: true
+externalMu: false
+preHash: none
+```
 
-- **sigGen** — `ExpandedSigningKey::<MlDsa87>::from_expanded(sk).sign_internal(&[msg], &rnd)`
-  with `rnd = [0u8; 32]` (deterministic ⇒ all-zero per-signature randomness).
-  FIPS 204 Algorithm 7 (ML-DSA.Sign_internal). The produced 4627-byte signature
-  is byte-identical to the NIST `signature` field.
-- **sigVer** — `VerifyingKey::<MlDsa87>::verify_internal(msg, sig)`. FIPS 204
-  Algorithm 8 (ML-DSA.Verify_internal). The verdict must equal the NIST
-  `testPassed` field.
+For signature generation, the engine uses
+`ExpandedSigningKey::<MlDsa87>::from_expanded(sk).sign_internal(&[msg], &rnd)`
+with `rnd = [0u8; 32]`. This maps to FIPS 204 Algorithm 7,
+ML-DSA.Sign_internal. The generated 4,627-byte signature is compared byte for
+byte with the NIST `signature` field.
 
-## Files (tcId 166–180 sigGen; 166–180 sigVer)
+For signature verification, the engine uses
+`VerifyingKey::<MlDsa87>::verify_internal(msg, sig)`, corresponding to FIPS 204
+Algorithm 8, ML-DSA.Verify_internal. Its verdict is compared with the NIST
+`testPassed` field.
 
-- `ml_dsa_87_nist_siggen_tc{n}_sk.bin`  — NIST signing key (4896 B, FIPS 204 §6.1 skEncode)
-- `ml_dsa_87_nist_siggen_tc{n}_msg.bin` — NIST message (variable length)
-- `ml_dsa_87_nist_siggen_tc{n}_sig.bin` — NIST expected signature (4627 B) — the known answer
-- `ml_dsa_87_nist_sigver_tc{n}_pk.bin`  — NIST verifying key (2592 B)
-- `ml_dsa_87_nist_sigver_tc{n}_msg.bin` — NIST message
-- `ml_dsa_87_nist_sigver_tc{n}_sig.bin` — NIST signature under test
-- `ml_dsa_87_nist_sigmeta.json`         — per-tc `expected_pass` verdict + failure `reason`
-  (12 of the 15 sigVer cases are deliberately-invalid — modified z / commitment /
-  hint / message — and MUST be rejected; 3 are valid and MUST be accepted).
+## Fixture files
 
-## Verification
+There are 15 signature-generation cases and 15 signature-verification cases,
+each numbered 166 through 180.
 
-The vault-core H7 harness (`vault_core::vv::h7_acvp_kat`):
-- **sigGen KAT** — loads `sk`, re-signs `msg` via the internal deterministic
-  interface, and asserts the signature is byte-identical to the recorded NIST
-  `sig`. A mismatch FAILS H7.
-- **sigVer KAT** — verifies `sig` under `pk` via the internal interface and
-  asserts the boolean verdict equals the NIST `expected_pass`. A wrong verdict
-  (accept-an-invalid or reject-a-valid) FAILS H7.
+| File pattern | Contents |
+|---|---|
+| `ml_dsa_87_nist_siggen_tc{n}_sk.bin` | NIST signing key, 4,896 bytes, encoded with FIPS 204 section 6.1 skEncode |
+| `ml_dsa_87_nist_siggen_tc{n}_msg.bin` | Message, variable length |
+| `ml_dsa_87_nist_siggen_tc{n}_sig.bin` | Expected signature, 4,627 bytes |
+| `ml_dsa_87_nist_sigver_tc{n}_pk.bin` | Verifying key, 2,592 bytes |
+| `ml_dsa_87_nist_sigver_tc{n}_msg.bin` | Message |
+| `ml_dsa_87_nist_sigver_tc{n}_sig.bin` | Signature under test |
+| `ml_dsa_87_nist_sigmeta.json` | Expected verdict and failure reason for each case |
 
-This closes the R-ACVP-PRECISION honest gap for ML-DSA-87 sigGen/sigVer: the
-signature-generation and signature-verification boundaries are now attested by
-the official NIST vectors byte-for-byte, not by a self-consistency KAT.
+Of the 15 verification cases, three are valid and must be accepted. Twelve
+contain deliberately modified z, commitment, hint or message values and must
+be rejected.
+
+## Reproduce the checks
+
+The evaluation engine's `vault_core::vv::h7_acvp_kat` harness loads these files,
+re-signs the generation inputs through the deterministic internal interface and
+checks the expected verification verdicts. A byte mismatch or incorrect verdict
+fails the corresponding check.
+
+The fixtures are public and can also be checked with an independent implementation
+that exposes the same internal interface. Engine and harness access is available
+from [8Braid](mailto:ashley@8braid.com). These fixtures are separate from the
+[35-check offline suite report](../../acvp/Offline-KAT-Report-35of35.txt).
