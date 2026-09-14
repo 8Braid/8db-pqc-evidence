@@ -1,4 +1,4 @@
-# aarch64 run 1, harness v1: recorded as indeterminate, not as a leak
+# aarch64 run 1, harness v1: indeterminate
 
 First execution of the suite on aarch64 (AWS Graviton3 c7g.2xlarge, 8 vCPU, Ubuntu
 24.04, CI runner aarch64-ci-runner, workflow run 34709203023 on the PR

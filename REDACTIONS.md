@@ -1,13 +1,21 @@
-# Redactions applied for publication
+# Publication provenance
 
-Every file below is a copy of a recorded run in which only identifiers were
-replaced with neutral tokens before publication: EC2 instance and runner names,
-private IP addresses, local filesystem paths, one personal email address, and
-internal task, decision, gate and tracker references. No measurement, vector,
-digest, timestamp or numeric field was changed. The recorded run-time SHA256SUMS.txt
-files inside each run folder therefore no longer match these copies for the listed
-files; the table gives the original and published SHA-256 of each so the change
-is auditable. Files not listed here are byte-identical to the internal record.
+This record separates the original public evidence snapshots from later edits
+to the accompanying documents. The original publication removed identifiers
+from selected files: instance and runner names, private addresses, local paths,
+one personal email address and internal tracking references. The table below
+retains the original before-and-after hashes.
+
+The original run manifests refer to the internal evidence files. For a redacted
+public copy, use the original publication table to reconcile its hash. For a
+document revised on September 14, use the editorial table that follows it.
+
+## Original publication snapshots
+
+This table is preserved from repository commit
+`6b4675999dc17b9afb6f3881e1eb572e4d9396d8`. Its "Published SHA-256" values
+identify that publication snapshot, including documents subsequently revised.
+They remain part of the history and are not replaced with editorial hashes.
 
 | File | Original SHA-256 | Published SHA-256 |
 |---|---|---|
@@ -60,3 +68,42 @@ is auditable. Files not listed here are byte-identical to the internal record.
 | `timing/x86_64-windows_2026-09-12_run4-harness-v2.1/build.txt` | `5dd0d164007bb3fdc48e07c3ce01596f01d5877af120bb40c16072f7dd49e694` | `9327861c89ad8ad601c06509ba19533687fd85a3027df9d0034b25f81a9a5c2c` |
 | `timing/x86_64-windows_2026-09-12_run4-harness-v2.1/report.txt` | `1311b4ce6f68f820eac8fbe432e0d848fe31867905ee15b98b4beccbe72501a1` | `1cf6724d5be3b4c7bc354ead0d5ff8849eb3af9110b41287454b14130c837c91` |
 | `timing/x86_64-windows_2026-09-12_run4-harness-v2.1/suite.txt` | `5be0914b4ee3b5d63f00e25cdbdd68cd1fc07f1d35f70cc02f085584e8b3dbc3` | `11ab04cf1ac7416659d21828c73ed6a9db76d20f1983aefc2f029be706148da1` |
+
+## Editorial revisions, September 14, 2026
+
+The following revisions improve the presentation of 8DB, clarify review and
+reproduction instructions, and correct the interpretation of existing evidence.
+They preserve the recorded measurements and identify unresolved timing findings.
+All pre-existing non-Markdown files remain byte-identical to the baseline commit, including
+the vectors, raw reports, transcripts, binary artifacts and run manifests.
+
+"Before revision" is the SHA-256 of the exact file bytes at commit
+`6b4675999dc17b9afb6f3881e1eb572e4d9396d8`. "After revision" is the SHA-256
+of the revised file bytes in this edition. This provenance document is excluded
+from its own table because including its hash would make the table self-referential.
+
+| File | Before revision SHA-256 | After revision SHA-256 |
+|---|---|---|
+| `acvp/EVALUATOR-KIT.md` | `5ddcb323e655e93d3ddb0b51de3fc267af021eec25ab6b4f066dcdd267c50c9a` | `a2b65abfd2842998452e6a6b18b98cc52a9d91da31d992d267b9307ef42a9974` |
+| `acvp/HARNESS-README.md` | `e5b94665275e49109d91128ba4529f050ab46303f24aaf006dd85a7e0b43ee13` | `5a19f919636a6ceb08bc84c5af47bb4c27c6f1031e9bccad1220c74de00a8cf9` |
+| `CLAIMS-AND-SCOPE.md` | `afa64b5e7e6263cab77630072bf247ee76021d393c88258e9397d77fdf8533f2` | `f50e54f615a9ef33cc249ba7f5cb912e7608d2febeab505bf37e96b08ae8abc6` |
+| `HOW-TO-VERIFY.md` | `a3efb5d07b5cdb27d2a7fc4fa0128abf405b7fc0ee52667e771fc75bc8859a9f` | `20d28a0982e01e6f25aedade94b6beb202b05b04a29c4abdb0e14584872fd3d1` |
+| `interop/README.md` | `6a16031ab81fb66a656160bd66da454dba98a6a3a5cf420612b90cc00117d3d9` | `a76de41196f281ad30d2287a9c7c25527fa815ce707ba3e1843cacdbe817d559` |
+| `kat/ml-dsa-87/ml_dsa_87_nist_sig_SOURCE.md` | `24b900340155eb2902602e99f5b51a2bfe426d78f86e5b6e33beb5c2e79c336a` | `e6af0b7652cd6711afc92f8cfc5fc6fa21fd9f21e969220d23be45ae29cd9553` |
+| `README.md` | `2a0b3fb9538d3c4dfb808f28ddd8768f4ac0eac0ae2ac05348995fa074829e4f` | `682946f882d047c501e406f4ab4c1ebf5dd71078534de1b6ecadc12d2b632dde` |
+| `timing/aarch64-linux_2026-09-12_run1-harness-v1/NOTE.md` | `966b88fb16ad57f6fc5e0a46e4ba3d5148804e366d930311b91f1afbb00a0d63` | `241109042615f62a6aff27467bf899ca88cc36a50c1bdf21aed8492dc28a5cc8` |
+| `timing/README.md` | `9e7c4f20c23876e2edefd00c83b2d03dd3c9ab44c8dd65a4392ae3c50d5aa863` | `5f9f39698f63807882c8817a791d47ad7c69904cc8d4ab4bdef642709351873c` |
+| `timing/x86_64-windows_2026-09-12_run1-harness-v1/NOTE.md` | `b3bf4ce8053e3b8497c4aaee02b29e5c37150e499b55c3779bc8e802f31dbdf1` | `8168a6fc3da683b47694bba2544c9e0b859f792195e6bc6f30c1fc2c2f5f34fc` |
+
+## Public verification tooling
+
+The following files were added with this edition. The artifact manifest records
+hashes of the published raw files, which lets readers check this public package
+directly. It is separate from the original run manifests retained above.
+The verifier uses that manifest and checks the published interoperability
+artifacts. See [the verification guide](HOW-TO-VERIFY.md) for usage.
+
+| Added file | SHA-256 |
+|---|---|
+| `verify-evidence.py` | `59c667a5b8819b1682f11626f2f9c12cd998c3cb65c04de091ef629a0e23e11e` |
+| `ARTIFACT-SHA256SUMS` | `fbbc21666070ad97cba4b3d22ec33fd1726c472d5c38ae9f426fa7d40979e29e` |

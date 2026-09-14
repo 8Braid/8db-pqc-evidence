@@ -1,4 +1,4 @@
-# Run 1, harness v1: recorded as indeterminate, not as a leak
+# Run 1, harness v1: indeterminate
 
 This is the first execution of the suite (x86_64, Windows, 2026-09-12, 50,000
 measurements per class, exit 101). Its controls behaved (negative 1.51, positive
