@@ -1,0 +1,60 @@
+aggregate reading: INVALID (a control failed or the harness was invalid; the run is not evidence)
+GYM-S04 timing-leak suite, harness v2.1 (one slot, symmetric fills), suite v3
+host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; CI runner x86_64-ci-runner-c
+samples_per_class: 200000
+seed: 0x5eed000720260912
+command: cargo test --release --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+lines (pre-registered): |t| <= 4.5 no leak detected at this N; |t| > 10 leak detected; between: inconclusive
+method: both classes copied from equally cold pools into one input slot, class chosen at random per measurement, Welch's t, max |t| over upper-tail crops of [0.0, 0.01, 0.05, 0.1, 0.2] of the pooled samples
+S04-12 rule (pre-registered before run 3): excluded from the gate only if S04-17 > 10 and S04-16 <= 10 in this run; this run: NOT attributed, S04-12 is gated
+
+id      role                   n_a      n_b   mean_a_ns   mean_b_ns    med_a_ns    med_b_ns      |t|  crop  reading
+S04-00  negative control    160792   159390     95981.0     95988.6     96070.0     96081.0    10.00   20%  LEAK DETECTED
+S04-01  positive control    123525   199977      1479.0       110.9      1482.0       110.0 73628.70   20%  detector has power
+S04-10  gated               161063   159078     95991.5     96001.1     96070.0     96084.0    13.80   20%  LEAK DETECTED
+S04-11  gated               180157   179843     96050.4     96061.4     96085.0     96096.0    11.24   10%  LEAK DETECTED
+S04-12  gated/attrib.       186340   133717     99888.3    107773.2     99373.0    108356.0  1584.83   20%  LEAK DETECTED
+S04-13  gated               179907   180298      9141.4      9143.9      9044.0      9044.0     3.44   10%  no leak detected at this N
+S04-15  informational       187951   132060     85974.9     93914.0     85525.0     94505.0  1719.69   20%  recorded only (no secret; public-seed matrix expansion runs here too)
+S04-16  gated               158869   161208     98906.6     98894.6     99006.0     98989.0    14.73   20%  LEAK DETECTED
+S04-17  informational       186067   133985     99719.2    107585.4     99278.0    108190.0  1579.46   20%  recorded only (public part varies only; the attribution reference for S04-12)
+S04-20  gated               160053   159947    752093.9    753116.0    818953.0    819094.0     1.28   20%  no leak detected at this N
+S04-21  gated               200000   200000    964109.3    961342.9    819350.0    819097.0     1.68    0%  no leak detected at this N
+S04-22  informational       200000   196000    362171.4    616894.1    358424.0    512502.0   263.73    1%  recorded only (FIPS 204 rejection-loop count is a function of (key, message) by design)
+S04-23  informational       160312   159689    358464.0    358568.2    359437.0    359568.0     6.55   20%  recorded only (verification holds no secret)
+S04-30  gated               198045   197964      3705.5      3705.3      3700.0      3700.0     1.54    1%  no leak detected at this N
+S04-31  gated               198066   198027      3721.6      3721.9      3717.0      3717.0     2.12    1%  no leak detected at this N
+S04-32  gated               190160   190179      3720.8      3720.7      3721.0      3720.0     1.07    5%  no leak detected at this N
+S04-33  gated               197989   198020      4448.2      4448.3      4444.0      4444.0     0.93    1%  no leak detected at this N
+S04-34  informational       199042   122753      3728.0      4424.1      3722.0      4445.0  5812.56   20%  recorded only (acceptance is public to the caller; the difference is the error path)
+S04-35  gated               198066   197990      2407.2      2408.1      2404.0      2405.0    13.29    1%  LEAK DETECTED
+S04-36  gated               161625   161988      2373.0      2372.7      2376.0      2375.0     6.35   20%  INCONCLUSIVE (repeat with more samples)
+S04-37  gated               198020   198031      2222.8      2222.7      2222.0      2222.0     0.51    1%  no leak detected at this N
+S04-38  gated               198036   197968      2239.2      2239.1      2237.0      2237.0     1.24    1%  no leak detected at this N
+S04-39  informational       121872   199538      2204.5      1363.8      2223.0      1364.0  7953.73   20%  recorded only (the refusal is public to the caller and happens before AES runs; the difference is the error path and is expected to be large)
+
+S04-00: S04-00 mlkem-decaps same-fixed-ct vs same-fixed-ct
+S04-01: S04-01 leaky-compare equal-to-secret vs random
+S04-10: S04-10 mlkem-decaps fixed-valid-ct vs random-valid-ct
+S04-11: S04-11 mlkem-decaps fixed-valid-ct vs random-invalid-ct (implicit rejection)
+S04-12: S04-12 mlkem-decode-key-and-decaps fixed-key vs random-key (whole key varies)
+S04-13: S04-13 mlkem-decode-key-only fixed-key vs random-key
+S04-15: S04-15 mlkem-encaps-to-ek fixed-m fixed-ek vs random-ek (public data only)
+S04-16: S04-16 mlkem-decode-and-decaps key0 vs key0-with-secret-part-(s,z)-from-random-key (public part fixed, ct0 fixed)
+S04-17: S04-17 mlkem-decode-and-decaps key0 vs key0-with-public-part-(ek,H(ek))-from-random-key (secret part fixed, ct0 fixed)
+S04-20: S04-20 mldsa-sign-hedged fixed-key vs random-key (fixed message, fresh rnd both classes)
+S04-21: S04-21 mldsa-sign-hedged fixed-message vs random-message (fixed key, fresh rnd both classes)
+S04-22: S04-22 mldsa-sign-deterministic fixed-message vs random-message (SignatureProvider::sign)
+S04-23: S04-23 mldsa-verify fixed-valid-pair vs random-valid-pair
+S04-30: S04-30 aead-encrypt fixed-page vs random-page
+S04-31: S04-31 aead-encrypt fixed-key vs random-key
+S04-32: S04-32 aead-decrypt fixed-valid-ct vs random-valid-ct
+S04-33: S04-33 aead-decrypt tag-mismatch-at-first-byte vs tag-mismatch-at-random-byte (both rejected)
+S04-34: S04-34 aead-decrypt valid-ct vs tag-bit-flipped-ct (accept vs reject)
+S04-35: S04-35 compliance-aead-encrypt fixed-page vs random-page
+S04-36: S04-36 compliance-aead-encrypt fixed-key vs random-key
+S04-37: S04-37 compliance-aead-decrypt fixed-valid-ct vs random-valid-ct
+S04-38: S04-38 compliance-aead-decrypt gcm-tag-mismatch-at-first-byte vs gcm-tag-mismatch-at-random-byte (both rejected)
+S04-39: S04-39 compliance-aead-decrypt valid-ct vs commitment-tag-flipped-ct (accept vs refuse before AES)
+
+scope: a statistical leak detector on the named host, not a proof of constant time, not a hardware or formal analysis; nothing here is validation or certification

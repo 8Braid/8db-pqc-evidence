@@ -1,0 +1,49 @@
+GYM-S04 timing-leak suite, harness v2.1 (one slot, symmetric fills), suite v3
+host: MINGW64_NT-10.0-26200 3.6.9-b4195d69.x86_64 x86_64; AMD Ryzen 9 9950X3D 16-Core Processor          ; 32 cpu
+samples_per_class: 50000
+seed: 0x5eed000720260912
+command: cargo test --release --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+lines (pre-registered): |t| <= 4.5 no leak detected at this N; |t| > 10 leak detected; between: inconclusive
+method: both classes copied from equally cold pools into one input slot, class chosen at random per measurement, Welch's t, max |t| over upper-tail crops of [0.0, 0.01, 0.05, 0.1, 0.2] of the pooled samples
+S04-12 rule (pre-registered before run 3): excluded from the gate only if S04-17 > 10 and S04-16 <= 10 in this run; this run: attributed to public data
+
+id      role                   n_a      n_b   mean_a_ns   mean_b_ns    med_a_ns    med_b_ns      |t|  crop  reading
+S04-00  negative control     49504    49496     51425.2     51355.5     49500.0     49400.0     1.91    1%  no leak detected at this N
+S04-01  positive control     38811    49991       532.2       216.7       500.0       200.0  1075.29   20%  detector has power
+S04-10  gated                45295    45212     49980.8     50001.0     49800.0     49800.0     2.36   10%  no leak detected at this N
+S04-11  gated                40128    40185     48860.2     48863.9     48900.0     48900.0     1.29   20%  no leak detected at this N
+S04-12  gated/attrib.        40874    39128     51435.1     56807.8     51300.0     57100.0   614.58   20%  LEAK DETECTED but attributed to public data by the rule (S04-17 reproduces it, S04-16 clean); excluded from the gate
+S04-13  gated                40354    40324      4828.6      4829.4      4800.0      4800.0     0.53   20%  no leak detected at this N
+S04-15  informational        41949    38064     44341.9     49650.9     44100.0     49900.0   631.74   20%  recorded only (no secret; public-seed matrix expansion runs here too)
+S04-16  gated                44963    45057     52233.0     52290.9     51200.0     51200.0     2.79   10%  no leak detected at this N
+S04-17  informational        42607    37585     51223.3     56544.9     51100.0     56900.0   811.19   20%  recorded only (public part varies only; the attribution reference for S04-12)
+S04-20  gated                45032    44971    433294.9    432843.6    412300.0    412200.0     0.42   10%  no leak detected at this N
+S04-21  gated                49501    49500    510779.0    506499.0    422700.0    420100.0     2.62    1%  no leak detected at this N
+S04-22  informational        50000    49000    195539.5    319414.6    180500.0    256600.0   119.91    1%  recorded only (FIPS 204 rejection-loop count is a function of (key, message) by design)
+S04-23  informational        40086    39928    182589.9    182764.8    182900.0    183100.0    10.32   20%  recorded only (verification holds no secret)
+S04-30  gated                48904    48933      2668.3      2668.5      2700.0      2700.0     0.53    5%  no leak detected at this N
+S04-31  gated                48353    48421      2671.6      2672.0      2700.0      2700.0     1.07    5%  no leak detected at this N
+S04-32  gated                49587    49568      2706.6      2707.0      2700.0      2700.0     0.95    1%  no leak detected at this N
+S04-33  gated                50000    50000      3183.8      3188.5      3100.0      3100.0     1.73    0%  no leak detected at this N
+S04-34  informational        49752    42564      2717.0      3127.9      2700.0      3100.0  1047.03   10%  recorded only (acceptance is public to the caller; the difference is the error path)
+
+S04-00: S04-00 mlkem-decaps same-fixed-ct vs same-fixed-ct
+S04-01: S04-01 leaky-compare equal-to-secret vs random
+S04-10: S04-10 mlkem-decaps fixed-valid-ct vs random-valid-ct
+S04-11: S04-11 mlkem-decaps fixed-valid-ct vs random-invalid-ct (implicit rejection)
+S04-12: S04-12 mlkem-decode-key-and-decaps fixed-key vs random-key (whole key varies)
+S04-13: S04-13 mlkem-decode-key-only fixed-key vs random-key
+S04-15: S04-15 mlkem-encaps-to-ek fixed-m fixed-ek vs random-ek (public data only)
+S04-16: S04-16 mlkem-decode-and-decaps key0 vs key0-with-secret-part-(s,z)-from-random-key (public part fixed, ct0 fixed)
+S04-17: S04-17 mlkem-decode-and-decaps key0 vs key0-with-public-part-(ek,H(ek))-from-random-key (secret part fixed, ct0 fixed)
+S04-20: S04-20 mldsa-sign-hedged fixed-key vs random-key (fixed message, fresh rnd both classes)
+S04-21: S04-21 mldsa-sign-hedged fixed-message vs random-message (fixed key, fresh rnd both classes)
+S04-22: S04-22 mldsa-sign-deterministic fixed-message vs random-message (SignatureProvider::sign)
+S04-23: S04-23 mldsa-verify fixed-valid-pair vs random-valid-pair
+S04-30: S04-30 aead-encrypt fixed-page vs random-page
+S04-31: S04-31 aead-encrypt fixed-key vs random-key
+S04-32: S04-32 aead-decrypt fixed-valid-ct vs random-valid-ct
+S04-33: S04-33 aead-decrypt tag-mismatch-at-first-byte vs tag-mismatch-at-random-byte (both rejected)
+S04-34: S04-34 aead-decrypt valid-ct vs tag-bit-flipped-ct (accept vs reject)
+
+scope: a statistical leak detector on the named host, not a proof of constant time, not a hardware or formal analysis; nothing here is validation or certification

@@ -1,0 +1,22 @@
+utc: 2026-09-12T18:27:18Z
+host: MINGW64_NT-10.0-26200 3.6.9-b4195d69.x86_64 x86_64
+os: windows
+arch: x86_64
+cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
+nproc: 32
+mem_gb: 61.7
+rustc: rustc 1.94.1 (e408947bf 2026-03-25)
+cargo: cargo 1.94.1 (29ea6fb6a 2026-03-24)
+rustc_host: x86_64-pc-windows-gnullvm
+commit: 0d4091272aef9b6adbfe72941c2f25d3eedc3d29
+branch: session/pqc-p7-timing-20260912
+uncommitted_files: 6
+profile: release
+samples_per_class: 50000
+seed: default (0x5eed000720260912)
+suite_cmd: cargo test --release --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+compiled_at: 2026-09-12T18:47:21Z
+concurrent_cargo_rustc_before_run: 0
+load_average_before_run: 7.64 7.64 7.98
+finished_at: 2026-09-12T18:50:24Z
+suite_exit: 101

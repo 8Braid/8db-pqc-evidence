@@ -1,0 +1,15 @@
+PASS  A ek_8db.der (SPKI) is 1590 bytes
+PASS  A ct_openssl.bin is 1568 bytes
+PASS  A  8DB decapsulates OpenSSL's ciphertext to OpenSSL's shared secret
+PASS  B ct_8db.bin is 1568 bytes
+PASS  B  OpenSSL decapsulates 8DB's ciphertext to 8DB's shared secret
+PASS  C vk_8db.der (SPKI) is 2614 bytes
+PASS  C sig_8db.bin is 4627 bytes
+PASS  C  OpenSSL verifies 8DB's ML-DSA-87 signature
+PASS  D  8DB verifies OpenSSL's deterministic ML-DSA-87 signature (empty context)
+PASS  D  8DB verifies OpenSSL's hedged ML-DSA-87 signature (empty context)
+PASS  D  8DB verifies OpenSSL's signature under context 0x3864622d696e7465726f70
+PASS  D  8DB rejects the context-bound signature when the context is omitted
+PASS  E  OpenSSL rejects a flipped 8DB signature
+PASS  E  8DB rejects a flipped OpenSSL signature (exit 2)
+PASS  E  8DB implicit rejection: flipped ciphertext yields a different secret (exit 2)

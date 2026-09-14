@@ -1,0 +1,23 @@
+utc: 2026-09-12T20:26:44Z
+host: Linux 7.0.0-1012-aws aarch64
+os: linux
+arch: aarch64
+cpu: Neoverse-V1
+nproc: 8
+mem_gb: 15.3
+ci_runner: aarch64-ci-runner
+rustc: rustc 1.94.1 (e408947bf 2026-03-25)
+cargo: cargo 1.94.1 (29ea6fb6a 2026-03-24)
+rustc_host: aarch64-unknown-linux-gnu
+commit: 16d5c8aaf564ca30c677d5578c211b0612d3ab9f
+branch: 
+uncommitted_files: 0
+profile: release
+samples_per_class: 50000
+seed: default (0x5eed000720260912)
+suite_cmd: cargo test --release --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+compiled_at: 2026-09-12T21:00:56Z
+concurrent_cargo_rustc_before_run: 0
+load_average_before_run: 9.50 9.30 8.33
+finished_at: 2026-09-12T21:08:11Z
+suite_exit: 0

@@ -1,0 +1,23 @@
+utc: 2026-09-12T21:32:19Z
+host: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64
+os: linux
+arch: x86_64
+cpu: AMD Ryzen 9 9950X3D 16-Core Processor
+nproc: 16
+mem_gb: 47.0
+ci_runner: x86_64-ci-runner-a
+rustc: rustc 1.94.1 (e408947bf 2026-03-25)
+cargo: cargo 1.94.1 (29ea6fb6a 2026-03-24)
+rustc_host: x86_64-unknown-linux-gnu
+commit: d7c059a2c7f41bf017a515c31f4b5bea5d2affd0
+branch: 
+uncommitted_files: 0
+profile: release
+samples_per_class: 50000
+seed: default (0x5eed000720260912)
+suite_cmd: cargo test --release --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+compiled_at: 2026-09-12T22:03:14Z
+concurrent_cargo_rustc_before_run: 10
+load_average_before_run: 24.23 21.06 18.13
+finished_at: 2026-09-12T22:06:39Z
+suite_exit: 0

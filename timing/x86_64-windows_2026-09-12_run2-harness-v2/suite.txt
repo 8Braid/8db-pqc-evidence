@@ -1,0 +1,299 @@
+host: MINGW64_NT-10.0-26200 3.6.9-b4195d69.x86_64 x86_64 | rustc: rustc 1.94.1 (e408947bf 2026-03-25) | 2026-09-12T18:47:21Z | commit: 0d409127 | cmd: cargo test --release --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+-----
+    Finished `release` profile [optimized] target(s) in 14.73s
+     Running tests\gym_s04_pqc_timing_leak.rs (<local-path-redacted>
+
+running 2 tests
+test pqc_timing_leak_suite ... GYM-S04 (harness v2): 50000 samples per class, seed 0x5eed000720260912, host: MINGW64_NT-10.0-26200 3.6.9-b4195d69.x86_64 x86_64; AMD Ryzen 9 9950X3D 16-Core Processor          ; 32 cpu
+  S04-00 [negative control] |t| = 0.95 (crop 5%)  mean 49092 / 49088 ns  median 49100 / 49100 ns
+  S04-01 [positive control] |t| = 2120.95 (crop 20%)  mean 500 / 210 ns  median 500 / 200 ns
+  S04-10 [gated] |t| = 0.76 (crop 0%)  mean 49540 / 49521 ns  median 48900 / 48900 ns
+  S04-11 [gated] |t| = 0.40 (crop 10%)  mean 48932 / 48933 ns  median 49000 / 49000 ns
+  S04-12 [gated] |t| = 901.70 (crop 20%)  mean 50639 / 56490 ns  median 50500 / 56900 ns
+  S04-20 [gated] |t| = 0.86 (crop 5%)  mean 469039 / 467929 ns  median 418400 / 418700 ns
+  S04-21 [gated] |t| = 2.16 (crop 20%)  mean 386274 / 388052 ns  median 406900 / 408300 ns
+  S04-22 [informational] |t| = 115.46 (crop 0%)  mean 187163 / 306183 ns  median 179400 / 250400 ns
+  S04-23 [informational] |t| = 13.93 (crop 20%)  mean 179441 / 179550 ns  median 179800 / 179900 ns
+  S04-30 [gated] |t| = 1.12 (crop 5%)  mean 2633 / 2633 ns  median 2600 / 2600 ns
+  S04-31 [gated] |t| = 1.54 (crop 1%)  mean 2645 / 2646 ns  median 2600 / 2600 ns
+  S04-32 [gated] |t| = 1.28 (crop 20%)  mean 2664 / 2664 ns  median 2700 / 2700 ns
+  S04-33 [gated] |t| = 1.84 (crop 1%)  mean 3103 / 3102 ns  median 3100 / 3100 ns
+  S04-34 [informational] |t| = 1103.43 (crop 20%)  mean 2702 / 3093 ns  median 2700 / 3100 ns
+
+GYM-S04 timing-leak suite, harness v2 (same-slot inputs)
+host: MINGW64_NT-10.0-26200 3.6.9-b4195d69.x86_64 x86_64; AMD Ryzen 9 9950X3D 16-Core Processor          ; 32 cpu
+samples_per_class: 50000
+seed: 0x5eed000720260912
+command: cargo test --release --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+lines (pre-registered): |t| <= 4.5 no leak detected at this N; |t| > 10 leak detected; between: inconclusive
+method: two classes written into one input slot, class chosen at random per measurement, Welch's t, max |t| over upper-tail crops of [0.0, 0.01, 0.05, 0.1, 0.2] of the pooled samples
+
+id      role                   n_a      n_b   mean_a_ns   mean_b_ns    med_a_ns    med_b_ns      |t|  crop  reading
+S04-00  negative control     47528    47505     49092.1     49088.0     49100.0     49100.0     0.95    5%  no leak detected at this N
+S04-01  positive control     35934    49986       500.0       210.3       500.0       200.0  2120.95   20%  detector has power
+S04-10  gated                50000    50000     49539.8     49521.0     48900.0     48900.0     0.76    0%  no leak detected at this N
+S04-11  gated                45009    45077     48932.1     48933.3     49000.0     49000.0     0.40   10%  no leak detected at this N
+S04-12  gated                44597    35750     50638.7     56489.9     50500.0     56900.0   901.70   20%  LEAK DETECTED
+S04-20  gated                47562    47439    469039.0    467929.3    418400.0    418700.0     0.86    5%  no leak detected at this N
+S04-21  gated                40009    39991    386273.9    388052.5    406900.0    408300.0     2.16   20%  no leak detected at this N
+S04-22  informational        50000    50000    187163.5    306182.7    179400.0    250400.0   115.46    0%  recorded only (FIPS 204 rejection-loop count is a function of (key, message) by design)
+S04-23  informational        40101    39900    179440.7    179550.3    179800.0    179900.0    13.93   20%  recorded only (verification holds no secret)
+S04-30  gated                49318    49261      2633.2      2632.9      2600.0      2600.0     1.12    5%  no leak detected at this N
+S04-31  gated                49534    49491      2645.3      2645.9      2600.0      2600.0     1.54    1%  no leak detected at this N
+S04-32  gated                43458    43210      2664.1      2663.7      2700.0      2700.0     1.28   20%  no leak detected at this N
+S04-33  gated                49543    49532      3102.9      3102.1      3100.0      3100.0     1.84    1%  no leak detected at this N
+S04-34  informational        49514    37510      2702.0      3092.7      2700.0      3100.0  1103.43   20%  recorded only (acceptance is public to the caller; the difference is the error path)
+
+S04-00: S04-00 mlkem-decaps same-fixed-ct vs same-fixed-ct
+S04-01: S04-01 leaky-compare equal-to-secret vs random
+S04-10: S04-10 mlkem-decaps fixed-valid-ct vs random-valid-ct
+S04-11: S04-11 mlkem-decaps fixed-valid-ct vs random-invalid-ct (implicit rejection)
+S04-12: S04-12 mlkem-decode-key-and-decaps fixed-key vs random-key
+S04-20: S04-20 mldsa-sign-hedged fixed-key vs random-key (fixed message, fresh rnd both classes)
+S04-21: S04-21 mldsa-sign-hedged fixed-message vs random-message (fixed key, fresh rnd both classes)
+S04-22: S04-22 mldsa-sign-deterministic fixed-message vs random-message (SignatureProvider::sign)
+S04-23: S04-23 mldsa-verify fixed-valid-pair vs random-valid-pair
+S04-30: S04-30 aead-encrypt fixed-page vs random-page
+S04-31: S04-31 aead-encrypt fixed-key vs random-key
+S04-32: S04-32 aead-decrypt fixed-valid-ct vs random-valid-ct
+S04-33: S04-33 aead-decrypt tag-mismatch-at-first-byte vs tag-mismatch-at-random-byte (both rejected)
+S04-34: S04-34 aead-decrypt valid-ct vs tag-bit-flipped-ct (accept vs reject)
+
+scope: a statistical leak detector on the named host, not a proof of constant time, not a hardware or formal analysis; nothing here is validation or certification
+
+report written to pqc-timing-results/x86_64-windows_2026-09-12T182717Z/report.txt
+
+--- GYM-S04 report (GNF v2.2, controls and gated cases) ---
+@id: test:gym-s04/pqc-timing-leak/summary
+@is: [schema:TimingAnalysis, schema:SecurityVerdict]
+@conf: 0.82
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+total_comparisons: 11
+passed: 9
+failed: 2
+verdict: FAIL
+  ~gap ~why:ENVIRONMENT_LIMITATION
+    ~ebp_ceiling: Provisional
+    ~cost: 0_tokens
+    ~uplift: ~unknown
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-00-mlkem-decaps-same-fixed-ct-vs-same-fixed-ct
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.99
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 47528
+samples_b: 47505
+mean_a_ns: 49092.05
+mean_b_ns: 49088.01
+variance_a: 434640.03
+variance_b: 421881.16
+t_statistic: 0.9514
+degrees_of_freedom: 95011.3
+t_critical: 10
+verdict: PASS
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-01-leaky-compare-equal-to-secret-vs-random
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.00
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 35934
+samples_b: 49986
+mean_a_ns: 500.00
+mean_b_ns: 210.30
+variance_a: 0.00
+variance_b: 932.56
+t_statistic: 2120.9477
+degrees_of_freedom: 49985.0
+t_critical: 10
+verdict: FAIL
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-10-mlkem-decaps-fixed-valid-ct-vs-random-valid-ct
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.99
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 50000
+samples_b: 50000
+mean_a_ns: 49539.81
+mean_b_ns: 49520.96
+variance_a: 16650120.05
+variance_b: 13991010.73
+t_statistic: 0.7615
+degrees_of_freedom: 99250.5
+t_critical: 10
+verdict: PASS
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-11-mlkem-decaps-fixed-valid-ct-vs-random-invalid-ct-(implicit-rejection)
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.99
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 45009
+samples_b: 45077
+mean_a_ns: 48932.09
+mean_b_ns: 48933.25
+variance_a: 188838.95
+variance_b: 191920.13
+t_statistic: -0.4007
+degrees_of_freedom: 90080.1
+t_critical: 10
+verdict: PASS
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-12-mlkem-decode-key-and-decaps-fixed-key-vs-random-key
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.00
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 44597
+samples_b: 35750
+mean_a_ns: 50638.66
+mean_b_ns: 56489.86
+variance_a: 1206137.76
+variance_b: 538505.53
+t_statistic: -901.6971
+degrees_of_freedom: 77944.0
+t_critical: 10
+verdict: FAIL
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-20-mldsa-sign-hedged-fixed-key-vs-random-key-(fixed-message,-fresh-rnd-both-classes)
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.99
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 47562
+samples_b: 47439
+mean_a_ns: 469038.97
+mean_b_ns: 467929.29
+variance_a: 40039469357.60
+variance_b: 39562908448.23
+t_statistic: 0.8572
+degrees_of_freedom: 94997.9
+t_critical: 10
+verdict: PASS
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-21-mldsa-sign-hedged-fixed-message-vs-random-message-(fixed-key,-fresh-rnd-both-classes)
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.99
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 40009
+samples_b: 39991
+mean_a_ns: 386273.94
+mean_b_ns: 388052.50
+variance_a: 13415999749.94
+variance_b: 13586036860.91
+t_statistic: -2.1647
+degrees_of_freedom: 79994.4
+t_critical: 10
+verdict: PASS
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-30-aead-encrypt-fixed-page-vs-random-page
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.99
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 49318
+samples_b: 49261
+mean_a_ns: 2633.24
+mean_b_ns: 2632.89
+variance_a: 2516.12
+variance_b: 2504.36
+t_statistic: 1.1198
+degrees_of_freedom: 98576.9
+t_critical: 10
+verdict: PASS
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-31-aead-encrypt-fixed-key-vs-random-key
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.99
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 49534
+samples_b: 49491
+mean_a_ns: 2645.30
+mean_b_ns: 2645.94
+variance_a: 4144.34
+variance_b: 4216.41
+t_statistic: -1.5414
+degrees_of_freedom: 99014.1
+t_critical: 10
+verdict: PASS
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-32-aead-decrypt-fixed-valid-ct-vs-random-valid-ct
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.99
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 43458
+samples_b: 43210
+mean_a_ns: 2664.09
+mean_b_ns: 2663.67
+variance_a: 2311.73
+variance_b: 2318.33
+t_statistic: 1.2819
+degrees_of_freedom: 86661.6
+t_critical: 10
+verdict: PASS
+
+---
+
+@id: test:gym-s04/pqc-timing-leak/S04-33-aead-decrypt-tag-mismatch-at-first-byte-vs-tag-mismatch-at-random-byte-(both-rejected)
+@is: [schema:TimingComparison, schema:WelchTTest]
+@conf: 0.99
+@ebp: Commit
+@prov: prov:source/gym-s04/pqc-timing-leak-welch-t-test
+samples_a: 49543
+samples_b: 49532
+mean_a_ns: 3102.90
+mean_b_ns: 3102.09
+variance_a: 4992.58
+variance_b: 4824.34
+t_statistic: 1.8353
+degrees_of_freedom: 99044.7
+t_critical: 10
+verdict: PASS
+
+---
+
+
+gated max |t| = 901.70 (S04-12); negative control 0.95; positive control 2120.95
+gate outcome: Refuted { evidence: "PQC-TIMING-LEAK-GATED-MAX-ABS-T | measured 901.697083 vs threshold 0.000000 (WithinWindow { lo: 0.0, hi: 10.0 }); n_effective=1; artifact=pre-registered PQC-TIMING-LEAK-GATED-MAX-ABS-T | predicted 0 +/- 4.5 | anchor 901.6970828216015 (GYM-S04 run on MINGW64_NT-10.0-26200 3.6.9-b4195d69.x86_64 x86_64; AMD Ryzen 9 9950X3D 16-Core Processor          ; 32 cpu, 50000 samples per class, seed 0x5eed000720260912)" }
+
+thread 'pqc_timing_leak_suite' (50120) panicked at tests\gym_s04_pqc_timing_leak.rs:675:5:
+GYM-S04: gated max |t| = 901.70 (S04-12) is above the pre-registered line 10: leak detected
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+FAILED
+test pre_registration_is_in_place ... ok
+
+failures:
+
+failures:
+    pqc_timing_leak_suite
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 167.62s
+
+error: test failed, to rerun pass `--test gym_s04_pqc_timing_leak`
+EXIT=101

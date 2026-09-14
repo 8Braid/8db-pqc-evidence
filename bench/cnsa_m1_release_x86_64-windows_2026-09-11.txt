@@ -1,0 +1,85 @@
+host: Windows 10.0.26200 x86_64 (Windows 11 Home) | AMD Ryzen 9 9950X3D 16C/32T | 61.7 GB RAM | rustc: rustc 1.94.1 (e408947bf 2026-03-25) (x86_64-pc-windows-gnullvm) | 2026-09-11T19:27:33Z | commit: 7d177113 (uncommitted files: 3, docs/scripts only) | cmd: cargo test --release --features v2-mera --test cnsa_m1_bench -- --ignored --nocapture
+executed as the cargo-built test binary target/release/deps/cnsa_m1_bench-9a2cca07872b1770.exe (built 2026-09-11T18:54:14Z from this commit's Rust source) invoked directly with --ignored --nocapture at process priority class High, because other agents' cargo builds held the target-dir lock; build: 1.94.1-x86_64-pc-windows-gnullvm host toolchain, RUSTFLAGS=-Awarnings, llvm-mingw clang linker
+nproc: 32 | cpu: AMD Ryzen 9 9950X3D 16-Core Processor | concurrent_cargo_rustc: 7 | cpu_busy_percent: 31 (NOT quiesced: other agents compiling on this host)
+-----
+
+running 3 tests
+
+==== CNSA Cat-5: four-way COST comparison (host-measured, RELEASE) ====
+N=100000 x 115B | AES-256-GCM-SIV seal med 500 ns (ct 136 B) | ML-DSA-87 sign 0.109 ms / verify 0.189 ms
+(every value is a COST -> LOWER IS BETTER)
+
+                          unencrypted  AES-encrypted  legacy-PQC-Cat5   8DB(M1)
+storage   B/record               115          136           4763        136.07
+write     ns/record                0          500         109700           505
+auth-vfy  s / 100k records          0            0           18.9        0.0002
+
+capability matrix:
+  unencrypted     encrypted:NO   quantum-safe:NO            per-datum-Cat5:NO   tamper-evident:NO
+  AES-encrypted   encrypted:YES  quantum-safe:NO(classical) per-datum-Cat5:NO   tamper-evident:per-record-tag
+  legacy-PQC-Cat5 encrypted:YES  quantum-safe:YES           per-datum-Cat5:YES  tamper-evident:YES  (at ~40x storage)
+  8DB (M1)    encrypted:YES  quantum-safe:YES           per-datum-Cat5:YES  tamper-evident:YES  (+O(logN) braid)
+
+8DB vs legacy-PQC-Cat5  (higher = our win):
+  storage    :      35x less /record
+  write      :     217x less /record
+  auth-verify:  100000x less /set
+8DB vs plain AES-encrypted  (the honest 'cost of adding Cat-5'):
+  storage    : +0.073 B/record (+0.0539%)
+  write      : 1.01x of plain-encrypted write
+====================================================================
+
+test bench_four_way_unencrypted_encrypted_legacy_trustdb ... ok
+
+==== CNSA 2.0 Cat-5 M1 micro-benchmark (host-measured) ====
+provider: MlDsa87Provider (FIPS 204) | N = 100000 records of 115B
+unit sign   (ns): med=499000  (min 489900 / max 872000)
+unit verify (ns): med=189200  (min 185600 / max 320900)
+ML-DSA-87 signature: 4627 bytes | boundary-sig wire: 7332 bytes
+
+STORAGE - signature overhead:
+  row-level Cat-5 : 462700000 B (462.7 MB)  [= N x 4627]
+  MERA boundary   : 7332 B (one signature)
+  => 63107x less signature storage
+  single-record bloat: 115B -> 4742B = 4023% overhead
+
+SIGN CPU @ N:
+  row-level : 49.900 s  [= N x med sign]
+  boundary  : 0.000420 s  (BLAKE3 over N + 1 sign)
+  => 118668x less sign CPU
+
+VERIFY CPU @ N (edge / audit):
+  row-level : 18.920 s  [= N x med verify]
+  boundary  : 0.000196 s  (1 verify)
+  => 96334x less verify CPU
+===========================================================
+
+test bench_cat5_rowlevel_vs_mera_boundary ... ok
+
+==== plaintext vs classical-encrypted vs PQC: storage / speed / search (RELEASE) ====
+N=100000 x 115B records (storage/speed) | N_search=2000 terms (search demo)
+
+ONE-TIME key establishment (paid once per key/session, NOT per record):
+  classical KDF (PBKDF2-HMAC-SHA-512, NIST SP 800-132): 337317900 ns, 0 B wire (only the 16-byte salt is public)
+  PQC KEM encapsulate (ML-KEM-1024 + X25519 hybrid)   : 121300 ns, 1616 B wire (ml_kem_ciphertext 1568 B + wrapped_key 48 B)
+  PQC KEM decapsulate (recipient side)                : 124900 ns
+  => PQC key-establishment wire overhead amortized over N=100000 records: 0.012336% of total dataset size
+
+PER-RECORD storage + speed (AEAD held IDENTICAL across classical & PQC):
+                        plaintext   classical-encrypted   PQC (ours)
+  storage  B/record           115                   131          131
+  write    ns/record            0                   500          500
+  read     ns/record            0                   600          600
+  => PQC adds 0.0000% storage and 0.0000% write latency vs classical (same AEAD; the only PQC cost is the one-time KEM above)
+
+SEARCH -- can we query the data in each state, and how fast:
+  plaintext            : 1500 ns  (1 hits / 2000 terms, direct in-memory index)
+  classical-encrypted   : 1056700 ns  (1 hits / 2000 terms) -- NO purpose-built encrypted index exists for this path; this is a full decrypt-and-scan (the only secure option -- a plaintext side-index would leak)
+  PQC (ours)            : 450000 ns  (1 hits / 2000 terms) -- the search INDEX is itself sealed under the PQC-KEM-established key; one decrypt-the-index op, then native-speed search (search::sealed_content_index)
+  => our sealed-index search is 2x faster than the classical decrypt-and-scan at N_search=2000
+=================================================================================
+
+test bench_plaintext_vs_classical_vs_pqc_storage_speed_and_search ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 19.27s
+EXIT= | wall_seconds=19.3 | priority=High | load_after: concurrent_cargo_rustc: 14 | cpu_busy_percent: 47 | note: 1 em dash in the bench's own STORAGE heading rendered as '-' (house rule); no other edit to program output

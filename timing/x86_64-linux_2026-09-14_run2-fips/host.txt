@@ -1,0 +1,24 @@
+utc: 2026-09-14T06:46:54Z
+host: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64
+os: linux
+arch: x86_64
+cpu: AMD Ryzen 9 9950X3D 16-Core Processor
+nproc: 16
+mem_gb: 39.2
+ci_runner: x86_64-ci-runner-a
+rustc: rustc 1.94.1 (e408947bf 2026-03-25)
+features: fips
+cargo: cargo 1.94.1 (29ea6fb6a 2026-03-24)
+rustc_host: x86_64-unknown-linux-gnu
+commit: 3ba9ed6f1db42fd57b05f776869f62eede5fa456
+branch: session/pqc-l7-compliance-profile-20260914
+uncommitted_files: 0
+profile: release
+samples_per_class: 50000
+seed: default (0x5eed000720260912)
+suite_cmd: cargo test --release --features fips --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+compiled_at: 2026-09-14T07:07:55Z
+concurrent_cargo_rustc_before_run: 11
+load_average_before_run: 15.37 23.07 17.62
+finished_at: 2026-09-14T07:11:16Z
+suite_exit: 101

@@ -1,0 +1,57 @@
+== 8DB ACVP offline correctness suite: reproduced run ==
+Date (UTC): 2026-06-19T02:32:08Z
+Host: Linux 6.18.5 x86_64
+rustc: rustc 1.94.1 (e408947bf 2026-03-25)
+Command: cargo run --bin run_acvp_demo  (binary: target/debug/run_acvp_demo)
+NOTE: demonstrates byte-level correctness vs embedded NIST ACVP vectors; NOT FIPS 140-3 validation.
+----------------------------------------------------------------------
+== 8DB ACVP correctness demonstration ==
+NOTE: this demonstrates correctness vs. NIST vectors, NOT FIPS 140-3 validation.
+
+[1/2] Running local ACVP known-answer-test suite...
+# ACVP Test Report
+
+**Total:** 35 | **Passed:** 35 | **Failed:** 0
+
+| Algorithm | Vector | Result | Detail |
+|-----------|--------|--------|--------|
+| HKDF-SHA-256 | RFC5869-TC1-SHA256 | PASS | - |
+| HKDF-SHA-256 | RFC5869-TC2-SHA256 | PASS | - |
+| HKDF-SHA-256 | RFC5869-TC3-SHA256 | PASS | - |
+| HKDF-SHA-384 | ACVP-TC1-SHA384 | PASS | - |
+| HKDF-SHA-384 | ACVP-TC3-SHA384 | PASS | - |
+| AES-256-GCM | SP800-38D-TC16 | PASS | - |
+| AES-256-GCM | ACVP-GCM-EMPTY-PT | PASS | - |
+| AES-256-GCM | ACVP-GCM-EMPTY-AAD | PASS | - |
+| AES-256-GCM-SIV | RFC8452-A2-TC1-empty | PASS | - |
+| AES-256-GCM-SIV | RFC8452-A2-TC2-8B | PASS | - |
+| AES-256-GCM-SIV | RFC8452-A2-TC-AAD | PASS | - |
+| HMAC-SHA-256 | RFC4231-TC1 | PASS | - |
+| HMAC-SHA-256 | RFC4231-TC2 | PASS | - |
+| HMAC-SHA-256 | RFC4231-TC3 | PASS | - |
+| HMAC-SHA-384 | RFC4231-TC1 | PASS | - |
+| HMAC-SHA-384 | RFC4231-TC2 | PASS | - |
+| HMAC-SHA-384 | RFC4231-TC3 | PASS | - |
+| ML-KEM-1024 | ML-KEM-1024-keyGen-tcId51 | PASS | - |
+| ML-KEM-1024 | ML-KEM-1024-decap-tcId96 | PASS | - |
+| ML-KEM-1024 | ML-KEM-1024-decap-tcId97 | PASS | - |
+| ML-KEM-1024 | ML-KEM-1024-decap-tcId98 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-NIST-tcId51 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-NIST-tcId52 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-NIST-tcId53 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-NIST-tcId54 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-NIST-tcId55 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-NIST-tcId56 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-NIST-tcId57 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-NIST-tcId58 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-NIST-tcId59 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-NIST-tcId60 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-keyGen-tcId51 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-sigVer-tcId70 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-sigVer-tcId71 | PASS | - |
+| ML-DSA-87 | ML-DSA-87-sigVer-tcId72 | PASS | - |
+
+Local KAT result: 35 / 35 passed (0 failed).
+
+[2/2] Live demo-server session skipped (pass --live to enable).
+      Local correctness suite passed.

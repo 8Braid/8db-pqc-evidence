@@ -1,0 +1,9 @@
+run:              20260911T224619Z
+host:             MINGW64_NT-10.0-26200 3.6.9-b4195d69.x86_64 x86_64 windows-workstation
+commit:           e18a9a3bcae8f541ac07716fc59c410a392a6d63 (dirty: 9 paths)
+pqc_interop:      <repo>/target/release/pqc_interop.exe
+rustc:            rustc 1.94.1 (e408947bf 2026-03-25)
+openssl mode:     host
+openssl version:  OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+openssl kem:       { 2.16.840.1.101.3.4.4.3, id-alg-ml-kem-1024, ML-KEM-1024, MLKEM1024 } @ default
+openssl sig:       { 2.16.840.1.101.3.4.3.19, id-ml-dsa-87, ML-DSA-87, MLDSA87 } @ default

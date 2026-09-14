@@ -1,0 +1,40 @@
+GYM-S04 timing-leak suite, harness v2 (same-slot inputs)
+host: MINGW64_NT-10.0-26200 3.6.9-b4195d69.x86_64 x86_64; AMD Ryzen 9 9950X3D 16-Core Processor          ; 32 cpu
+samples_per_class: 50000
+seed: 0x5eed000720260912
+command: cargo test --release --test gym_s04_pqc_timing_leak -- --nocapture --test-threads=1
+lines (pre-registered): |t| <= 4.5 no leak detected at this N; |t| > 10 leak detected; between: inconclusive
+method: two classes written into one input slot, class chosen at random per measurement, Welch's t, max |t| over upper-tail crops of [0.0, 0.01, 0.05, 0.1, 0.2] of the pooled samples
+
+id      role                   n_a      n_b   mean_a_ns   mean_b_ns    med_a_ns    med_b_ns      |t|  crop  reading
+S04-00  negative control     47528    47505     49092.1     49088.0     49100.0     49100.0     0.95    5%  no leak detected at this N
+S04-01  positive control     35934    49986       500.0       210.3       500.0       200.0  2120.95   20%  detector has power
+S04-10  gated                50000    50000     49539.8     49521.0     48900.0     48900.0     0.76    0%  no leak detected at this N
+S04-11  gated                45009    45077     48932.1     48933.3     49000.0     49000.0     0.40   10%  no leak detected at this N
+S04-12  gated                44597    35750     50638.7     56489.9     50500.0     56900.0   901.70   20%  LEAK DETECTED
+S04-20  gated                47562    47439    469039.0    467929.3    418400.0    418700.0     0.86    5%  no leak detected at this N
+S04-21  gated                40009    39991    386273.9    388052.5    406900.0    408300.0     2.16   20%  no leak detected at this N
+S04-22  informational        50000    50000    187163.5    306182.7    179400.0    250400.0   115.46    0%  recorded only (FIPS 204 rejection-loop count is a function of (key, message) by design)
+S04-23  informational        40101    39900    179440.7    179550.3    179800.0    179900.0    13.93   20%  recorded only (verification holds no secret)
+S04-30  gated                49318    49261      2633.2      2632.9      2600.0      2600.0     1.12    5%  no leak detected at this N
+S04-31  gated                49534    49491      2645.3      2645.9      2600.0      2600.0     1.54    1%  no leak detected at this N
+S04-32  gated                43458    43210      2664.1      2663.7      2700.0      2700.0     1.28   20%  no leak detected at this N
+S04-33  gated                49543    49532      3102.9      3102.1      3100.0      3100.0     1.84    1%  no leak detected at this N
+S04-34  informational        49514    37510      2702.0      3092.7      2700.0      3100.0  1103.43   20%  recorded only (acceptance is public to the caller; the difference is the error path)
+
+S04-00: S04-00 mlkem-decaps same-fixed-ct vs same-fixed-ct
+S04-01: S04-01 leaky-compare equal-to-secret vs random
+S04-10: S04-10 mlkem-decaps fixed-valid-ct vs random-valid-ct
+S04-11: S04-11 mlkem-decaps fixed-valid-ct vs random-invalid-ct (implicit rejection)
+S04-12: S04-12 mlkem-decode-key-and-decaps fixed-key vs random-key
+S04-20: S04-20 mldsa-sign-hedged fixed-key vs random-key (fixed message, fresh rnd both classes)
+S04-21: S04-21 mldsa-sign-hedged fixed-message vs random-message (fixed key, fresh rnd both classes)
+S04-22: S04-22 mldsa-sign-deterministic fixed-message vs random-message (SignatureProvider::sign)
+S04-23: S04-23 mldsa-verify fixed-valid-pair vs random-valid-pair
+S04-30: S04-30 aead-encrypt fixed-page vs random-page
+S04-31: S04-31 aead-encrypt fixed-key vs random-key
+S04-32: S04-32 aead-decrypt fixed-valid-ct vs random-valid-ct
+S04-33: S04-33 aead-decrypt tag-mismatch-at-first-byte vs tag-mismatch-at-random-byte (both rejected)
+S04-34: S04-34 aead-decrypt valid-ct vs tag-bit-flipped-ct (accept vs reject)
+
+scope: a statistical leak detector on the named host, not a proof of constant time, not a hardware or formal analysis; nothing here is validation or certification

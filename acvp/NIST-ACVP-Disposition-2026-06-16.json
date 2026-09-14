@@ -1,0 +1,37 @@
+{
+  "_evidence": "NIST ACVTS server (demo.acvts.nist.gov) testSession disposition responses, captured 2026-06-16",
+  "_what_this_is": "Verbatim pass/fail dispositions returned by NIST's Automated Cryptographic Validation Protocol (ACVP) server for cryptographic responses computed by the 8DB Cryptographic Module. Production grading mode (isSample=false): NIST generates the test vectors, 8DB computes the answers, NIST grades them.",
+  "_important_scope_note": "These dispositions are from the NIST DEMO ACVTS environment. The demo environment does NOT issue a public, NIST-listed CAVP certificate. A public CAVP certificate number is issued only via the Production ACVTS, which is accessed through an NVLAP-accredited CST (17ACVT) laboratory. This file is reproducible algorithm-correctness EVIDENCE, not a certificate.",
+  "subject_identity": "CN=Ashley Dunfield, O=Digital Fabric Inc., emailAddress=[email-redacted] (authenticated via NIST CVP Demo CA-issued mutual-TLS client certificate)",
+  "honest_scope": "This demonstrates byte-level algorithm correctness against NIST's live vectors (the ACVP/CAVP layer). It is NOT FIPS 140-3 module validation (CMVP), which additionally requires an NVLAP-accredited lab and the CMVP review queue.",
+  "sessions": [
+    {
+      "purpose": "Full CNSA 2.0 Category-5 pair, single session",
+      "testSession": 744723,
+      "passed": true,
+      "results": [
+        { "algorithm": "ML-KEM-1024", "standard": "FIPS 203", "mode": "keyGen", "vectorSet": 3917438, "status": "passed" },
+        { "algorithm": "ML-KEM-1024", "standard": "FIPS 203", "mode": "encapDecap", "vectorSet": 3917439, "status": "passed" },
+        { "algorithm": "ML-DSA-87", "standard": "FIPS 204", "mode": "sigVer", "vectorSet": 3917440, "status": "passed" }
+      ]
+    },
+    {
+      "purpose": "ML-KEM-1024 standalone (corroborating)",
+      "testSession": 744711,
+      "passed": true,
+      "results": [
+        { "algorithm": "ML-KEM-1024", "standard": "FIPS 203", "mode": "keyGen", "vectorSet": 3917425, "status": "passed" },
+        { "algorithm": "ML-KEM-1024", "standard": "FIPS 203", "mode": "encapDecap", "vectorSet": 3917426, "status": "passed" }
+      ]
+    },
+    {
+      "purpose": "ML-DSA-87 standalone (corroborating)",
+      "testSession": 744722,
+      "passed": true,
+      "results": [
+        { "algorithm": "ML-DSA-87", "standard": "FIPS 204", "mode": "sigVer", "vectorSet": 3917437, "status": "passed" }
+      ]
+    }
+  ],
+  "offline_known_answer_tests": "35 / 35 passed (HKDF-SHA-256/384, AES-256-GCM, AES-256-GCM-SIV, HMAC-SHA-256/384, ML-KEM-1024, ML-DSA-87) against embedded NIST ACVP vectors: see Offline-KAT-Report-35of35.txt (independently reproducible: `cargo run --bin run_acvp_demo`)."
+}
