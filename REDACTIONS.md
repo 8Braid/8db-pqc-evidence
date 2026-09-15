@@ -130,3 +130,22 @@ artifacts. See [the verification guide](HOW-TO-VERIFY.md) for usage.
 |---|---|
 | `verify-evidence.py` | `59c667a5b8819b1682f11626f2f9c12cd998c3cb65c04de091ef629a0e23e11e` |
 | `ARTIFACT-SHA256SUMS` | `fbbc21666070ad97cba4b3d22ec33fd1726c472d5c38ae9f426fa7d40979e29e` |
+
+## Migration evidence scope correction, September 15, 2026
+
+The README and migration scope now distinguish the historical managed-copy
+100,000-record transformation from the separate live-migration serving API.
+The historical concurrent-read probe served zero reads. The earlier wording
+that attached read availability to that measured run has been corrected.
+The current live 100,000-record availability campaign is explicitly pending;
+its eventual result will have its own source, executable, workload and ledger.
+Supported live API behavior remains described separately from measured results.
+
+All raw artifacts, vectors, transcripts, reports and verification programs remain
+byte-identical to baseline `606a49f560d7b25ec8147cd110e0139ca02d5ba0`.
+This editorial note is excluded from its own hash table.
+
+| File | Before correction SHA-256 | After correction SHA-256 |
+|---|---|---|
+| `README.md` | `d435e7c33634bada1d800272d32000f40b9b909c57a2b9f7ab89632bbe9c0f67` | `bd650ff669d0c3a1763c749ec639934de89613a08edf6c3455d5283988971ecd` |
+| `CLAIMS-AND-SCOPE.md` | `36e0e2e911da919b1fa69813f3ca08583c486814c7a5a92211863545f20bdf06` | `11aeed8915dc699116622f27030bb86ae7ae2853851858898cf7ac92fced7958` |
