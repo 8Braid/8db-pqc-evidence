@@ -83,16 +83,27 @@ a key-derivation migration.
 
 ### Key-derivation transition
 
-The recorded transition re-encrypts stored records from page keys derived with
-HKDF-SHA256 into a new generation using HKDF-SHA384. Each record is verified
-before the new generation is activated atomically. The old generation remains
-readable during the copy.
+**Scope correction, September 15, 2026:** the historical 100,000-record
+Linux x86_64 run from September 14 used the managed-copy operation. It
+re-encrypted stored records from page keys derived with HKDF-SHA256 into a new
+generation using HKDF-SHA384, verified each record and activated the new
+generation atomically. Its concurrent-read probe recorded zero served reads.
+The measured result establishes the key-derivation change, re-encryption and
+record verification. Read availability requires evidence from the separate
+live-migration operation.
 
-The 100,000-record run was recorded on Linux x86_64 on September 14, 2026.
-Its raw results and the engine harness are available to evaluators on request.
-This establishes a specific change in key derivation with record re-encryption.
-Additional transitions, interruption recovery and production operating limits
-should be agreed and tested against the intended deployment.
+The implemented live-migration API provides an authenticated serving facade
+through copying, index construction, verification and activation. Its
+implementation and tests are available for evaluation. A fresh exact
+100,000-record campaign is now testing concurrent reads on a fixed 500 ms
+schedule with a 1 s scheduled-to-response deadline, including an owned process
+kill, cold resume and a protected read overlapping activation. That campaign's
+result remains pending as of September 15, 2026. The declared process outage is
+accounted for separately from serving latency.
+
+The historical raw results and both engine harnesses are available to evaluators
+on request. Additional transitions and production operating limits should be
+agreed and tested against the intended deployment.
 
 ### Per-row signing comparison
 

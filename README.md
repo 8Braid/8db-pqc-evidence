@@ -22,12 +22,17 @@ protected them. Updating those records takes work inside the storage system.
 8DB records the algorithm version with the ciphertext and supports old and new
 generations side by side during a transition.
 
-In a recorded test on 100,000 stored records, 8DB re-encrypted the data from
+In a recorded managed-copy test on 100,000 stored records, 8DB re-encrypted the data from
 HKDF-SHA256-derived page keys into a new generation using HKDF-SHA384, verified
-each record and activated the new generation atomically. The old generation
-remained available for reads during the copy.[^1] That gives an evaluation team
-a concrete starting point for testing migration against its own availability
-and recovery requirements.
+each record and activated the new generation atomically. That run's concurrent
+read probe recorded zero served reads.[^1]
+
+The live-migration API separately provides an authenticated serving facade
+across copying, index construction, verification and activation. As of September
+15, 2026, an exact 100,000-record campaign is testing that path with scheduled
+concurrent reads, a process kill and cold resume. Its availability result is
+pending. These are separate operations and evidence sets; see the
+[dated migration scope](CLAIMS-AND-SCOPE.md#key-derivation-transition).
 
 This work addresses a practical part of the migration agenda. NIST's
 [crypto-agility guidance](https://csrc.nist.gov/pubs/cswp/39/upd1/considerations-for-achieving-crypto-agility/final)
