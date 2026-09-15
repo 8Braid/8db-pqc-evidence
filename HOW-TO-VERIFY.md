@@ -19,7 +19,7 @@ If OpenSSL is installed elsewhere, specify its executable:
 python verify-evidence.py --openssl /path/to/openssl
 ```
 
-The [verifier](verify-evidence.py) checks all 249 raw artifacts against the
+The [verifier](verify-evidence.py) checks all 267 raw artifacts against the
 [published manifest](ARTIFACT-SHA256SUMS), compares four recorded ML-KEM
 shared-secret pairs, and checks valid and modified 8DB ML-DSA signatures with
 OpenSSL in both run folders. It reads the files without changing them.
@@ -43,9 +43,18 @@ fails cryptographic verification despite matching an updated hash.
 | Does 8DB exchange valid keys, ciphertexts and signatures with OpenSSL? | [Interop guide](interop/README.md) and the two run folders | OpenSSL 3.5 can verify the published signatures; a fresh run in both directions needs the evaluation engine |
 | What are the storage and processing costs? | [Benchmarks](bench/), [claims and scope](CLAIMS-AND-SCOPE.md) | Evaluation engine and benchmark harness |
 | Can a stored dataset change algorithms while reads continue? | The transition results in [claims and scope](CLAIMS-AND-SCOPE.md) | Evaluation engine, transition harness and detailed run records, available on request |
+| Can a killed replica recover the exact retained records? | [Two-host Required recovery](mesh/required-two-host-2026-09-15/) | The package's Rust verifier checks the published synthetic record; a fresh physical run needs the evaluation engine |
 | What does the timing screen show? | [Timing guide](timing/README.md), then the relevant `report.txt` and `host.txt` | Evaluation engine and timing harness on the target host |
 
 ## Check the published files
+
+The [September 15 recovery package](mesh/required-two-host-2026-09-15/) adds
+JSON-line clock, wire-report and expected-record artifacts to the complete
+inventory. Its separate Rust verifier compares all 512 typed record digests,
+the retained/missing partition, process outcomes and recovery timing. Run it
+using the package's documented command, which keeps Cargo build output outside
+the evidence checkout. Its result and the cryptographic verifier above have
+distinct scopes.
 
 Read [REDACTIONS.md](REDACTIONS.md) before checking hashes. Some public copies
 have identifiers removed, and editorial documents have been revised. The

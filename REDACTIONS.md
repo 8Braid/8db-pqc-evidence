@@ -1,5 +1,28 @@
 # Publication provenance
 
+## Required recovery publication, September 15, 2026
+
+The new [two-host recovery package](mesh/required-two-host-2026-09-15/) publishes
+a synthetic 512-record campaign. Its [original-provenance table](mesh/required-two-host-2026-09-15/ORIGINAL-PROVENANCE.json)
+records every original/public hash and transformation. Expected record data,
+clock reports, the host A wrapper and the wire report are byte-identical
+originals. The two final/open manifests omit a private binary evidence encoding
+and an internal API identifier. Local data/authority paths become hashes of
+their original UTF-8 values; the B executable path and private test module name
+become explicit labels. The remaining typed values and reported outcomes are
+preserved. Newly authored UTC timestamps use `Z`; offset normalization preserves
+the recorded instant.
+
+No pre-existing raw artifact changes with this addition. The full inventory
+now includes `.jsonl` so all four new JSON-line artifacts are covered, taking
+the raw-file count from 249 to 267. The new Rust verifier is an artifact reader,
+not the 8DB implementation. The package excludes seeds, credentials, private
+stores, authority-floor bytes, raw packet captures, private local paths and
+engine source. Earlier negative development and coordination outcomes remain
+in [the result history](mesh/required-two-host-2026-09-15/negative-history.json).
+
+## Earlier publication history
+
 This record separates the original public evidence snapshots from later edits
 to the accompanying documents. The original publication removed identifiers
 from selected files: instance and runner names, private addresses, local paths,

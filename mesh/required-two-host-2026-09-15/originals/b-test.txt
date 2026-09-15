@@ -1,0 +1,6 @@
+
+running 1 test
+test required_physical_content_control ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 125 filtered out; finished in 180.07s
+

@@ -11,7 +11,7 @@ import subprocess
 import sys
 
 MANIFEST = "ARTIFACT-SHA256SUMS"
-RAW_SUFFIXES = {".txt", ".json", ".bin", ".der", ".hex"}
+RAW_SUFFIXES = {".txt", ".json", ".jsonl", ".bin", ".der", ".hex"}
 RUNS = ("x86_64-windows_2026-09-11", "aarch64-linux_2026-09-12")
 WINDOWS_DEVICES = {"CON", "PRN", "AUX", "NUL"} | {
     prefix + str(number) for prefix in ("COM", "LPT") for number in range(1, 10)

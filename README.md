@@ -44,6 +44,7 @@ into the database.
 | Do the algorithms produce the expected results? | ML-KEM-1024 key generation and encapsulation/decapsulation, and ML-DSA-87 signature verification passed NIST's ACVP demonstration-server tests. The offline suite passed all 35 checks across post-quantum and symmetric primitives.[^2] |
 | Do the cryptographic outputs interoperate? | [OpenSSL 3.5 interoperability](interop/README.md): 15 of 15 checks passed on each of x86_64 and aarch64, covering both directions and negative controls. |
 | What are the storage and processing costs? | [Release microbenchmarks](bench/) on three hosts record object sizes and operation timings, with build details. The same-AEAD comparison produced 131-byte encrypted records from 115-byte inputs with either classical or post-quantum key establishment.[^3] |
+| Can a replica recover its exact protected records after a process kill? | [September 15 two-host recovery](mesh/required-two-host-2026-09-15/): both hosts finished with all 512 exact typed records; the receiver retained 172 and read new content 1,074 ms after same-store reopen. The package includes originals, explicit redaction provenance, negative history and a Rust artifact verifier. |
 | How can I inspect the security evidence? | [Known-answer vectors](kat/), [test results](acvp/), and [timing reports](timing/README.md) include the inputs, methods and recorded outcomes needed for a technical review. |
 
 ## How 8DB protects records

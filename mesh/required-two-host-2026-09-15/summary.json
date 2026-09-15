@@ -1,0 +1,70 @@
+{
+  "schema": "8db-required-two-host-public-summary-v1",
+  "date": "2026-09-15",
+  "run": "mesh-required-feature-opt2-ethernet-20260915-r9",
+  "result": "PASS_FIXED_512_CURRENT_ADMITTED_COPY_CAMPAIGN",
+  "source": "7db11180d1a71f7d95cd9698c72ffd1f044d1e6e",
+  "tree": "1b3f5ca8ac8c455eed77e311b851649cd645d323",
+  "elf_sha256": "9596da2abf37ee0e22c714ecf407db138acfe4153fcbd96093b779f911377009",
+  "elf_bytes": 22220224,
+  "build": {
+    "rust": "1.94.1",
+    "features": [
+      "two-host-probe",
+      "protected-gcm"
+    ],
+    "test_opt_level": 2,
+    "debug_assertions": true,
+    "overflow_checks": true,
+    "debug": 0,
+    "codegen_units": 256,
+    "incremental": false
+  },
+  "workload": {
+    "records": 512,
+    "format": "typed WordNet GNSE",
+    "common_start_unix_ms": 1789493160000,
+    "duration_s": 240,
+    "drain_s": 30,
+    "proposal_interval_ms": 250,
+    "admission_window": 8,
+    "kill_at_s": 45,
+    "down_s": 15,
+    "first_new_content_deadline_ms": 30000
+  },
+  "result_details": {
+    "a_records": 512,
+    "b_records": 512,
+    "b_retained_at_reopen": 172,
+    "b_first_new_content_ms": 1074,
+    "a_commit": 513,
+    "a_applied": 513,
+    "b_commit": 513,
+    "b_applied": 513,
+    "all_typed_digests_match": true,
+    "expected_sha384": "4ba387c2eabf6995bf9b9d61111d2b5c0f09f4106aece1a02b181d91414843e759501fa8af07620c9e93ccb7fb7123c9"
+  },
+  "topology": "Two physical x86_64 workstations, Linux WSL2 environments on native ext4, direct Ethernet",
+  "profile": "Required native AES-256-GCM, HKDF-SHA384, HMAC-SHA384; Compliance channel with ML-KEM-1024 and trusted ML-DSA-87 sender authentication",
+  "independent_audit": {
+    "utc": "2026-09-15T17:35:59.3350259Z",
+    "source_files_per_actor": 4133,
+    "raw_entries_verified": 341,
+    "committed_peer_files_verified": 267,
+    "original_a_manifest_sha256": "e8c5803edab8a36886baad41acb0abfe68fd92020a3278dba2689549fd1f8cf8",
+    "original_b_manifest_sha256": "3c3ddb7161f3a0030777bd7a8ab53a7b6e3ad565391aa8a0d9ebfd9bdda5c6bf"
+  },
+  "exclusions": [
+    "private seeds, credentials and key material",
+    "private stores and authority-floor bytes",
+    "engine source and private API identifier",
+    "raw packet captures and private filesystem paths"
+  ],
+  "scope": [
+    "Synthetic fixed512 corpus and current admitted native copies",
+    "Real process SIGKILL and same-path cold reopen",
+    "Artifact verifier checks published results; a fresh engine execution needs evaluation access",
+    "Wire report is a framing audit, not independent cryptographic signature verification",
+    "No historical all-copy, all-modality, power-loss, endurance, throughput or module-certification claim"
+  ]
+}

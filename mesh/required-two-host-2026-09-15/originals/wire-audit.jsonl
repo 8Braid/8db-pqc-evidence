@@ -1,0 +1,4 @@
+{"file":"wire-1-peer-to-relay.bin","bytes":2278920,"frames":349,"public_handshakes":3,"declared_compliance_raft_frames":346,"payload_bytes":2271575,"terminal_partial_bytes":0,"plaintext_fixture_markers":0,"invalid":0}
+{"file":"wire-1-relay-to-peer.bin","bytes":2374657,"frames":348,"public_handshakes":2,"declared_compliance_raft_frames":346,"payload_bytes":2370133,"terminal_partial_bytes":0,"plaintext_fixture_markers":0,"invalid":0}
+{"file":"wire-2-peer-to-relay.bin","bytes":5061560,"frames":775,"public_handshakes":3,"declared_compliance_raft_frames":772,"payload_bytes":5045269,"terminal_partial_bytes":0,"plaintext_fixture_markers":0,"invalid":0}
+{"file":"wire-2-relay-to-peer.bin","bytes":5254632,"frames":773,"public_handshakes":1,"declared_compliance_raft_frames":772,"payload_bytes":5244583,"terminal_partial_bytes":0,"plaintext_fixture_markers":0,"invalid":0}

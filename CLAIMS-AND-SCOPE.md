@@ -65,6 +65,24 @@ matched durability, indexing, concurrency and protection settings.
 
 ## Migration
 
+### Two-host recovery, September 15, 2026
+
+The [Required-profile recovery package](mesh/required-two-host-2026-09-15/)
+records a real process kill and same-store reopen across two physical
+workstations. Both hosts finished with 512 exact typed records. The receiver
+retained 172 records and observed new readable content in 1,074 ms, within the
+preregistered 30,000 ms limit. Both final commit/applied watermarks were 513.
+The package identifies the exact source, executable, profile, workload,
+independent expected records, redactions and earlier failed attempts.
+
+This is a fixed-corpus crash-and-rejoin qualification of current admitted native
+copies. The Rust artifact reader checks its published record; fresh execution,
+endurance, physical power loss and historical all-copy coverage are separate
+evaluations. This recovery result does not establish read availability during
+a key-derivation migration.
+
+### Key-derivation transition
+
 The recorded transition re-encrypts stored records from page keys derived with
 HKDF-SHA256 into a new generation using HKDF-SHA384. Each record is verified
 before the new generation is activated atomically. The old generation remains
