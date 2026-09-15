@@ -1,0 +1,27 @@
+{
+  "recorded_utc": "2026-09-15T17:46:57.5785482Z",
+  "scope": "Preserved development and coordination outcomes; distinct from current passing fixed campaign",
+  "history": [
+    {
+      "a_observed": 293,
+      "classification": "FAILED_FIXED_512_COMPLETION",
+      "source": "b5ff68445624c7335e50c6b4b7b35c5692c3049d",
+      "b_manifest_sha256": "9a3399f02d776375305e21bac4655cda1a76f0e4d5b540a284a599c541477a65",
+      "required": 512,
+      "meaning": "Real readable progress and recovery occurred, but both hosts missed full512 completion. This result motivated explicit optimizer qualification and remained retained.",
+      "b_observed": 293,
+      "profile": "unoptimized test binary",
+      "a_manifest_sha256": "37c4905a11936bc24c48c83d63dba98b268f274ac80c7ac635ab6be1a4ea98ff",
+      "run": "mesh-required-recovery-ethernet-20260915-r6"
+    },
+    {
+      "run": "mesh-required-feature-opt2-ethernet-20260915-r8",
+      "meaning": "B launch lead-time guard refused before creation. Unpaired A was stopped; no product pass or failure inferred.",
+      "b_actor_created": false,
+      "classification": "INTERRUPTED_UNPAIRED_COORDINATION_FAILURE",
+      "a_wrapper_exit": 143,
+      "source": "7db11180d1a71f7d95cd9698c72ffd1f044d1e6e",
+      "manifest_sha256": "33e38ba51e3cb1d8715f95315f67442f74665af74ac9edef8f3dace6a03844f5"
+    }
+  ]
+}

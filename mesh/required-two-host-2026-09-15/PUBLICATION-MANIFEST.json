@@ -1,0 +1,93 @@
+{
+  "schema": "8db-public-artifact-manifest-v1",
+  "created_utc": "2026-09-15T17:49:30.4343097Z",
+  "run": "mesh-required-feature-opt2-ethernet-20260915-r9",
+  "files": [
+    {
+      "path": "originals/a-clock.jsonl",
+      "bytes": 263,
+      "sha256": "7ca22a1839c0288f7c18c81ad2880da7d6a5a85b06731a0f2a05f27c89bd6bbe"
+    },
+    {
+      "path": "originals/a-final.json",
+      "bytes": 70201,
+      "sha256": "d483b023763f76a59f6dbc55e6ffd96591ea69f5114d9403cfff759f46553189"
+    },
+    {
+      "path": "originals/a-test.txt",
+      "bytes": 162,
+      "sha256": "2c596abeb8ff49a745f14571a3b4b2cbfd3b92588c3ac73a397d41916211ea34"
+    },
+    {
+      "path": "originals/a-wrapper.txt",
+      "bytes": 57,
+      "sha256": "f3c9c20ad1ea9f15cb372a47c7799359ec1b60db8a993b075a11083c9f98d51e"
+    },
+    {
+      "path": "originals/b-clock.jsonl",
+      "bytes": 263,
+      "sha256": "2faf70a8f484de72d40f4f8a4ffb4f6c5548ddef13bcf94814c33ca65d7f6d12"
+    },
+    {
+      "path": "originals/b-final.json",
+      "bytes": 70198,
+      "sha256": "8e2a447b3f6e182b5791cd6049e6af7f6a39661c1d35c0bffea233b402fbbd20"
+    },
+    {
+      "path": "originals/b-open-first.json",
+      "bytes": 6864,
+      "sha256": "8ee5ce46217a47a1a5953b329df700bc8b615963c57994a26132c35fa8fc27ac"
+    },
+    {
+      "path": "originals/b-open-rejoin.json",
+      "bytes": 28034,
+      "sha256": "794079e90519632c2f08e0908217c6219c71ce0b9407e7c026cfccd8bf75b701"
+    },
+    {
+      "path": "originals/b-test.txt",
+      "bytes": 162,
+      "sha256": "a80b14397a60b9b580122336478eba7d69f528a1a8c27ea28cef28bcc59d3585"
+    },
+    {
+      "path": "originals/b-wrapper.txt",
+      "bytes": 212,
+      "sha256": "8a2ceeb6c4fecdc2321d1a40fc9dad8c93a564f8b9bf1b90143f4077c403fc86"
+    },
+    {
+      "path": "originals/expected-manifest.json",
+      "bytes": 68483,
+      "sha256": "192329cf08af2a016aae35c25b1ce768183140f874ef3040f49ec9f5bfad7f97"
+    },
+    {
+      "path": "originals/expected-sections.jsonl",
+      "bytes": 748853,
+      "sha256": "2ab6b8699a28269269b0fae38e2a6fdbccaaabe70f6a8c16bfa54ec111844c1b"
+    },
+    {
+      "path": "originals/wire-audit.jsonl",
+      "bytes": 872,
+      "sha256": "b257071f329d34bc8c27093769cbd2256ab3cfe7b23467b23b5801d58675d199"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 2753,
+      "sha256": "c65fbf4aca22829177411dc7f8791dfc229c800d5a4aa2c1730df68c9e2c2fc1"
+    },
+    {
+      "path": "negative-history.json",
+      "bytes": 1377,
+      "sha256": "5fc84ac0921758c4deb3a464ddc175b334bdfd4309023d93e75325355d2a5078"
+    },
+    {
+      "path": "ORIGINAL-PROVENANCE.json",
+      "bytes": 6096,
+      "sha256": "814c8e4e921768df78cc611100e8a8c1066df05d223d46f621fcd9066f47216e"
+    },
+    {
+      "bytes": 2042,
+      "sha256": "e4212f363479f27750e327cbfe0c5dc6a822439adad854ad2073eb9e18a76c2d",
+      "path": "VERIFIER-CHECKS.json"
+    }
+  ],
+  "note": "Hashes identify the published copies. ORIGINAL-PROVENANCE.json records original hashes and exact transformations. This manifest provides file integrity, not independent host attestation."
+}

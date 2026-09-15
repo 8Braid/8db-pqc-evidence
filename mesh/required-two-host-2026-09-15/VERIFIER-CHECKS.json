@@ -1,0 +1,65 @@
+{
+  "checked_utc": "2026-09-15T17:55:18.4782591Z",
+  "verifier_source_sha256": "304acc8cc097559433f2b143ce986290ddafc984ae267e8310e5ce29a9e35501",
+  "actual_positive": {
+    "published_files": 16,
+    "rejoin_ms": 1074,
+    "result": "PASS_PUBLISHED_ARTIFACTS",
+    "retained_rows": 172,
+    "rows_per_host": 512,
+    "scope": "Checks this published fixed-corpus record; does not execute 8DB or independently attest the hosts",
+    "wire_frames": 2236
+  },
+  "negative_controls": [
+    {
+      "case": "missing-file",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "refusal": "REFUSED: No such file or directory (os error 2)",
+      "artifact_hash_refreshed": false
+    },
+    {
+      "case": "modified-bytes",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "refusal": "REFUSED: published bytes or SHA256 differ",
+      "artifact_hash_refreshed": false
+    },
+    {
+      "case": "rehashed-wrong-row",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "refusal": "REFUSED: full typed closure differs",
+      "artifact_hash_refreshed": true
+    },
+    {
+      "case": "conflicting-wrapper",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "refusal": "REFUSED: missing, duplicate or conflicting wrapper fact",
+      "artifact_hash_refreshed": true
+    },
+    {
+      "case": "clock-regression",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "refusal": "REFUSED: clock regressed or incomplete",
+      "artifact_hash_refreshed": true
+    },
+    {
+      "case": "unsafe-manifest-path",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "refusal": "REFUSED: unsafe publication path",
+      "artifact_hash_refreshed": false
+    },
+    {
+      "case": "unlisted-original",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "refusal": "REFUSED: unlisted original",
+      "artifact_hash_refreshed": false
+    }
+  ],
+  "scope": "Deliberately altered disposable copies test the public artifact verifier; no engine or physical rerun"
+}

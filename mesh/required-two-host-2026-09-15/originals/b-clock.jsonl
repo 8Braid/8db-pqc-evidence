@@ -1,0 +1,2 @@
+{"event":"start","wall_ns":1789493150068664526,"duration_seconds":270,"sleep_microseconds":100,"burst_samples":32}
+{"event":"complete","samples":48471168,"system_time_backwards":0,"instant_backwards":0,"elapsed_ns":270000019458,"end_wall_ns":1789493420068683804}

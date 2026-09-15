@@ -1,0 +1,10 @@
+first_pid=17308
+kill_at_ms=1789493205000
+down_s=15
+kill_exe=<qualified-evaluation-binary>
+kill_utc=2026-09-15T17:26:45Z
+killed_exit=137
+process_absent=true
+final_pid=18426
+wrapper_exit=0
+utc=2026-09-15T17:30:00Z
