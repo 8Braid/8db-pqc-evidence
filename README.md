@@ -30,8 +30,11 @@ competitive uniqueness remain questions for matched tests.
 [Request an evaluation](mailto:ashley@8braid.com?subject=8DB%20PQC%20evaluation)
 
 **Evaluator update, September 16:** [current qualification status](QUALIFICATION-STATUS.md)
-links the public replay packages, the newly frozen engine source and the
-remaining release tests. Each result stays attached to the version that ran it.
+links the public replay packages and remaining release tests. The
+[latest worker and delivery checkpoint](mesh/protected-node-2026-09-16/WORKER-AND-DELIVERY-CHECKPOINT-1556Z.md)
+records the corrected release worker's four clock controls and a separate
+16,512-record local rehearsal. Each result stays attached to the version that
+ran it; main-built package delivery and the 24-hour mission remain open.
 
 For data moving between nodes, read the
 [protected-node architecture](mesh/protected-node-2026-09-16/) and its

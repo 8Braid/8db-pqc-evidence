@@ -247,3 +247,13 @@ artifacts and replay tools are unchanged.
 The same checkpoint adds the corrected AES-GCM release job and its original
 receipt and artifact-membership review. It records the skipped evaluator-archive
 step and keeps the release-executable fault supplement open.
+
+## Worker and delivery checkpoint, September 16, 2026, 16:06 UTC
+
+`WORKER-AND-DELIVERY-CHECKPOINT-1556Z.md`, the README and current qualification
+status summarize the separately reviewed corrected-release worker supplement
+and optimized local 16,512-record rehearsal. Source, executable, profile, result
+and review identities remain distinct. The two short-mission refusals and the
+unstarted 24-hour mission are recorded as observed at this timestamp. Private
+executables, stores, synthetic keys and internal paths are excluded. Existing
+raw artifacts, manifests, replay tools and dated checkpoints remain unchanged.
