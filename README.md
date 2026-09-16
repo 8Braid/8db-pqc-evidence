@@ -31,10 +31,13 @@ competitive uniqueness remain questions for matched tests.
 
 **Evaluator update, September 16:** [current qualification status](QUALIFICATION-STATUS.md)
 links the public replay packages and remaining release tests. The
-[latest worker and delivery checkpoint](mesh/protected-node-2026-09-16/WORKER-AND-DELIVERY-CHECKPOINT-1556Z.md)
-records the corrected release worker's four clock controls and a separate
-16,512-record local rehearsal. Each result stays attached to the version that
-ran it; main-built package delivery and the 24-hour mission remain open.
+[latest short-rehearsal checkpoint](mesh/protected-node-2026-09-16/SHORT-REHEARSAL-CHECKPOINT-1639Z.md)
+records 2,176 exact synthetic records and a completed audit on the identified
+test build, preserving both earlier refusals. The
+[worker and larger-rehearsal checkpoint](mesh/protected-node-2026-09-16/WORKER-AND-DELIVERY-CHECKPOINT-1556Z.md)
+retains the release worker's four clock controls and separate 16,512-record
+result. Each result stays attached to the version that ran it; main-built
+package delivery and the 24-hour mission remain open.
 
 For data moving between nodes, read the
 [protected-node architecture](mesh/protected-node-2026-09-16/) and its
