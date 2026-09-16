@@ -140,7 +140,8 @@
     "AEAD_samples": 200,
     "AEAD_warmups": 16,
     "KEM_samples": 50,
-    "KEM_warmups": 4,
+    "KEM_establishment_warmups": 4,
+    "KEM_recovery_explicit_warmup_loop": false,
     "mapping": "Raw displayed rows lack metric IDs; mapped by exact pinned bench source emission order",
     "metrics": {
       "kem_establish_ns": 79542,

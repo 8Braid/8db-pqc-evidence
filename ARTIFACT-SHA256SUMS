@@ -25,14 +25,14 @@ ba956106117c39625ab63df11e09cd3b622b65f42de2022710e81f5d23fdd696  bench/p38/2026
 71018f38d6e1b6c31bb5ae3e5deb1d6ff10d8618279411b58afe890fae981d7a  bench/p38/2026-09-14/x86_64-wsl2/summary.txt
 2d1cb951d60b64163d7fa932650cffbbf41cb90d54a2605840f30dc0f7191b7c  bench/profile-cost/2026-09-14/aarch64-linux/host.txt
 605f816966351fe424fc45f6db9420d6ddb0d764dab6c3f7025f89ddf1792bd4  bench/profile-cost/2026-09-14/aarch64-linux/output.txt
-98edcffa63c7de4e17276d7576a6d547c36b7ddddd21640e34ed762dd9c197fe  bench/profile-cost/2026-09-14/aarch64-linux/PROVENANCE.json
+a783e9f796f88cb85fef0a80d37c61115c6ec9b1f41f25ac1c19be28f3cec1e6  bench/profile-cost/2026-09-14/aarch64-linux/PROVENANCE.json
 cf038367fcb50af534366f3663ff0ac204e8428301b09cadef6b14593d608574  bench/profile-cost/2026-09-14/aarch64-linux/rows.txt
 8774d21c9f9e17286c249cc7ecd33ff138d50d9d7a6468dbb3b1aa4d9da561de  bench/profile-cost/2026-09-14/aarch64-linux/SHA256SUMS.txt
-0c384b1dcae7535c3a7dfefa2bae7a6493fbfe4bfdd7c648370bb9d6814a1376  bench/profile-cost/2026-09-14/SHA256SUMS
+252fa5973bc9a9762b76142e83951979935282b2bd9d8cc3abfd5b4f4487d4bb  bench/profile-cost/2026-09-14/SHA256SUMS
 367f3389e4e14cfc32beda803143c12d184b01b02fd4bafbb98d309e8bac5690  bench/profile-cost/2026-09-14/SOURCE-METHOD.json
 8f03ffb665bdb7b46a227aa9e8abd8f8d9dc8f9699fe294a50ce6b8a37927458  bench/profile-cost/2026-09-14/x86_64-linux/host.txt
 e8a4f34ef69f07faef087d8edc720495c330ca312bd8234ef2e880c33e02e6e1  bench/profile-cost/2026-09-14/x86_64-linux/output.txt
-217321a32c2eb93d07056db22541fda99d88191d305e85b837e862f1abb73bdf  bench/profile-cost/2026-09-14/x86_64-linux/PROVENANCE.json
+29ad0edea8f178b46af46f180ad5ec290e817eacf886e63643dcbc6e3520577d  bench/profile-cost/2026-09-14/x86_64-linux/PROVENANCE.json
 ccb29c86aafde5d8ebf7bb4cb87099e3205dd50e3f0e92bc799cd9201cc65401  bench/profile-cost/2026-09-14/x86_64-linux/rows.txt
 c95063f33c54ecd42fa3dc7b60190669b736c2ec16dbbb763199e080db0ba5b0  bench/profile-cost/2026-09-14/x86_64-linux/SHA256SUMS.txt
 395f50848a74aa7003ae3c92bf128a4397d718b6867fae3e1fc538f122f9bb9e  interop/aarch64-linux_2026-09-12/A_kem_8db_keygen/ct_openssl.bin
