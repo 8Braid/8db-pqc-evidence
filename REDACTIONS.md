@@ -1,5 +1,20 @@
 # Publication provenance
 
+## Evaluator status update, September 16, 2026
+
+[Current qualification status](QUALIFICATION-STATUS.md) adds a dated index of
+existing public replay packages and the latest internal release progress. It
+records candidate source `9467eb1d2cb9aea2625f3e6b6f8d189d447c4172` separately
+from the completed earlier baseline. The 06:56 UTC protected-node snapshot is
+preserved with a pointer to the update. README and verification-guide links
+make the current record discoverable.
+
+This is an editorial update. All raw artifacts, complete manifests and verifier
+sources are unchanged from public commit
+`2f6373696bffc48fd1fced10d5e78be3942824d8`. Internal execution status is labeled
+as such; the update publishes no private engine source, keys, runtime stores or
+new raw test package.
+
 ## Live HKDF migration package, September 16, 2026
 
 The [live HKDF package](migration/live-hkdf-2026-09-15/) retains both the rejected

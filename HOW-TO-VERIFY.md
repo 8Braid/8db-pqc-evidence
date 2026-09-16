@@ -5,6 +5,10 @@ your own workload. The public files support a document review, vector inspection
 and independent signature verification. Re-running 8DB requires access to the
 evaluation engine and its harnesses.
 
+Start with [current qualification status](QUALIFICATION-STATUS.md) for the
+dated review sequence and the distinction between public artifact replay and
+qualification of the latest engine.
+
 ## Run the public verifier
 
 With Python 3.10+ and OpenSSL 3.5+ on your PATH, run this from the repository:
