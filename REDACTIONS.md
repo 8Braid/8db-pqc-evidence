@@ -212,3 +212,14 @@ the full original inspection is identified by hash. The unchanged Rust auditor,
 requires all six original verdicts and reports to reproduce, including every
 rejection. Dated additions to the README, migration scope and verification guide
 point to the new outcomes without replacing the historical measurements.
+
+## Protected-node checkpoint, September 16, 2026, 13:32 UTC
+
+The dated `RELEASE-CHECKPOINT-1332Z.md` and current qualification status summarize
+the completed AES-GCM job on source `9467eb1d2cb9aea2625f3e6b6f8d189d447c4172`
+and identify the corrected successor. They record original receipt, executable,
+inventory and independent-review hashes without publishing private engine
+source, binaries, database files, credentials or internal filesystem paths.
+Existing raw artifacts, manifests, verifiers and historical snapshots are
+unchanged. The checkpoint distinguishes internal execution evidence from the
+publicly replayable packages already in this repository.
