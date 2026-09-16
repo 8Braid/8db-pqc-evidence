@@ -1,6 +1,6 @@
 # Evaluate the evidence, then the workload
 
-**Updated September 16, 2026, 13:32 UTC.** The public package supports immediate
+**Updated September 16, 2026, 14:38 UTC.** The public package supports immediate
 review of cryptographic interoperability, record costs, live migration and
 recovery. The latest integrated engine is frozen for qualification. Its results
 will be recorded against that exact source before we mark its release complete.
@@ -41,6 +41,23 @@ deadline misses in the record; it does not establish their resolution.
 
 ## Latest engine qualification
 
+The corrected candidate `326ab0a1333dd7f6f13d4c0fff503f9d5eefaa5e`
+has completed its default-profile release job: 44 named protected-node tests,
+the generated-client checks, and local sender/receiver checks with 2,048 exact
+records per role passed. Independent review replayed the recorded validators
+and rehashed 80 consumed original files against the closed inventory.
+
+A separate optimized test build on this candidate's production code completed
+177 active controls and all three injected clock-fault cases. Its local delivery
+rehearsal completed 2,176 records, including 128 submitted during draining.
+Independent verification checked every ML-DSA-87 receipt against its original
+request, the receiver's exact content, source completion and the cold-reopened
+stores. The [delivery and release checkpoint](mesh/protected-node-2026-09-16/DELIVERY-CHECKPOINT-1430Z.md)
+records the distinct source and executable identities, retry observations and
+remaining release gates. A configuration-only repeat reduced the observed
+reconnect time from 107.734 to 33.858 seconds, with one send attempt per record
+and all 2,176 receipts independently verified.
+
 The integrated source `9467eb1d2cb9aea2625f3e6b6f8d189d447c4172` completed
 its AES-GCM release job: 67 named protected-node tests passed, generated-client
 checks passed, and six local sender/receiver observations each matched all
@@ -48,13 +65,13 @@ checks passed, and six local sender/receiver observations each matched all
 and replayed the recorded-content checks. The [dated result and provenance](mesh/protected-node-2026-09-16/RELEASE-CHECKPOINT-1332Z.md)
 identify the exact source, executable, job and scope.
 
-The next candidate is `326ab0a1333dd7f6f13d4c0fff503f9d5eefaa5e`, tree
+The selected candidate is `326ab0a1333dd7f6f13d4c0fff503f9d5eefaa5e`, tree
 `372602bc07b1233008184c55246d7b6702646ec3`. It corrects a test fixture whose
 cold-read audit unnecessarily reserved a write context, advancing the authority
 revision it was checking. The corrected fixture retains the initial write
 reservation and explicitly checks the unchanged revision after cold reopen.
 Production code and the original fault assertions are unchanged. Static review
-passed; native qualification of this exact candidate remains open.
+passed. The full native producer and AES-GCM release qualification remain open.
 
 The earlier baseline at `fa4911581ba4dc901be5582730c4c2813d221c16`, tree
 `d8b87230e9d57b20604f08d05a93ff7b89c36615`, has since completed its native
@@ -67,9 +84,9 @@ test package and transfers none of those passes to the successor.
 
 | Release gate | Current state | Evidence needed to close it |
 |---|---|---|
-| Integrated candidate | Source `326ab` selected after static review. Predecessor `9467` has a completed AES-GCM release job. | Completed native and generated-client tests bound to the corrected candidate source, binaries and execution records. |
+| Integrated candidate | Source `326ab` has a completed default-profile release job. Predecessor `9467` has a completed AES-GCM release job. | Remaining native and AES-GCM release tests bound to the corrected candidate source, binaries and execution records. |
 | Evaluator delivery | Recipes prepared; final assembly and offline replay await the completed producer records. | Successful assembly, durable artifact publication, clean extraction and replay, followed by the required main-built and platform checks. |
-| Temporal and delivery-worker behavior | The predecessor release passed its ordinary worker positive and receipt-observer controls; three injected clock faults were explicitly deferred in that job. The cold-audit fixture correction is ready for execution. | Actual positive and isolated fault runs on the retained corrected executable, with their clock and authority evidence. |
+| Temporal and delivery-worker behavior | The optimized test overlay passed the ordinary controls and three clock-fault cases, including unchanged cold-read authority revisions. | The separate fault supplement on the retained corrected release executable, with its clock and authority evidence. |
 | Sustained operation | The 24-hour mission has not started. | A full 86,400-second run, independent receipt/content accounting, failure and cold-recovery observations, and a completed audit. |
 
 The [earlier protected-node snapshot](mesh/protected-node-2026-09-16/QUALIFICATION.md)
