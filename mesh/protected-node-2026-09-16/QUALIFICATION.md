@@ -1,5 +1,10 @@
 # Protected-node capability and qualification record
 
+**Current update:** see [qualification status](../../QUALIFICATION-STATUS.md).
+The September 16, 06:56 UTC snapshot below is retained as history. Its native
+producer status has since advanced; the successor engine has its own source
+identity and qualification gates.
+
 **Snapshot: September 16, 2026, 06:56 UTC.** An implemented path, an executed
 test and a qualified release answer different questions. This table keeps each
 claim attached to the source, profile and evidence that supports it.

@@ -29,6 +29,10 @@ competitive uniqueness remain questions for matched tests.
 [Verify the evidence](HOW-TO-VERIFY.md) ·
 [Request an evaluation](mailto:ashley@8braid.com?subject=8DB%20PQC%20evaluation)
 
+**Evaluator update, September 16:** [current qualification status](QUALIFICATION-STATUS.md)
+links the public replay packages, the newly frozen engine source and the
+remaining release tests. Each result stays attached to the version that ran it.
+
 For data moving between nodes, read the
 [protected-node architecture](mesh/protected-node-2026-09-16/) and its
 [dated qualification matrix](mesh/protected-node-2026-09-16/QUALIFICATION.md).
