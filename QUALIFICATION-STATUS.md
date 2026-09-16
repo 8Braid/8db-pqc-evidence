@@ -1,6 +1,6 @@
 # Evaluate the evidence, then the workload
 
-**Updated September 16, 2026, 15:34 UTC.** The public package supports immediate
+**Updated September 16, 2026, 16:06 UTC.** The public package supports immediate
 review of cryptographic interoperability, record costs, live migration and
 recovery. The latest integrated engine is frozen for qualification. Its results
 will be recorded against that exact source before we mark its release complete.
@@ -41,6 +41,15 @@ deadline misses in the record; it does not establish their resolution.
 
 ## Latest engine qualification
 
+The corrected candidate's retained release executable has now passed one
+positive case and all three injected worker clock-fault cases. Independent
+review verified the named results, worker clock witnesses and cold-reopened
+state. A separate optimized test build completed a local 16,512-record delivery
+rehearsal, with every receipt signature and record independently verified.
+The [new worker and delivery checkpoint](mesh/protected-node-2026-09-16/WORKER-AND-DELIVERY-CHECKPOINT-1556Z.md)
+keeps the release executable and test-build results separate and records the
+remaining package and sustained-operation gates.
+
 The selected candidate has now completed its default native qualification:
 875 distinct named passes across 83 execution groups, seven key-prefix
 integration cases, and both seven-case restore campaigns. Independent review
@@ -52,7 +61,7 @@ synthetic inputs.
 
 The corrected candidate's AES-GCM release job also completed: 67 named
 protected-node tests and the generated-client checks passed. Its retained
-executable is now the input to the separate clock-fault supplement. The same
+executable subsequently passed the separate clock-fault supplement above. The same
 [checkpoint](mesh/protected-node-2026-09-16/NATIVE-CHECKPOINT-1529Z.md#corrected-aes-gcm-release-job)
 records the release receipt and artifact-membership review. The skipped archive
 step leaves evaluator-package delivery open.
@@ -88,8 +97,7 @@ revision it was checking. The corrected fixture retains the initial write
 reservation and explicitly checks the unchanged revision after cold reopen.
 Production code and the original fault assertions are unchanged. Static review
 passed. The default native and both release-profile jobs are complete; the
-remaining native producer roles and release-executable fault supplement remain
-open.
+remaining native producer roles and package delivery remain open.
 
 The earlier baseline at `fa4911581ba4dc901be5582730c4c2813d221c16`, tree
 `d8b87230e9d57b20604f08d05a93ff7b89c36615`, has since completed its native
@@ -102,10 +110,10 @@ test package and transfers none of those passes to the successor.
 
 | Release gate | Current state | Evidence needed to close it |
 |---|---|---|
-| Integrated candidate | Source `326ab` has completed its default native job and both release-profile jobs. | Remaining native roles and the release-executable fault supplement bound to the corrected candidate source, binaries and execution records. |
+| Integrated candidate | Source `326ab` has completed its default native job, both release-profile jobs and the separately audited four-case release-worker supplement. | Remaining native roles, CI review and normal merge, bound to the corrected source and execution records. |
 | Evaluator delivery | Recipes prepared; final assembly and offline replay await the completed producer records. | Successful assembly, durable artifact publication, clean extraction and replay, followed by the required main-built and platform checks. |
-| Temporal and delivery-worker behavior | The optimized test overlay passed the ordinary controls and three clock-fault cases, including unchanged cold-read authority revisions. | The separate fault supplement on the retained corrected release executable, with its clock and authority evidence. |
-| Sustained operation | The 24-hour mission has not started. | A full 86,400-second run, independent receipt/content accounting, failure and cold-recovery observations, and a completed audit. |
+| Temporal and delivery-worker behavior | The corrected retained release executable passed its positive case and all three injected worker clock-fault cases; independent replay checked clock witnesses and cold state. | Remaining profile and package checks stay separate from this bounded four-case result. |
+| Sustained operation | The first short startup refused before execution. A corrected second attempt ran its native phase, but the audit refused its time-namespace capture. The 24-hour mission has not started. | Successful short admission, then a full 86,400-second run, independent receipt/content accounting, failure and cold-recovery observations, and a completed audit. |
 
 The [earlier protected-node snapshot](mesh/protected-node-2026-09-16/QUALIFICATION.md)
 preserves its source-specific architecture and schema limits. The latest
