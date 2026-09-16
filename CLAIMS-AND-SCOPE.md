@@ -92,14 +92,24 @@ The measured result establishes the key-derivation change, re-encryption and
 record verification. Read availability requires evidence from the separate
 live-migration operation.
 
-The implemented live-migration API provides an authenticated serving facade
-through copying, index construction, verification and activation. Its
-implementation and tests are available for evaluation. A fresh exact
-100,000-record campaign is now testing concurrent reads on a fixed 500 ms
-schedule with a 1 s scheduled-to-response deadline, including an owned process
-kill, cold resume and a protected read overlapping activation. That campaign's
-result remains pending as of September 15, 2026. The declared process outage is
-accounted for separately from serving latency.
+**Measured live result, September 15, 2026:** the separate live-migration API
+passed a 100,000-record HKDF-SHA256 to HKDF-SHA384 campaign with scheduled reads,
+an owned process kill, cold resume and a protected response callback overlapping
+activation. AES-256-GCM-SIV remained unchanged. The [complete public evidence](migration/live-hkdf-2026-09-15/)
+retains 877 issued requests and outcomes, 41 requests scheduled during the
+declared process outage and one qualifying interrupted in-flight request. All
+835 nonexcluded deadline observations met the fixed one-second
+scheduled-to-response budget. The application target was preregistered at one
+request every 500 ms with two workers; it is not a NIST latency requirement.
+
+The engine cold-reopened and verified 100,000 exact typed records and the
+lexical index. Its final dispositions were 99,998 copied, one superseded write,
+one superseded deletion and zero failed attempts. The independent Rust auditor
+and all 31 controls are public, with locked dependencies for offline replay.
+The predecessor R5 run remains rejected for 16 deadline misses. Matching public
+reports checks artifact consistency; fresh engine execution requires evaluation
+access. This measured result covers the stated synthetic lexical workload and
+does not establish every workload, modality or backup policy.
 
 The historical raw results and both engine harnesses are available to evaluators
 on request. Additional transitions and production operating limits should be

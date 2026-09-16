@@ -19,7 +19,7 @@ If OpenSSL is installed elsewhere, specify its executable:
 python verify-evidence.py --openssl /path/to/openssl
 ```
 
-The [verifier](verify-evidence.py) checks all 267 raw artifacts against the
+The [verifier](verify-evidence.py) checks all 339 raw artifacts against the
 [published manifest](ARTIFACT-SHA256SUMS), compares four recorded ML-KEM
 shared-secret pairs, and checks valid and modified 8DB ML-DSA signatures with
 OpenSSL in both run folders. It reads the files without changing them.
@@ -42,11 +42,25 @@ fails cryptographic verification despite matching an updated hash.
 | Do the cryptographic implementations agree with known answers? | [Offline correctness report](acvp/Offline-KAT-Report-35of35.txt), [vectors](kat/) | 8DB evaluation engine to re-run its suite; public vectors can be checked with a compatible independent implementation |
 | Does 8DB exchange valid keys, ciphertexts and signatures with OpenSSL? | [Interop guide](interop/README.md) and the two run folders | OpenSSL 3.5 can verify the published signatures; a fresh run in both directions needs the evaluation engine |
 | What are the storage and processing costs? | [Benchmarks](bench/), [claims and scope](CLAIMS-AND-SCOPE.md) | Evaluation engine and benchmark harness |
-| Can a stored dataset change algorithms while reads continue? | The transition results in [claims and scope](CLAIMS-AND-SCOPE.md) | Evaluation engine, transition harness and detailed run records, available on request |
+| Can a stored dataset change key derivation while scheduled reads continue? | [Live HKDF migration package](migration/live-hkdf-2026-09-15/), with original R5 rejection and R6 acceptance | Rust 1.94.1 for offline artifact replay; evaluation engine and transition harness for a fresh engine run |
 | Can a killed replica recover the exact retained records? | [Two-host Required recovery](mesh/required-two-host-2026-09-15/) | The package's Rust verifier checks the published synthetic record; a fresh physical run needs the evaluation engine |
 | What does the timing screen show? | [Timing guide](timing/README.md), then the relevant `report.txt` and `host.txt` | Evaluation engine and timing harness on the target host |
 
 ## Check the published files
+
+The [live HKDF migration package](migration/live-hkdf-2026-09-15/) includes an
+independent Rust auditor, all 31 controls and vendored dependencies. Its
+`verify-package.sh` checks the complete package manifest and reproduces the
+original R5 rejection and R6 acceptance. It exits 0 for matching verified
+outcomes, 1 for a mismatch, and 2 when tools or evidence are missing. The
+underlying auditor's R5 exit remains 1. This makes the original failed run a
+required check rather than discarding it.
+
+That package's `SHA256SUMS` covers every file, including Rust, Cargo, vendored
+dependencies and the typed `.bincode` fixture. The root raw-artifact manifest
+also pins that complete manifest. The root verifier does not itself execute
+the Rust auditor or validate the entries inside a nested manifest; use both
+documented commands. Build outputs stay outside the evidence checkout.
 
 The [September 15 recovery package](mesh/required-two-host-2026-09-15/) adds
 JSON-line clock, wire-report and expected-record artifacts to the complete
