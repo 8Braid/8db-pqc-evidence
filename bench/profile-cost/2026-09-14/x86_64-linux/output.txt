@@ -1,0 +1,63 @@
+[1m[33mwarning[0m: [build-root-redacted]/Cargo.toml: file `[build-root-redacted]/src/bin/trustdb_eval.rs` found to be present in multiple build targets:
+  * `bin` target `trustdb-eval`
+  * `bin` target `trustdb_eval`
+[1m[92m   Compiling[0m memchr v2.8.0
+[1m[92m   Compiling[0m glob v0.3.3
+[1m[92m   Compiling[0m prettyplease v0.2.37
+[1m[92m   Compiling[0m cmake v0.1.58
+[1m[92m   Compiling[0m minimal-lexical v0.2.1
+[1m[92m   Compiling[0m dunce v1.0.5
+[1m[92m   Compiling[0m cfg-if v1.0.4
+[1m[92m   Compiling[0m fs_extra v1.3.0
+[1m[92m   Compiling[0m regex-syntax v0.8.10
+[1m[92m   Compiling[0m libloading v0.8.9
+[1m[92m   Compiling[0m either v1.15.0
+[1m[92m   Compiling[0m bindgen v0.72.1
+[1m[92m   Compiling[0m rustc-hash v2.1.2
+[1m[92m   Compiling[0m itertools v0.10.5
+[1m[92m   Compiling[0m bitflags v2.11.1
+[1m[92m   Compiling[0m clang-sys v1.8.1
+[1m[92m   Compiling[0m log v0.4.29
+[1m[92m   Compiling[0m aws-lc-sys v0.41.0
+[1m[92m   Compiling[0m aho-corasick v1.1.4
+[1m[92m   Compiling[0m nom v7.1.3
+[1m[92m   Compiling[0m aws-lc-rs v1.17.0
+[1m[92m   Compiling[0m trustdb v0.1.0 ([build-root-redacted])
+[1m[92m   Compiling[0m untrusted v0.7.1
+[1m[92m   Compiling[0m regex-automata v0.4.14
+[1m[92m   Compiling[0m cexpr v0.6.0
+[1m[92m   Compiling[0m regex v1.12.3
+[1m[92m   Compiling[0m aws-lc-fips-sys v0.13.14
+[1m[92m    Finished[0m `release` profile [optimized] target(s) in 18m 36s
+[1m[92m     Running[0m tests/cnsa_compliance_profile_bench.rs (target/release/deps/cnsa_compliance_profile_bench-acdac610fc885c44)
+
+running 1 test
+compliance profile bench, one host, one process
+profile cnsa2-compliance-v32 (CAM version 32 = 0x20)
+  key establishment: ML-KEM-1024 (FIPS 203), pure; the page key is derived from the shared secret, no classical companion and no wrapped random key
+  key derivation: HKDF-SHA-384 (SP 800-56C r2); through aws-lc-rs when the fips feature is on
+  data AEAD: AES-256-GCM (SP 800-38D) through aws-lc-rs; 96-bit nonce supplied by the store; frame: version header, frame byte 0x01, 48-byte commitment tag, ciphertext, 16-byte tag
+  key commitment: HMAC-SHA-384 over (label, version header, nonce) under the page key, verified before decryption; a ciphertext valid under two keys is refused before AES runs
+  message authentication: HMAC-SHA-384 (FIPS 198-1) through aws-lc-rs
+  signature: ML-DSA-87 (FIPS 204), one signature per boundary, receipt or challenge
+  boundary hash: SHA-384 tagged digest (DigestProfile::Compliance)
+  build requirement: feature fips (aws-lc-rs with its fips feature); the provider does not exist in a default build
+  nonce requirement: the store's durable nonce context: never reuse a (key, nonce) pair; the provider cannot see reuse and does not claim to refuse it
+
+research profile: research-v2 (X-Wing-1024 established key, AES-256-GCM-SIV)
+record: 115 bytes; key fixed; nonce counter per operation
+
+87954.0000 ns [one 115-byte record; profile cnsa2-compliance-v32 over median of 50 establishments after 4 warm-ups; release build, features fips; host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; runner df-runner-trustdb-surge-1; date: 2026-09-14T07:31:21Z; commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946; the two profiles measured in one process on one host; no cross-host comparison]
+99325.0000 ns [one 115-byte record; profile cnsa2-compliance-v32 over median of 50 establishments after 4 warm-ups; release build, features fips; host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; runner df-runner-trustdb-surge-1; date: 2026-09-14T07:31:21Z; commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946; the two profiles measured in one process on one host; no cross-host comparison]
+1568.0000 bytes [one 115-byte record; profile cnsa2-compliance-v32 over 1 established key: the FIPS 203 ciphertext alone; the page key is derived from the shared secret, so no wrapped key travels; release build, features fips; host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; runner df-runner-trustdb-surge-1; date: 2026-09-14T07:31:21Z; commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946; the two profiles measured in one process on one host; no cross-host comparison]
+1616.0000 bytes [one 115-byte record; profile research-v2 (X-Wing-1024 established key, AES-256-GCM-SIV) over 1 established key: ML-KEM-1024 ciphertext plus the 48-byte wrapped page key (the X25519 leg's public key is carried separately); from pqc_claimed_metrics; release build, features fips; host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; runner df-runner-trustdb-surge-1; date: 2026-09-14T07:31:21Z; commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946; the two profiles measured in one process on one host; no cross-host comparison]
+1637.0000 ns [one 115-byte record; profile cnsa2-compliance-v32 over median of 200 operations after 16 warm-ups; release build, features fips; host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; runner df-runner-trustdb-surge-1; date: 2026-09-14T07:31:21Z; commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946; the two profiles measured in one process on one host; no cross-host comparison]
+1674.0000 ns [one 115-byte record; profile cnsa2-compliance-v32 over median of 200 operations after 16 warm-ups; release build, features fips; host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; runner df-runner-trustdb-surge-1; date: 2026-09-14T07:31:21Z; commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946; the two profiles measured in one process on one host; no cross-host comparison]
+185.0000 bytes [one 115-byte record; profile cnsa2-compliance-v32 over 1 record: 5-byte version header, 1 frame byte, 48-byte commitment tag, ciphertext, 16-byte GCM tag; release build, features fips; host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; runner df-runner-trustdb-surge-1; date: 2026-09-14T07:31:21Z; commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946; the two profiles measured in one process on one host; no cross-host comparison]
+584.0000 ns [one 115-byte record; profile research-v2 (X-Wing-1024 established key, AES-256-GCM-SIV) over median of 200 operations after 16 warm-ups; release build, features fips; host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; runner df-runner-trustdb-surge-1; date: 2026-09-14T07:31:21Z; commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946; the two profiles measured in one process on one host; no cross-host comparison]
+574.0000 ns [one 115-byte record; profile research-v2 (X-Wing-1024 established key, AES-256-GCM-SIV) over median of 200 operations after 16 warm-ups; release build, features fips; host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; runner df-runner-trustdb-surge-1; date: 2026-09-14T07:31:21Z; commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946; the two profiles measured in one process on one host; no cross-host comparison]
+136.0000 bytes [one 115-byte record; profile research-v2 (X-Wing-1024 established key, AES-256-GCM-SIV) over 1 record through the CAM provider: 5-byte version header, ciphertext, 16-byte GCM-SIV tag (encrypt_page's 131 has no header); release build, features fips; host: Linux 7.0.0-1012-aws x86_64; Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz; 8 cpu; runner df-runner-trustdb-surge-1; date: 2026-09-14T07:31:21Z; commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946; the two profiles measured in one process on one host; no cross-host comparison]
+test compliance_profile_beside_research_profile_on_one_host ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+

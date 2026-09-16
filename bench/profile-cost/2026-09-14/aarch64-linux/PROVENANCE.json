@@ -1,0 +1,210 @@
+{
+  "version": 1,
+  "source_commit": "cc994fc6e1ecdede60eb679c3c964fafc2c92946",
+  "run_id": 34812350038,
+  "job_id": 103876031605,
+  "artifact_id": 10335763016,
+  "run_url": "https://github.com/8Braid/8DB/actions/runs/34812350038",
+  "artifact_name": "pqc-compliance-bench-aarch64-cc994fc6e1ecdede60eb679c3c964fafc2c92946",
+  "artifact_created_at": "2026-09-14T06:52:00Z",
+  "original_archive_sha256": "689a92052528153f8ed0f113a99a6676ccb0cd94cc694d9fe931b047a4ea88af",
+  "original_archive_bytes": 3790,
+  "original_member_map_sha256": "706a3f443b12785476a931f9039c26b9028950c5f2cb28338676c47d3028b774",
+  "original_job_inventory_sha256": "93defde6b58812463edcc93f4ce30b0915a27addb1b50a711affccae56164ff5",
+  "job_name": "interop aarch64 + P10 evidence harness",
+  "job_status": "completed",
+  "job_conclusion": "success",
+  "job_started_at": "2026-09-14T06:18:53Z",
+  "job_completed_at": "2026-09-14T06:52:03Z",
+  "original_steps": [
+    {
+      "completed_at": "2026-09-14T06:18:55Z",
+      "conclusion": "success",
+      "name": "Set up job",
+      "number": 1,
+      "started_at": "2026-09-14T06:18:53Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:18:56Z",
+      "conclusion": "success",
+      "name": "Run actions/checkout@v4",
+      "number": 2,
+      "started_at": "2026-09-14T06:18:55Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:18:57Z",
+      "conclusion": "success",
+      "name": "Run dtolnay/rust-toolchain@stable",
+      "number": 3,
+      "started_at": "2026-09-14T06:18:56Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:18:57Z",
+      "conclusion": "success",
+      "name": "Host facts",
+      "number": 4,
+      "started_at": "2026-09-14T06:18:57Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:26:41Z",
+      "conclusion": "success",
+      "name": "Build pqc_interop",
+      "number": 5,
+      "started_at": "2026-09-14T06:18:57Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:34:22Z",
+      "conclusion": "success",
+      "name": "Unit tests",
+      "number": 6,
+      "started_at": "2026-09-14T06:26:41Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:34:30Z",
+      "conclusion": "success",
+      "name": "Interop run (directions A to E, aarch64)",
+      "number": 7,
+      "started_at": "2026-09-14T06:34:22Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:52:00Z",
+      "conclusion": "success",
+      "name": "Compliance profile bench (P22I, aarch64 row)",
+      "number": 8,
+      "started_at": "2026-09-14T06:34:30Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:52:00Z",
+      "conclusion": "success",
+      "name": "Upload compliance bench rows (aarch64)",
+      "number": 9,
+      "started_at": "2026-09-14T06:52:00Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:52:00Z",
+      "conclusion": "skipped",
+      "name": "P10 evidence harness (aarch64 row of pqc-claims-grounding.md)",
+      "number": 10,
+      "started_at": "2026-09-14T06:52:00Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:52:02Z",
+      "conclusion": "success",
+      "name": "Upload interop evidence set (private test keys excluded)",
+      "number": 11,
+      "started_at": "2026-09-14T06:52:00Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:52:02Z",
+      "conclusion": "skipped",
+      "name": "Upload P10 harness results",
+      "number": 12,
+      "started_at": "2026-09-14T06:52:02Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:52:02Z",
+      "conclusion": "success",
+      "name": "Post Run actions/checkout@v4",
+      "number": 24,
+      "started_at": "2026-09-14T06:52:02Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:52:02Z",
+      "conclusion": "success",
+      "name": "Complete job",
+      "number": 25,
+      "started_at": "2026-09-14T06:52:02Z",
+      "status": "completed"
+    }
+  ],
+  "measurement": {
+    "architecture": "aarch64",
+    "source": "cc994fc6e1ecdede60eb679c3c964fafc2c92946",
+    "run": 34812350038,
+    "job": 103876031605,
+    "artifact": 10335763016,
+    "profile": "release/fips; CAM cnsa2-compliance-v32 fixed-key committed-GCM vs research-v2 SIV",
+    "AEAD_samples": 200,
+    "AEAD_warmups": 16,
+    "KEM_samples": 50,
+    "KEM_establishment_warmups": 4,
+    "KEM_recovery_explicit_warmup_loop": false,
+    "mapping": "Raw displayed rows lack metric IDs; mapped by exact pinned bench source emission order",
+    "metrics": {
+      "kem_establish_ns": 79542,
+      "kem_recover_ns": 89556,
+      "kem_ciphertext_only_bytes": 1568,
+      "research_partial_kem_object_bytes": 1616,
+      "gcm_encrypt_ns": 1661,
+      "gcm_decrypt_ns": 1654,
+      "gcm_CAM_output_bytes": 185,
+      "siv_encrypt_ns": 1021,
+      "siv_decrypt_ns": 980,
+      "siv_CAM_output_bytes": 136
+    },
+    "raw_rows_pin": {
+      "bytes": 5602,
+      "sha256": "cf038367fcb50af534366f3663ff0ac204e8428301b09cadef6b14593d608574"
+    }
+  },
+  "publication_files": [
+    {
+      "original_member": "SHA256SUMS.txt",
+      "original_bytes": 233,
+      "original_sha256": "8774d21c9f9e17286c249cc7ecd33ff138d50d9d7a6468dbb3b1aa4d9da561de",
+      "public_file": "SHA256SUMS.txt",
+      "public_bytes": 233,
+      "public_sha256": "8774d21c9f9e17286c249cc7ecd33ff138d50d9d7a6468dbb3b1aa4d9da561de",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    },
+    {
+      "original_member": "host.txt",
+      "original_bytes": 295,
+      "original_sha256": "2d1cb951d60b64163d7fa932650cffbbf41cb90d54a2605840f30dc0f7191b7c",
+      "public_file": "host.txt",
+      "public_bytes": 295,
+      "public_sha256": "2d1cb951d60b64163d7fa932650cffbbf41cb90d54a2605840f30dc0f7191b7c",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    },
+    {
+      "original_member": "output.txt",
+      "original_bytes": 7464,
+      "original_sha256": "f67cc50bcf4c0abeda1efa912c6bcf1b58163fc18ba56b138a11a5c532c8761d",
+      "public_file": "output.txt",
+      "public_bytes": 7392,
+      "public_sha256": "605f816966351fe424fc45f6db9420d6ddb0d764dab6c3f7025f89ddf1792bd4",
+      "transformation": "Exact literal build-root replacement only",
+      "replacement_token": "[build-root-redacted]",
+      "replacement_count": 3
+    },
+    {
+      "original_member": "rows.txt",
+      "original_bytes": 5602,
+      "original_sha256": "cf038367fcb50af534366f3663ff0ac204e8428301b09cadef6b14593d608574",
+      "public_file": "rows.txt",
+      "public_bytes": 5602,
+      "public_sha256": "cf038367fcb50af534366f3663ff0ac204e8428301b09cadef6b14593d608574",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    }
+  ],
+  "scope": "Retained original run artifacts; selected metadata transcribed from original API inventories. Build-root paths replaced only where explicitly recorded. No new engine execution, engine source, private keys or engine executable included."
+}

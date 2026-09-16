@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "source_commit": "cc994fc6e1ecdede60eb679c3c964fafc2c92946",
+  "benchmark_source_path": "tests/cnsa_compliance_profile_bench.rs",
+  "benchmark_source_sha256": "fc530b51a0566070af23262ed31209e097cf10bd64b27c619a6ba09a5381c95a",
+  "source_method": {
+    "record_bytes": 115,
+    "aead_samples": 200,
+    "aead_warmups": 16,
+    "fixed_key": true,
+    "kem_samples": 50,
+    "kem_establishment_warmups": 4,
+    "kem_recovery_explicit_warmup_loop": false,
+    "original_recovery_extent_label_reuses_establishment_label": true,
+    "median": "sorted[n/2], integer division",
+    "individual_samples_retained": false,
+    "row_order": [
+      "CNSA2-COMPLIANCE-KEM-ESTABLISH-LATENCY",
+      "CNSA2-COMPLIANCE-KEM-RECOVER-LATENCY",
+      "CNSA2-COMPLIANCE-KEM-OBJECT-BYTES",
+      "RESEARCH-KEM-OBJECT-BYTES",
+      "CNSA2-COMPLIANCE-RECORD-ENCRYPT-LATENCY",
+      "CNSA2-COMPLIANCE-RECORD-DECRYPT-LATENCY",
+      "CNSA2-COMPLIANCE-ENCRYPTED-RECORD-BYTES",
+      "RESEARCH-RECORD-ENCRYPT-LATENCY",
+      "RESEARCH-RECORD-DECRYPT-LATENCY",
+      "RESEARCH-ENCRYPTED-RECORD-BYTES"
+    ],
+    "scope": "Fixed-key CAM provider comparison changing cipher and key-commitment protection together. This is not an isolated PQC penalty or a delivered-store A/B test."
+  },
+  "scope": "Source inspected, not republished. No new engine run or independent engine rebuild performed for this publication."
+}

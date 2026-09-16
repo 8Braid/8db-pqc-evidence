@@ -1,0 +1,228 @@
+{
+  "version": 1,
+  "source_commit": "4efb7653b91216d0ed6e8c5aa463e7bb1806a211",
+  "run_id": 34816572382,
+  "job_id": 103888377965,
+  "artifact_id": 10336934273,
+  "run_url": "https://github.com/8Braid/8DB/actions/runs/34816572382",
+  "artifact_name": "pqc-evidence-aarch64-4efb7653b91216d0ed6e8c5aa463e7bb1806a211",
+  "artifact_created_at": "2026-09-14T07:51:12Z",
+  "original_archive_sha256": "27c9a1bd60dc1eea479b3fcc6afbc0b92637576c26ab3253e33e05ae1d0b989d",
+  "original_archive_bytes": 6665,
+  "original_member_map_sha256": "acc64260e32cc632ad75bbdc1429ee11f37db805da7548b001ec2f40edfb05a7",
+  "original_job_inventory_sha256": "4219619722ed3f54e1c5de62e089546be17ccf26b2884453bc11708eedad1578",
+  "job_name": "interop aarch64 + P10 evidence harness",
+  "job_status": "completed",
+  "job_conclusion": "success",
+  "job_started_at": "2026-09-14T07:10:01Z",
+  "job_completed_at": "2026-09-14T07:51:14Z",
+  "original_steps": [
+    {
+      "completed_at": "2026-09-14T07:10:02Z",
+      "conclusion": "success",
+      "name": "Set up job",
+      "number": 1,
+      "started_at": "2026-09-14T07:10:01Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:10:04Z",
+      "conclusion": "success",
+      "name": "Run actions/checkout@v4",
+      "number": 2,
+      "started_at": "2026-09-14T07:10:02Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:10:05Z",
+      "conclusion": "success",
+      "name": "Run dtolnay/rust-toolchain@stable",
+      "number": 3,
+      "started_at": "2026-09-14T07:10:04Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:10:05Z",
+      "conclusion": "success",
+      "name": "Host facts",
+      "number": 4,
+      "started_at": "2026-09-14T07:10:05Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:17:46Z",
+      "conclusion": "success",
+      "name": "Build pqc_interop",
+      "number": 5,
+      "started_at": "2026-09-14T07:10:05Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:25:20Z",
+      "conclusion": "success",
+      "name": "Unit tests",
+      "number": 6,
+      "started_at": "2026-09-14T07:17:46Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:25:27Z",
+      "conclusion": "success",
+      "name": "Interop run (directions A to E, aarch64)",
+      "number": 7,
+      "started_at": "2026-09-14T07:25:20Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:51:10Z",
+      "conclusion": "success",
+      "name": "P10 evidence harness (aarch64 row of pqc-claims-grounding.md)",
+      "number": 8,
+      "started_at": "2026-09-14T07:25:27Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:51:11Z",
+      "conclusion": "success",
+      "name": "Upload interop evidence set (private test keys excluded)",
+      "number": 9,
+      "started_at": "2026-09-14T07:51:10Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:51:12Z",
+      "conclusion": "success",
+      "name": "Upload P10 harness results",
+      "number": 10,
+      "started_at": "2026-09-14T07:51:11Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:51:12Z",
+      "conclusion": "success",
+      "name": "Post Run actions/checkout@v4",
+      "number": 20,
+      "started_at": "2026-09-14T07:51:12Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:51:12Z",
+      "conclusion": "success",
+      "name": "Complete job",
+      "number": 21,
+      "started_at": "2026-09-14T07:51:12Z",
+      "status": "completed"
+    }
+  ],
+  "measurement": {
+    "host": "Neoverse-V1 Linux ARM",
+    "source": "4efb7653b91216d0ed6e8c5aa463e7bb1806a211",
+    "run": 34816572382,
+    "job": 103888377965,
+    "artifact": 10336934273,
+    "profile": "release/v2-mera; same AES-256-GCM-SIV and keys established before timing",
+    "samples_per_arm": 2000,
+    "clock_minimum_nonzero_ns": 33,
+    "operations": {
+      "encrypt": {
+        "classical_median_ns": 1172,
+        "pqc_median_ns": 1171,
+        "signed_difference_ns": -1,
+        "classical_p95_ns": 1198,
+        "pqc_p95_ns": 1195
+      },
+      "decrypt": {
+        "classical_median_ns": 1188,
+        "pqc_median_ns": 1188,
+        "signed_difference_ns": 0,
+        "classical_p95_ns": 1225,
+        "pqc_p95_ns": 1226
+      }
+    },
+    "raw_output": "github/p38-arm-extracted/aarch64-linux_2026-09-14T072527Z/cnsa_m1_bench.txt",
+    "raw_output_pin": {
+      "bytes": 6710,
+      "sha256": "cd00892cf1c5538f48f1cb3f73ae0f4a3fc71f84c0a90fa65efcf3d9a6d795d7"
+    }
+  },
+  "publication_files": [
+    {
+      "original_member": "aarch64-linux_2026-09-14T072527Z/SHA256SUMS.txt",
+      "original_bytes": 488,
+      "original_sha256": "07b3320c66fb915da1bd4470561b22cce9c24fdcb2d2598b6d12141b80def53a",
+      "public_file": "SHA256SUMS.txt",
+      "public_bytes": 488,
+      "public_sha256": "07b3320c66fb915da1bd4470561b22cce9c24fdcb2d2598b6d12141b80def53a",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    },
+    {
+      "original_member": "aarch64-linux_2026-09-14T072527Z/build.txt",
+      "original_bytes": 1114,
+      "original_sha256": "eab3fc39356b9dfde777daf597f0f3a96be4bfa0d82e4364dfa7e5be29ff8953",
+      "public_file": "build.txt",
+      "public_bytes": 1042,
+      "public_sha256": "788c2050867c036fd9f0851502a2c509c30d77d92e724549ea7c3fc1c4033a3d",
+      "transformation": "Exact literal build-root replacement only",
+      "replacement_token": "[build-root-redacted]",
+      "replacement_count": 3
+    },
+    {
+      "original_member": "aarch64-linux_2026-09-14T072527Z/cnsa_m1_bench.txt",
+      "original_bytes": 6710,
+      "original_sha256": "cd00892cf1c5538f48f1cb3f73ae0f4a3fc71f84c0a90fa65efcf3d9a6d795d7",
+      "public_file": "cnsa_m1_bench.txt",
+      "public_bytes": 6662,
+      "public_sha256": "67177f3e338a3cfb4c8348a9942f6e2c9f1382b62707824f26e38fb221652a2d",
+      "transformation": "Exact literal build-root replacement only",
+      "replacement_token": "[build-root-redacted]",
+      "replacement_count": 2
+    },
+    {
+      "original_member": "aarch64-linux_2026-09-14T072527Z/host.txt",
+      "original_bytes": 668,
+      "original_sha256": "86e27e85120b40a0a692e5baf74e8f83619738288190aac592aa513d5efa5bde",
+      "public_file": "host.txt",
+      "public_bytes": 668,
+      "public_sha256": "86e27e85120b40a0a692e5baf74e8f83619738288190aac592aa513d5efa5bde",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    },
+    {
+      "original_member": "aarch64-linux_2026-09-14T072527Z/pqc_live_algorithm_swap.txt",
+      "original_bytes": 98,
+      "original_sha256": "9e6173270524747c219cd39cd8056b3fe4b8dc4a9d168a3edfbda6e37d634aa1",
+      "public_file": "pqc_live_algorithm_swap.txt",
+      "public_bytes": 98,
+      "public_sha256": "9e6173270524747c219cd39cd8056b3fe4b8dc4a9d168a3edfbda6e37d634aa1",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    },
+    {
+      "original_member": "aarch64-linux_2026-09-14T072527Z/run_acvp_demo.txt",
+      "original_bytes": 3059,
+      "original_sha256": "0c3805d82605bb42c82f3e10d56a6d4a885766ea0a039e90f82705e479e2299a",
+      "public_file": "run_acvp_demo.txt",
+      "public_bytes": 2987,
+      "public_sha256": "0c7115633940cfc688be520e75c59ec106095ffdada4123fe1cb30d773faa93d",
+      "transformation": "Exact literal build-root replacement only",
+      "replacement_token": "[build-root-redacted]",
+      "replacement_count": 3
+    },
+    {
+      "original_member": "aarch64-linux_2026-09-14T072527Z/summary.txt",
+      "original_bytes": 231,
+      "original_sha256": "0cf6f18f63c2e492185c8e4c20b8d9eba65589134df7f5878d12b7e744126491",
+      "public_file": "summary.txt",
+      "public_bytes": 231,
+      "public_sha256": "0cf6f18f63c2e492185c8e4c20b8d9eba65589134df7f5878d12b7e744126491",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    }
+  ],
+  "scope": "Retained original run artifacts; selected metadata transcribed from original API inventories. Build-root paths replaced only where explicitly recorded. No new engine execution, engine source, private keys or engine executable included."
+}

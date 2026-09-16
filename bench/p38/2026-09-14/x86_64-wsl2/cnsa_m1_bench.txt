@@ -1,0 +1,112 @@
+host: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64 | rustc: rustc 1.94.1 (e408947bf 2026-03-25) | 2026-09-14T04:55:33Z | commit: 4efb7653 | cmd: cargo test --release --features v2-mera --test cnsa_m1_bench -- --ignored --nocapture
+nproc: 16 | cpu: AMD Ryzen 9 9950X3D 16-Core Processor
+-----
+[1m[33mwarning[0m: [build-root-redacted]/Cargo.toml: file `[build-root-redacted]/src/bin/trustdb_eval.rs` found to be present in multiple build targets:
+  * `bin` target `trustdb-eval`
+  * `bin` target `trustdb_eval`
+[1m[92m    Finished[0m `release` profile [optimized] target(s) in 1.04s
+[1m[92m     Running[0m tests/cnsa_m1_bench.rs (target/release/deps/cnsa_m1_bench-f52cdfa7243e97c3)
+
+running 4 tests
+
+==== CNSA Cat-5: four-way COST comparison (host-measured, RELEASE) ====
+N=100000 x 115B | AES-256-GCM-SIV seal med 501 ns (ct 136 B) | ML-DSA-87 sign 0.113 ms / verify 0.283 ms
+(every value is a COST -> LOWER IS BETTER)
+
+                          unencrypted  AES-encrypted  legacy-PQC-Cat5   8DB(M1)
+storage   B/record               115          136           4763        136.07
+write     ns/record                0          501         113435           513
+auth-vfy  s / 100k records          0            0           28.3        0.0003
+
+capability matrix:
+  unencrypted     encrypted:NO   quantum-safe:NO            per-datum-Cat5:NO   tamper-evident:NO
+  AES-encrypted   encrypted:YES  quantum-safe:NO(classical) per-datum-Cat5:NO   tamper-evident:per-record-tag
+  legacy-PQC-Cat5 encrypted:YES  quantum-safe:YES           per-datum-Cat5:YES  tamper-evident:YES  (at ~40x storage)
+  8DB (M1)    encrypted:YES  quantum-safe:YES           per-datum-Cat5:YES  tamper-evident:YES  (+O(logN) braid)
+
+8DB vs legacy-PQC-Cat5  (higher = our win):
+  storage    :      35x less /record
+  write      :     221x less /record
+  auth-verify:  100000x less /set
+8DB vs plain AES-encrypted  (the honest 'cost of adding Cat-5'):
+  storage    : +0.073 B/record (+0.0539%)
+  write      : 1.02x of plain-encrypted write
+====================================================================
+
+test bench_four_way_unencrypted_encrypted_legacy_trustdb ... ok
+
+==== CNSA 2.0 Cat-5 M1 micro-benchmark (host-measured) ====
+provider: MlDsa87Provider (FIPS 204) | N = 100000 records of 115B
+unit sign   (ns): med=268278  (min 256987 / max 613021)
+unit verify (ns): med=193226  (min 191664 / max 499787)
+ML-DSA-87 signature: 4627 bytes | boundary-sig wire: 7332 bytes
+
+STORAGE — signature overhead:
+  row-level Cat-5 : 462700000 B (462.7 MB)  [= N x 4627]
+  MERA boundary   : 7332 B (one signature)
+  => 63107x less signature storage
+  single-record bloat: 115B -> 4742B = 4023% overhead
+
+SIGN CPU @ N:
+  row-level : 26.828 s  [= N x med sign]
+  boundary  : 0.001227 s  (BLAKE3 over N + 1 sign)
+  => 21867x less sign CPU
+
+VERIFY CPU @ N (edge / audit):
+  row-level : 19.323 s  [= N x med verify]
+  boundary  : 0.000197 s  (1 verify)
+  => 98167x less verify CPU
+===========================================================
+
+test bench_cat5_rowlevel_vs_mera_boundary ... ok
+head-to-head 8DB arm (harness skeleton, TSK-PQC-P26A)
+extent: E1 = 100000 records of 115 bytes
+records: pqc-h2h-results/8db/records
+seed: 0x8db0202609130001
+count: 100000
+record_bytes: 115
+raw_sha256: 4c87af17a4c21d395ca5cd82a86a134af24ccb3d407a6627a33e248e1de3b733
+hex_file_sha256: 5a3f3ce64d23da1923592bd003ac46accf186fb4f758b452f07e1039a501cf3d
+kind asymmetry: 8DB changes the key-establishment algorithm of stored records (classical to ML-KEM-1024); Oracle Database Free and pg_tde are measured on the AES-to-AES rekey they offer, which does not change the algorithm. The three operations are not the same kind of thing.
+probe plumbing self-check (closure, not a system): issued 199, passed 199, p50 20 ns, p99 30 ns
+8DB arm: transition API not present on this commit (TSK-PQC-P26C-STORE-TRANSITION-INTERFACE); no Q1 to Q9 recorded for 8DB
+Q1..Q9 for 8DB: not recorded on this commit
+
+test migration_head_to_head ... ok
+
+==== plaintext vs classical-encrypted vs PQC: storage / speed / search (RELEASE) ====
+N=100000 x 115B records (storage/speed) | N_search=2000 terms (search demo)
+
+ONE-TIME key establishment (paid once per key/session, NOT per record):
+  classical KDF (PBKDF2-HMAC-SHA-512, NIST SP 800-132): 328573594 ns, 0 B wire (only the 16-byte salt is public)
+  PQC KEM encapsulate (ML-KEM-1024 + X25519 hybrid)   : 82767 ns, 1616 B wire (ml_kem_ciphertext 1568 B + wrapped_key 48 B)
+  PQC KEM decapsulate (recipient side)                : 76906 ns
+  => PQC key-establishment wire overhead amortized over N=100000 records: 0.012336% of total dataset size
+
+PER-RECORD storage + speed (AEAD held IDENTICAL across classical & PQC):
+                        plaintext   classical-encrypted   PQC (ours)
+  storage  B/record           115                   131          131
+  write    ns/record            0                   451          451
+  read     ns/record            0                   441          441
+  => PQC adds 0.0000% storage and 0.0000% write latency vs classical (same AEAD; the only PQC cost is the one-time KEM above)
+
+PARITY (L4, TSK-PQC-P38): classical KDF arm vs ML-KEM arm, same AEAD, 2000 samples per arm after 16 warm-ups
+  clock resolution: 10 ns (smallest non-zero Instant delta over 20,000 reads)
+  encrypt median ns: classical 451, pqc 451, difference +0 ns (+0.000%): within one percent
+  encrypt p95 ns:    classical 470, pqc 461
+  decrypt median ns: classical 441, pqc 441, difference +0 ns (+0.000%): within one percent
+  decrypt p95 ns:    classical 461, pqc 451
+  parity sentence for this host: the two arms are within one percent on encrypt and within one percent on decrypt; a difference smaller than the clock resolution (10 ns) is reported as measured and not interpreted
+
+SEARCH -- can we query the data in each state, and how fast:
+  plaintext            : 2054 ns  (1 hits / 2000 terms, direct in-memory index)
+  classical-encrypted   : 886490 ns  (1 hits / 2000 terms) -- NO purpose-built encrypted index exists for this path; this is a full decrypt-and-scan (the only secure option -- a plaintext side-index would leak)
+  PQC (ours)            : 340445 ns  (1 hits / 2000 terms) -- the search INDEX is itself sealed under the PQC-KEM-established key; one decrypt-the-index op, then native-speed search (search::sealed_content_index)
+  => our sealed-index search is 3x faster than the classical decrypt-and-scan at N_search=2000
+=================================================================================
+
+test bench_plaintext_vs_classical_vs_pqc_storage_speed_and_search ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 18.09s
+
+EXIT=0

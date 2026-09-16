@@ -1,0 +1,6 @@
+build_exit: 0
+bench_exit: 0
+kat_exit: 0
+swap_exit: not-present
+kat_summary: Local KAT result: 35 / 35 passed (0 failed).
+bench_summary: test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 36.44s

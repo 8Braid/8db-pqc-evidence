@@ -1,6 +1,6 @@
 # 8DB: post-quantum protection for stored data
 
-**Keep records readable as their cryptographic protection changes.**
+**Change stored-data protection while keeping records usable and verifiable.**
 
 8DB is 8Braid's embedded database. It combines post-quantum key establishment,
 record encryption and batch signatures with a way to migrate existing records
@@ -10,6 +10,20 @@ Applications still need to read retained records while their protection changes.
 This package brings together the implementation tests, interoperability results
 and measured costs behind 8DB, so your team can assess it for a workload of its
 own.
+
+The design keeps AES encryption on the record path and shares post-quantum
+key-establishment and signature work across keys and batches. In the measured
+same-cipher comparison, a 115-byte record occupies 131 encrypted bytes with
+either classical or post-quantum-established keys. That is an exact
+**zero-byte increment per record**. The key envelopes, signatures, proofs and
+database structures still need their own storage and processing budget.
+
+The harder result is operational: changing protection on records already held,
+checking the result, recovering from interruption and enforcing current
+authority when managed copies return. This package provides measured examples
+and reproducible evidence for those operations. Their combination in an
+embedded engine is the capability to evaluate; whole-database cost parity and
+competitive uniqueness remain questions for matched tests.
 
 [Review the results](CLAIMS-AND-SCOPE.md) ·
 [Verify the evidence](HOW-TO-VERIFY.md) ·
@@ -60,7 +74,7 @@ into the database.
 |---|---|
 | Do the algorithms produce the expected results? | ML-KEM-1024 key generation and encapsulation/decapsulation, and ML-DSA-87 signature verification passed NIST's ACVP demonstration-server tests. The offline suite passed all 35 checks across post-quantum and symmetric primitives.[^2] |
 | Do the cryptographic outputs interoperate? | [OpenSSL 3.5 interoperability](interop/README.md): 15 of 15 checks passed on each of x86_64 and aarch64, covering both directions and negative controls. |
-| What are the storage and processing costs? | [Release microbenchmarks](bench/) on three hosts record object sizes and operation timings, with build details. The same-AEAD comparison produced 131-byte encrypted records from 115-byte inputs with either classical or post-quantum key establishment.[^3] |
+| What are the storage and processing costs? | The [September 14 same-cipher runs](bench/p38/2026-09-14/) report summaries of 2,000 timed calls per arm on x86_64 and ARM, with clock/load details: 131-byte ciphertexts from 115-byte records and encrypt/decrypt medians within 1%. A [separate protection-profile comparison](bench/profile-cost/2026-09-14/) measures commitment/framing costs. Earlier [release microbenchmarks](bench/) remain available.[^3] |
 | Can a replica recover its exact protected records after a process kill? | [September 15 two-host recovery](mesh/required-two-host-2026-09-15/): both hosts finished with all 512 exact typed records; the receiver retained 172 and read new content 1,074 ms after same-store reopen. The package includes originals, explicit redaction provenance, negative history and a Rust artifact verifier. |
 | Can stored-data protection change while scheduled reads continue through a crash and resume? | [September 15 live HKDF migration](migration/live-hkdf-2026-09-15/): the R6 100,000-record run passed the unchanged auditor with zero missed deadlines outside the declared exclusions. The original R5 rejection and an offline Rust replay package remain available. |
 | How can I inspect the security evidence? | [Known-answer vectors](kat/), [test results](acvp/), and [timing reports](timing/README.md) include the inputs, methods and recorded outcomes needed for a technical review. |
@@ -77,7 +91,8 @@ signature once per batch reduces the signature storage required by a design
 that signs every row separately. Key-establishment objects are also shared
 across the records protected by that key.
 
-The [measurement guide](CLAIMS-AND-SCOPE.md) separates those costs so you can
+The [measurement guide](CLAIMS-AND-SCOPE.md#storage-and-processing-costs)
+separates those costs and the remaining whole-database comparison, so you can
 assess the design against your record sizes, batch sizes and access patterns.
 
 ## Evaluate 8DB for your workload

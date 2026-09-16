@@ -27,13 +27,54 @@ cost is being measured.
 | Measurement | Result | Scope |
 |---|---|---|
 | Same-AEAD record size | A 115-byte input produces 131 bytes with AES-256-GCM-SIV. | Identical for the compared classical-KDF and ML-KEM-1024 plus X25519 key-establishment paths. The 16 added bytes are the AEAD tag. |
-| Compliance-profile record size | 185 bytes for the same 115-byte input. | AES-256-GCM with the profile's 48-byte key-commitment tag and framing, as recorded in the internal measurement record. |
-| KEM-specific object | 1,616 bytes. | A 1,568-byte ML-KEM-1024 ciphertext plus a 48-byte wrapped key, per established key. |
+| Commitment-profile buffer size | 185 bytes for a 115-byte input, versus 136 bytes through the research-profile wrapper. | The [separate provider comparison](bench/profile-cost/2026-09-14/) measures AES-256-GCM with key commitment and framing versus AES-256-GCM-SIV. These are returned buffers from a different interface than the 131-byte same-AEAD row, not full database sizes. |
+| Measured KEM/wrapped-key subtotal | 1,616 bytes. | A 1,568-byte ML-KEM-1024 ciphertext plus a 48-byte wrapped key, per established key. Other envelope fields and serialization are outside this subtotal. |
 | ML-DSA-87 signature | 4,627 bytes. | Signature bytes alone. The stored batch representation, inclusion proofs and other framing have additional costs. |
 
-At 100,000 records of 131 bytes each, the 1,616-byte KEM-specific object is
-0.0123% of the encrypted record bytes. This ratio measures that object alone;
+At 100,000 records of 131 bytes each, the 1,616-byte KEM/wrapped-key subtotal is
+0.0123% of the encrypted record bytes. This ratio measures those two fields alone;
 use the full representation when budgeting storage.
+
+### What the zero-byte result makes possible
+
+Post-quantum key establishment can protect the keys used by the same compact
+symmetric record cipher. The measured 131-byte ciphertext therefore need not
+grow when the key-establishment method changes. Sharing a batch signature also
+avoids attaching a large signature to every row. These choices keep the
+post-quantum work at key and batch boundaries; they do not remove that work.
+
+The adoption question is whether the complete engine can deliver the needed
+protection, migration and recovery behavior within a workload's storage and
+latency budget. The [live migration evidence](migration/live-hkdf-2026-09-15/four-cpu-2026-09-16/)
+addresses that operation's correctness and scheduled-read deadline. It is a
+separate result from the same-cipher size and timing comparisons.
+
+### What a whole-database comparison still needs
+
+A claim of no additional database storage or performance cost requires a matched
+baseline. Use the same engine, plaintext, record cipher, indexes, compression,
+durability, authorization, hardware and offered load. Change key establishment
+and batch authentication in separately identified arms. Count complete
+serialized envelopes, signatures, proofs, metadata, indexes, logs, retained
+copies and migration's peak space. Report key setup, signing and full-data
+verification separately from steady-state reads and writes.
+
+Run repeated, alternated arms with retained request samples, scheduled-to-response
+latency, p50/p95/p99, deadline misses, throughput, CPU, memory and storage I/O.
+Set the acceptable performance difference before execution and report its
+uncertainty. Equal rounded medians do not establish a zero penalty. A comparison
+with another database additionally needs equivalent protection and persistence
+guarantees, including an efficient batch-signing baseline.
+[Envelope encryption](https://docs.cloud.google.com/kms/docs/envelope-encryption)
+and [signed Merkle trees with inclusion proofs](https://www.rfc-editor.org/rfc/rfc9162.html)
+are established techniques. 8DB's integrated lifecycle and its measured
+operating behavior are the capabilities to compare.
+
+**Status, September 16, 2026:** exact per-record ciphertext-size parity is
+established for the recorded same-AEAD construction. Full delivered-profile and
+whole-database cost parity remain open; the AES-GCM compliance-profile buffer
+and its commitment work are measured separately below. These open measurements
+do not change the achieved migration and recovery results.
 
 For a design that attaches a 4,627-byte signature to every 115-byte record,
 signature bytes alone add approximately 4,023%. Sharing a signature across a
@@ -53,10 +94,21 @@ historical July run is retained internally; its decrypt medians differ by
 100 ns, approximately 14%, with the cause unresolved. Quote a named run when
 using a latency result.
 
-The internal compliance-profile comparison records approximately one additional
-microsecond per record on both architectures, attributed to the HMAC-SHA-384
-key-commitment path. Request that run with the evaluation materials before
-using this estimate in a performance decision.
+The [September 14 reruns](bench/p38/2026-09-14/) add 2,000 samples per arm,
+p95 readings and clock-resolution checks on WSL2 x86_64 and Linux aarch64.
+Encrypt medians are 451/451 ns and 1,172/1,171 ns (classical/PQC); decrypt
+medians are 441/441 ns and 1,188/1,188 ns. The measured minimum nonzero clock
+steps are 10 ns and 33 ns. These observations support close component timings;
+sub-clock differences do not establish a speed advantage, and retained summary
+statistics alone do not establish statistical equivalence.
+
+The [September 14 commitment-profile comparison](bench/profile-cost/2026-09-14/)
+records GCM encrypt/decrypt medians of 1,637/1,674 ns versus SIV's 584/574 ns
+on x86_64, and 1,661/1,654 ns versus 1,021/980 ns on aarch64. Each uses 200
+timed operations with a fixed key. This comparison changes both the cipher and
+key-commitment behavior, so it measures those profiles rather than an isolated
+PQC penalty. It still does not measure the delivered store's complete
+authorization, derivation, index, ingestion and recovery work.
 
 These are operation-level microbenchmarks. The files also contain comparisons
 with per-row signing and a decrypt-and-scan search baseline. Those configurations

@@ -1,0 +1,210 @@
+{
+  "version": 1,
+  "source_commit": "cc994fc6e1ecdede60eb679c3c964fafc2c92946",
+  "run_id": 34812350038,
+  "job_id": 103876031495,
+  "artifact_id": 10336634404,
+  "run_url": "https://github.com/8Braid/8DB/actions/runs/34812350038",
+  "artifact_name": "pqc-compliance-bench-x86_64-cc994fc6e1ecdede60eb679c3c964fafc2c92946",
+  "artifact_created_at": "2026-09-14T07:31:21Z",
+  "original_archive_sha256": "3b8bd938c6b2ff0dee18758d3859de65c2d3f1289995b47146c57521367cc4e9",
+  "original_archive_bytes": 3909,
+  "original_member_map_sha256": "b86dea380f30c20718f193e2c6043771f583c55b4f5d62179fbedb51e4197ed1",
+  "original_job_inventory_sha256": "93defde6b58812463edcc93f4ce30b0915a27addb1b50a711affccae56164ff5",
+  "job_name": "interop x86_64 (OpenSSL 3.5 via alpine:3.22 when the host lacks it)",
+  "job_status": "completed",
+  "job_conclusion": "success",
+  "job_started_at": "2026-09-14T06:58:45Z",
+  "job_completed_at": "2026-09-14T07:31:37Z",
+  "original_steps": [
+    {
+      "completed_at": "2026-09-14T06:58:49Z",
+      "conclusion": "success",
+      "name": "Set up job",
+      "number": 1,
+      "started_at": "2026-09-14T06:58:46Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:58:57Z",
+      "conclusion": "success",
+      "name": "Run actions/checkout@v4",
+      "number": 2,
+      "started_at": "2026-09-14T06:58:49Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:58:58Z",
+      "conclusion": "success",
+      "name": "Run dtolnay/rust-toolchain@stable",
+      "number": 3,
+      "started_at": "2026-09-14T06:58:57Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T06:59:02Z",
+      "conclusion": "success",
+      "name": "Host facts",
+      "number": 4,
+      "started_at": "2026-09-14T06:58:58Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:05:55Z",
+      "conclusion": "success",
+      "name": "Build pqc_interop",
+      "number": 5,
+      "started_at": "2026-09-14T06:59:02Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:12:36Z",
+      "conclusion": "success",
+      "name": "Unit tests (SPKI encoder pinned to the OpenSSL 3.5.7 layout)",
+      "number": 6,
+      "started_at": "2026-09-14T07:05:55Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:12:44Z",
+      "conclusion": "success",
+      "name": "Interop run (directions A to E)",
+      "number": 7,
+      "started_at": "2026-09-14T07:12:36Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:31:21Z",
+      "conclusion": "success",
+      "name": "Compliance profile bench (P22I, x86_64 row)",
+      "number": 8,
+      "started_at": "2026-09-14T07:12:44Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:31:22Z",
+      "conclusion": "success",
+      "name": "Upload compliance bench rows (x86_64)",
+      "number": 9,
+      "started_at": "2026-09-14T07:31:21Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:31:34Z",
+      "conclusion": "success",
+      "name": "Evaluator kit check and self-test",
+      "number": 10,
+      "started_at": "2026-09-14T07:31:22Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:31:35Z",
+      "conclusion": "success",
+      "name": "Upload evaluator kit results",
+      "number": 11,
+      "started_at": "2026-09-14T07:31:34Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:31:36Z",
+      "conclusion": "success",
+      "name": "Upload evidence set (private test keys excluded)",
+      "number": 12,
+      "started_at": "2026-09-14T07:31:35Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:31:36Z",
+      "conclusion": "success",
+      "name": "Post Run actions/checkout@v4",
+      "number": 24,
+      "started_at": "2026-09-14T07:31:36Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T07:31:36Z",
+      "conclusion": "success",
+      "name": "Complete job",
+      "number": 25,
+      "started_at": "2026-09-14T07:31:36Z",
+      "status": "completed"
+    }
+  ],
+  "measurement": {
+    "architecture": "x86_64",
+    "source": "cc994fc6e1ecdede60eb679c3c964fafc2c92946",
+    "run": 34812350038,
+    "job": 103876031495,
+    "artifact": 10336634404,
+    "profile": "release/fips; CAM cnsa2-compliance-v32 fixed-key committed-GCM vs research-v2 SIV",
+    "AEAD_samples": 200,
+    "AEAD_warmups": 16,
+    "KEM_samples": 50,
+    "KEM_establishment_warmups": 4,
+    "KEM_recovery_explicit_warmup_loop": false,
+    "mapping": "Raw displayed rows lack metric IDs; mapped by exact pinned bench source emission order",
+    "metrics": {
+      "kem_establish_ns": 87954,
+      "kem_recover_ns": 99325,
+      "kem_ciphertext_only_bytes": 1568,
+      "research_partial_kem_object_bytes": 1616,
+      "gcm_encrypt_ns": 1637,
+      "gcm_decrypt_ns": 1674,
+      "gcm_CAM_output_bytes": 185,
+      "siv_encrypt_ns": 584,
+      "siv_decrypt_ns": 574,
+      "siv_CAM_output_bytes": 136
+    },
+    "raw_rows_pin": {
+      "bytes": 6061,
+      "sha256": "ccb29c86aafde5d8ebf7bb4cb87099e3205dd50e3f0e92bc799cd9201cc65401"
+    }
+  },
+  "publication_files": [
+    {
+      "original_member": "SHA256SUMS.txt",
+      "original_bytes": 233,
+      "original_sha256": "c95063f33c54ecd42fa3dc7b60190669b736c2ec16dbbb763199e080db0ba5b0",
+      "public_file": "SHA256SUMS.txt",
+      "public_bytes": 233,
+      "public_sha256": "c95063f33c54ecd42fa3dc7b60190669b736c2ec16dbbb763199e080db0ba5b0",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    },
+    {
+      "original_member": "host.txt",
+      "original_bytes": 335,
+      "original_sha256": "8f03ffb665bdb7b46a227aa9e8abd8f8d9dc8f9699fe294a50ce6b8a37927458",
+      "public_file": "host.txt",
+      "public_bytes": 335,
+      "public_sha256": "8f03ffb665bdb7b46a227aa9e8abd8f8d9dc8f9699fe294a50ce6b8a37927458",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    },
+    {
+      "original_member": "output.txt",
+      "original_bytes": 7923,
+      "original_sha256": "baa0fb77d0d39f0fda0aa948b0c2a0e502224a32f53d785e712246cb0bdc2926",
+      "public_file": "output.txt",
+      "public_bytes": 7851,
+      "public_sha256": "e8a4f34ef69f07faef087d8edc720495c330ca312bd8234ef2e880c33e02e6e1",
+      "transformation": "Exact literal build-root replacement only",
+      "replacement_token": "[build-root-redacted]",
+      "replacement_count": 3
+    },
+    {
+      "original_member": "rows.txt",
+      "original_bytes": 6061,
+      "original_sha256": "ccb29c86aafde5d8ebf7bb4cb87099e3205dd50e3f0e92bc799cd9201cc65401",
+      "public_file": "rows.txt",
+      "public_bytes": 6061,
+      "public_sha256": "ccb29c86aafde5d8ebf7bb4cb87099e3205dd50e3f0e92bc799cd9201cc65401",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    }
+  ],
+  "scope": "Retained original run artifacts; selected metadata transcribed from original API inventories. Build-root paths replaced only where explicitly recorded. No new engine execution, engine source, private keys or engine executable included."
+}

@@ -1,0 +1,244 @@
+{
+  "version": 1,
+  "source_commit": "4efb7653b91216d0ed6e8c5aa463e7bb1806a211",
+  "run_id": 34802540928,
+  "job_id": 103847986771,
+  "artifact_id": 10334020988,
+  "run_url": "https://github.com/8Braid/8DB/actions/runs/34802540928",
+  "artifact_name": "pqc-evidence-x86_64-4efb7653b91216d0ed6e8c5aa463e7bb1806a211",
+  "artifact_created_at": "2026-09-14T05:03:41Z",
+  "original_archive_sha256": "eaa3172d0d10fc7c08f63349b8a9e419b5a9a76e413cd6fdd5d0385d5db9eb9e",
+  "original_archive_bytes": 6676,
+  "original_member_map_sha256": "498243bfb577cffa9b52287172a5aa01bc9d6b43394c0339b4c0b0ee3eb5e0b1",
+  "original_job_inventory_sha256": "518649dc1ba7086738d136b65a2828d09e06f433fadecc0f22ea4d18da9baad8",
+  "job_name": "interop x86_64 (OpenSSL 3.5 via alpine:3.22 when the host lacks it)",
+  "job_status": "completed",
+  "job_conclusion": "success",
+  "job_started_at": "2026-09-14T04:14:07Z",
+  "job_completed_at": "2026-09-14T05:03:46Z",
+  "original_steps": [
+    {
+      "completed_at": "2026-09-14T04:14:12Z",
+      "conclusion": "success",
+      "name": "Set up job",
+      "number": 1,
+      "started_at": "2026-09-14T04:14:09Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T04:14:14Z",
+      "conclusion": "success",
+      "name": "Run actions/checkout@v4",
+      "number": 2,
+      "started_at": "2026-09-14T04:14:12Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T04:14:14Z",
+      "conclusion": "success",
+      "name": "Run dtolnay/rust-toolchain@stable",
+      "number": 3,
+      "started_at": "2026-09-14T04:14:14Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T04:14:14Z",
+      "conclusion": "success",
+      "name": "Host facts",
+      "number": 4,
+      "started_at": "2026-09-14T04:14:14Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T04:22:16Z",
+      "conclusion": "success",
+      "name": "Build pqc_interop",
+      "number": 5,
+      "started_at": "2026-09-14T04:14:14Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T04:35:23Z",
+      "conclusion": "success",
+      "name": "Unit tests (SPKI encoder pinned to the OpenSSL 3.5.7 layout)",
+      "number": 6,
+      "started_at": "2026-09-14T04:22:16Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T04:35:30Z",
+      "conclusion": "success",
+      "name": "Interop run (directions A to E)",
+      "number": 7,
+      "started_at": "2026-09-14T04:35:23Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T04:35:40Z",
+      "conclusion": "success",
+      "name": "Evaluator kit check and self-test",
+      "number": 8,
+      "started_at": "2026-09-14T04:35:30Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T04:35:42Z",
+      "conclusion": "success",
+      "name": "Upload evaluator kit results",
+      "number": 9,
+      "started_at": "2026-09-14T04:35:40Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T05:03:39Z",
+      "conclusion": "success",
+      "name": "P1 and P38 evidence harness (x86_64 row of pqc-claims-grounding.md)",
+      "number": 10,
+      "started_at": "2026-09-14T04:35:42Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T05:03:41Z",
+      "conclusion": "success",
+      "name": "Upload P1 and P38 harness results (x86_64)",
+      "number": 11,
+      "started_at": "2026-09-14T05:03:39Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T05:03:42Z",
+      "conclusion": "success",
+      "name": "Upload evidence set (private test keys excluded)",
+      "number": 12,
+      "started_at": "2026-09-14T05:03:41Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T05:03:43Z",
+      "conclusion": "success",
+      "name": "Post Run actions/checkout@v4",
+      "number": 24,
+      "started_at": "2026-09-14T05:03:42Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-14T05:03:43Z",
+      "conclusion": "success",
+      "name": "Complete job",
+      "number": 25,
+      "started_at": "2026-09-14T05:03:43Z",
+      "status": "completed"
+    }
+  ],
+  "measurement": {
+    "host": "Ryzen9 WSL2",
+    "source": "4efb7653b91216d0ed6e8c5aa463e7bb1806a211",
+    "run": 34802540928,
+    "job": 103847986771,
+    "artifact": 10334020988,
+    "profile": "release/v2-mera; same AES-256-GCM-SIV and keys established before timing",
+    "samples_per_arm": 2000,
+    "clock_minimum_nonzero_ns": 10,
+    "operations": {
+      "encrypt": {
+        "classical_median_ns": 451,
+        "pqc_median_ns": 451,
+        "signed_difference_ns": 0,
+        "classical_p95_ns": 470,
+        "pqc_p95_ns": 461
+      },
+      "decrypt": {
+        "classical_median_ns": 441,
+        "pqc_median_ns": 441,
+        "signed_difference_ns": 0,
+        "classical_p95_ns": 461,
+        "pqc_p95_ns": 451
+      }
+    },
+    "raw_output": "github/resumed/p38-x86-extracted/x86_64-linux_2026-09-14T043542Z/cnsa_m1_bench.txt",
+    "raw_output_pin": {
+      "bytes": 6760,
+      "sha256": "168d806fc56e2bcdf2c954605e2177fbad2158c57e96d2d22f5d20c294b5d3dc"
+    }
+  },
+  "publication_files": [
+    {
+      "original_member": "x86_64-linux_2026-09-14T043542Z/SHA256SUMS.txt",
+      "original_bytes": 488,
+      "original_sha256": "7d0ebebe5db60045a348baf736fe45ceee161a0cdb2e240194e361f1770df414",
+      "public_file": "SHA256SUMS.txt",
+      "public_bytes": 488,
+      "public_sha256": "7d0ebebe5db60045a348baf736fe45ceee161a0cdb2e240194e361f1770df414",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    },
+    {
+      "original_member": "x86_64-linux_2026-09-14T043542Z/cnsa_m1_bench.txt",
+      "original_bytes": 6760,
+      "original_sha256": "168d806fc56e2bcdf2c954605e2177fbad2158c57e96d2d22f5d20c294b5d3dc",
+      "public_file": "cnsa_m1_bench.txt",
+      "public_bytes": 6694,
+      "public_sha256": "09722bcb20231bd546852da0e8bdab042a10d63b53420a02d53955abc03a09cd",
+      "transformation": "Exact literal build-root replacement only",
+      "replacement_token": "[build-root-redacted]",
+      "replacement_count": 2
+    },
+    {
+      "original_member": "x86_64-linux_2026-09-14T043542Z/build.txt",
+      "original_bytes": 980,
+      "original_sha256": "21c31c43abb53ed9276e423e960460f66a66eb2309437f049cdd9272d266c6dd",
+      "public_file": "build.txt",
+      "public_bytes": 881,
+      "public_sha256": "545b08a5fc214d825f8b3b6ef4412c560c3d20ed2a3816807f99c2ac93f6c018",
+      "transformation": "Exact literal build-root replacement only",
+      "replacement_token": "[build-root-redacted]",
+      "replacement_count": 3
+    },
+    {
+      "original_member": "x86_64-linux_2026-09-14T043542Z/host.txt",
+      "original_bytes": 713,
+      "original_sha256": "987f7430f4e77555fb4b64ae06297e4f5ca7fbb025f73aa7e213848e0dce23c5",
+      "public_file": "host.txt",
+      "public_bytes": 713,
+      "public_sha256": "987f7430f4e77555fb4b64ae06297e4f5ca7fbb025f73aa7e213848e0dce23c5",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    },
+    {
+      "original_member": "x86_64-linux_2026-09-14T043542Z/pqc_live_algorithm_swap.txt",
+      "original_bytes": 98,
+      "original_sha256": "9e6173270524747c219cd39cd8056b3fe4b8dc4a9d168a3edfbda6e37d634aa1",
+      "public_file": "pqc_live_algorithm_swap.txt",
+      "public_bytes": 98,
+      "public_sha256": "9e6173270524747c219cd39cd8056b3fe4b8dc4a9d168a3edfbda6e37d634aa1",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    },
+    {
+      "original_member": "x86_64-linux_2026-09-14T043542Z/run_acvp_demo.txt",
+      "original_bytes": 3104,
+      "original_sha256": "44bf23567dd6f672237b2f5f65b74f0fa6ce6d03f1d8c3eca752cb7024f9fe0f",
+      "public_file": "run_acvp_demo.txt",
+      "public_bytes": 3005,
+      "public_sha256": "4554024930d7427cd222b6f3951250feeeac889f8c723249181c232b1c2fe040",
+      "transformation": "Exact literal build-root replacement only",
+      "replacement_token": "[build-root-redacted]",
+      "replacement_count": 3
+    },
+    {
+      "original_member": "x86_64-linux_2026-09-14T043542Z/summary.txt",
+      "original_bytes": 231,
+      "original_sha256": "71018f38d6e1b6c31bb5ae3e5deb1d6ff10d8618279411b58afe890fae981d7a",
+      "public_file": "summary.txt",
+      "public_bytes": 231,
+      "public_sha256": "71018f38d6e1b6c31bb5ae3e5deb1d6ff10d8618279411b58afe890fae981d7a",
+      "transformation": "none",
+      "replacement_token": null,
+      "replacement_count": 0
+    }
+  ],
+  "scope": "Retained original run artifacts; selected metadata transcribed from original API inventories. Build-root paths replaced only where explicitly recorded. No new engine execution, engine source, private keys or engine executable included."
+}

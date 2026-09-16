@@ -1,0 +1,20 @@
+utc: 2026-09-14T04:35:42Z
+host: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64
+os: linux
+arch: x86_64
+cpu: AMD Ryzen 9 9950X3D 16-Core Processor
+nproc: 16
+mem_gb: 39.2
+rustc: rustc 1.94.1 (e408947bf 2026-03-25)
+cargo: cargo 1.94.1 (29ea6fb6a 2026-03-24)
+rustc_host: x86_64-unknown-linux-gnu
+commit: 4efb7653b91216d0ed6e8c5aa463e7bb1806a211
+branch: session/pqc-l4-parity-20260914
+uncommitted_files: 0
+profile: release
+features: v2-mera
+bench_cmd: cargo test --release --features v2-mera --test cnsa_m1_bench -- --ignored --nocapture
+kat_cmd: cargo run --release --features v2-mera --bin run_acvp_demo
+compiled_at: 2026-09-14T04:55:33Z
+concurrent_cargo_rustc_before_run: 3
+load_average_before_run: 8.37 17.74 15.92
