@@ -27,7 +27,7 @@ R5 completed its transformation and cold checks but missed the read-availability
 
 ## Replay offline with Rust
 
-The package includes the unchanged Rust auditor, all 31 positive and negative controls and its locked public dependencies. With Rust 1.94.1 already installed through rustup, Bash and GNU core utilities, run from this directory:
+The package includes the unchanged Rust auditor, all 31 positive and negative controls and its locked public dependencies. With Rust 1.94.1 already installed through rustup, a system C linker (`cc`), Bash and GNU core utilities, run from this directory:
 
 ```sh
 bash verify-package.sh
