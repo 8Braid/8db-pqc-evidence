@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "captured_at_utc": "2026-09-16T00:09:28Z",
+  "source_sha256": "dc16933f75a04fe3af6baaad3a4dcbe4454a9ef485156eadd79395ef363faee7",
+  "binary_sha256": "2d92663bb69608ecc911d9f2a08bf807775982e4b3f5a8360202df1a870a753b",
+  "oracle_sha256": "a9fb77cfbde8a13d2c9f520f4a5cc28042538900d1514334671a9122db6e2dfc",
+  "owned_supervisor_pid": 51,
+  "copy_start_absent": true,
+  "scope": "External fresh oracle captured during import before scheduling starts"
+}

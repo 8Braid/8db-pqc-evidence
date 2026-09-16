@@ -1,0 +1,9 @@
+{
+  "attempted": true,
+  "authority_floor": 3182,
+  "authenticated_sections": 100000,
+  "indexed_sections": 100000,
+  "observed_sections": 100000,
+  "exact_typed_sections": 100000,
+  "errors": []
+}

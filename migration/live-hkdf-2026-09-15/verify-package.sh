@@ -38,5 +38,18 @@ r6_exit=$?
 printf '%s\n' "$r6_exit" > "$out/r6.exit"
 [[ "$r6_exit" == 0 ]] || failed 'R6 acceptance did not reproduce'
 cmp -s "$out/r6-report.json" r6/original-audit-report.json || failed 'R6 replay differs from the original report'
+replay_supplement() {
+  local label=$1 source_pin=$2 engine_pin=$3 oracle_pin=$4 expected_exit=$5 actual_exit
+  local evidence="four-cpu-2026-09-16/$label"
+  "$auditor" "$evidence/evidence" "$source_pin" "$engine_pin" "$oracle_pin" > "$out/$label-report.json" 2> "$out/$label.stderr"
+  actual_exit=$?
+  printf '%s\n' "$actual_exit" > "$out/$label.exit"
+  [[ "$actual_exit" == "$expected_exit" ]] || failed "$label original verdict did not reproduce"
+  cmp -s "$out/$label-report.json" "$evidence/original-audit-report.json" || failed "$label replay differs from the original report"
+}
+replay_supplement r6-offline-206f dc16933f75a04fe3af6baaad3a4dcbe4454a9ef485156eadd79395ef363faee7 2d92663bb69608ecc911d9f2a08bf807775982e4b3f5a8360202df1a870a753b a9fb77cfbde8a13d2c9f520f4a5cc28042538900d1514334671a9122db6e2dfc 1
+replay_supplement completion-028 69cdbd07f480a2de06d5773e69327b23136038b6144e03771691cb66eb9844be 0271554acc27b1d45a637573bbc8f252c34c9e353c8404ec448dca0867c4b922 9e1a022bae9d3f93ca63619239680370e9250a23b57ec3a018ed9201e88f257b 1
+replay_supplement copy-41ca 1b719c4cf7defc3e483893f1541a5623a983830e74c44c026b22de481faa3745 690bfa7ca3bdfd2df4f69eae539b7959d6a23d5b21c54e46e78664c53350a3ee 13f7291bfed95790105acb237401d4b4dfaccade53e1bf8806c6e7cf2eb4dd82 1
+replay_supplement diagnostic-9c5 c824699b1c523699e1d9751d29a8d7ddcc713644d072372090280695b5a263d2 fecb52a1364e8dbd575e5f2f91361276cb7afd494d486ce3d218f8347f4c3694 7cfa70ea2b3d5aa049c6237f9d263cf4556c8ff4925542a96c1619d031d57831 0
 sha256sum --check --status SHA256SUMS || failed 'package changed during replay'
-printf 'VERIFIED: 31 controls passed; original R5 rejection and R6 acceptance reproduced byte-for-byte.\n'
+printf 'VERIFIED: 31 controls passed; all six original reports reproduced byte-for-byte (four rejected, two accepted).\n'

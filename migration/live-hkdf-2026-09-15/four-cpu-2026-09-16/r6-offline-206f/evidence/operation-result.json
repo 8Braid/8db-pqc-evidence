@@ -1,0 +1,22 @@
+{
+  "authority_floor": 3182,
+  "availability_failures": [
+    "late request 429",
+    "late request 441"
+  ],
+  "cold_reopen_exact_typed_index": true,
+  "copied": 99998,
+  "failed_attempts": 0,
+  "observations_count": 884,
+  "operation": "HkdfReplacement",
+  "operation_sequence": 3171,
+  "required_index": "WordnetLexicalV1",
+  "source_cipher": "Aes256GcmSiv",
+  "source_count": 100000,
+  "source_kdf": "HkdfSha256",
+  "superseded_by_delete": 1,
+  "superseded_by_write": 1,
+  "target_cipher": "Aes256GcmSiv",
+  "target_count": 100000,
+  "target_kdf": "HkdfSha384"
+}

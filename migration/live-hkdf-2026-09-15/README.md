@@ -2,6 +2,8 @@
 
 **8DB met its preregistered one-second scheduled-read deadline while changing page-key derivation in a 100,000-record store and recovering from a process kill.** The declared process outage and one qualifying interrupted request are accounted for separately. The September 15, 2026 R6 run passed the unchanged independent Rust auditor; its original R5 predecessor remains a recorded rejection.
 
+**September 16 update:** [four fresh runs under a four-CPU quota and 16 GiB limit](four-cpu-2026-09-16/) all recovered the exact 100,000-record content. Three were rejected for 2/843, 26/882 and 9/724 missed nonexcluded deadlines; the fourth passed with 0/689. The final run added diagnostics to the preceding product inputs. Its pass leaves the cause of the earlier misses unresolved. All four original ledgers now replay alongside the R5/R6 history below.
+
 The run changed HKDF-SHA256 to HKDF-SHA384 while keeping AES-256-GCM-SIV unchanged. Applications read through copying, index construction, verification and active serving. A changed record, an added record and a deletion exercised the live facade. The owner was killed after 50,048 source dispositions and resumed in a new process. The final engine check cold-reopened the store and compared all 100,000 exact typed records and the lexical index.
 
 This provides a concrete experiment for stored-data crypto agility: changing protection, accounting for completion and checking what applications can read throughout the operation.[1] The two-requests-per-second schedule and one-second response budget are our preregistered application criteria.
@@ -33,9 +35,9 @@ The package includes the unchanged Rust auditor, all 31 positive and negative co
 bash verify-package.sh
 ```
 
-No network access or 8DB engine is required. The script checks every package file, runs all 31 controls and independently replays both ledgers. It places builds and reports in a new temporary directory outside the evidence checkout and prints that location.
+No network access or 8DB engine is required. The script checks every package file, runs all 31 controls and independently replays all six ledgers: the original R5/R6 pair and the four September 16 runs. It places builds and reports in a new temporary directory outside the evidence checkout and prints that location.
 
-Package verification exits **0** when the files, controls and original verdicts match: R5 rejected and R6 accepted. It exits **1** for a mismatch or failed check, and **2** when required files or tools are missing. An incomplete attempt is never reported as a pass. The underlying auditor preserves its own verdict: exit 1 for R5, exit 0 for R6. Read its JSON reports and compare them with the byte-identical [R5 original](r5/original-audit-report.json) and [R6 original](r6/original-audit-report.json).
+Package verification exits **0** when the files, controls and all six original verdicts match. It exits **1** for a mismatch or failed check, and **2** when required files or tools are missing. An incomplete attempt is never reported as a pass. The underlying auditor preserves its own verdict: exit 1 for each rejected run, exit 0 for each accepted run. Read its JSON reports and compare them with the byte-identical [R5 original](r5/original-audit-report.json), [R6 original](r6/original-audit-report.json) and [four later originals](four-cpu-2026-09-16/).
 
 For a direct audit, use the binary built by the script and the three original external pins:
 

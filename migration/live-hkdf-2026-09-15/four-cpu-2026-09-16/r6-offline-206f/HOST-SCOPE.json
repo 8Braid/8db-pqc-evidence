@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "scope": "Selected public-safe fields from original Docker and runtime evidence; full original files remain hash-pinned privately.",
+  "original_container_inspection_sha256": "d10d31d047e565a4c9422636d31f4199da8a805cb35bc6d80ff632d231505073",
+  "container_started_utc": "2026-09-16T00:09:28.005793245Z",
+  "container_finished_utc": "2026-09-16T00:23:47.341837313Z",
+  "container_exit": 1,
+  "oom_killed": false,
+  "network_mode": "none",
+  "read_only_rootfs": true,
+  "cpu_quota_units": 4,
+  "cpu_affinity_claim": false,
+  "memory_limit_bytes": 17179869184,
+  "memory_plus_swap_limit_bytes": 19327352832,
+  "engine_source_included": false,
+  "compiler_on_runtime_path": false,
+  "raw_isolation_attestation_sha256": "9602adfee66b1b5d677f3c3466528cda68612d9ee3ba2b23a6764098d8619b76",
+  "notes": [
+    "Synthetic lexical workload on Linux x86_64 under Docker on the same shared WSL workstation.",
+    "Observed resource constraints do not imply an isolated host, cold caches, identical scheduling, or attribution of latency to the quota."
+  ]
+}

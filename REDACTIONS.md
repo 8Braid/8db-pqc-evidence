@@ -180,3 +180,20 @@ This editorial note is excluded from its own hash table.
 |---|---|---|
 | `README.md` | `d435e7c33634bada1d800272d32000f40b9b909c57a2b9f7ab89632bbe9c0f67` | `bd650ff669d0c3a1763c749ec639934de89613a08edf6c3455d5283988971ecd` |
 | `CLAIMS-AND-SCOPE.md` | `36e0e2e911da919b1fa69813f3ca08583c486814c7a5a92211863545f20bdf06` | `11aeed8915dc699116622f27030bb86ae7ae2853851858898cf7ac92fced7958` |
+
+## Four-CPU migration additions, September 16, 2026
+
+The [dated supplement](migration/live-hkdf-2026-09-15/four-cpu-2026-09-16/)
+adds four original runs and preserves the earlier R5/R6 raw evidence. Its
+[provenance mapping](migration/live-hkdf-2026-09-15/four-cpu-2026-09-16/ORIGINAL-PROVENANCE.json)
+records byte-identical original/public hashes for every copied file. No
+redactions were needed in those selected synthetic auditor inputs, reports or
+small custody records. The engine source, executable and database files remain
+outside this public package.
+
+Per-run host summaries select the recorded resource limits and terminal state;
+the full original inspection is identified by hash. The unchanged Rust auditor,
+31 controls and vendored dependencies are reused. The package replay script now
+requires all six original verdicts and reports to reproduce, including every
+rejection. Dated additions to the README, migration scope and verification guide
+point to the new outcomes without replacing the historical measurements.

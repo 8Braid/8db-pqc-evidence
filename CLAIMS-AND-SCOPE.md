@@ -111,6 +111,17 @@ reports checks artifact consistency; fresh engine execution requires evaluation
 access. This measured result covers the stated synthetic lexical workload and
 does not establish every workload, modality or backup policy.
 
+**Four-CPU update, September 16, 2026:** the [additional original ledgers](migration/live-hkdf-2026-09-15/four-cpu-2026-09-16/)
+cover four fresh packaged-engine runs under a four-CPU quota and 16 GiB limit.
+The fixed one-second budget and two-request-per-second schedule remained
+unchanged. The auditor rejected runs with 2/843, 26/882 and 9/724 missed
+nonexcluded deadlines, then accepted a run with 0/689. Every run cold-verified
+100,000 exact typed records and the lexical index. The latest source added
+diagnostic capture to the preceding product inputs; its pass does not resolve
+the cause of earlier misses or establish repeatability. All four original
+reports, inputs and source/executable bindings are public, alongside the
+earlier R5/R6 history.
+
 The historical raw results and both engine harnesses are available to evaluators
 on request. Additional transitions and production operating limits should be
 agreed and tested against the intended deployment.

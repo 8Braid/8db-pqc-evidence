@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "reason": "fresh_100k_hkdf_availability_and_cold_recovery_accepted",
+  "mode": "run",
+  "exit": 0,
+  "raw_wrapper_exit": 0,
+  "finished_utc": "2026-09-16T03:00:57Z"
+}

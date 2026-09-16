@@ -1,0 +1,37 @@
+{
+  "schema": "p11-diagnostic-tracked-product-equivalence-v1",
+  "recorded_utc": "2026-09-16T02:48:18Z",
+  "result": "IDENTICAL_TRACKED_PRODUCT_INPUTS",
+  "prior_native_source_commit": "41ca1c8d2f9c2e24959fe980b99257f58829a4de",
+  "prior_native_source_tree": "9020a77370e1f0d8babf683fb99dad228a212cef",
+  "prior_full_source_manifest_sha256": "1b719c4cf7defc3e483893f1541a5623a983830e74c44c026b22de481faa3745",
+  "successor_source_commit": "9c5ae6c9a4d1fa84b11fdf8ead679bab657e6af7",
+  "successor_source_tree": "4bbd373cb1583fcb4a43ac08494321b788e2c91c",
+  "successor_full_source_manifest_sha256": "c824699b1c523699e1d9751d29a8d7ddcc713644d072372090280695b5a263d2",
+  "identical_product_input_manifest_sha256": "f99fe467e3f02ac73ace60431034e3c55cec00ae16d5e96a29bdd96456fef99c",
+  "identical_product_input_files": 23082,
+  "changed_paths": [
+    "docs/security/p11-owner-diagnostic-capture-20260916.md",
+    "docs/security/p11-parent-ledger-timing-20260916.md",
+    "tools/native-live-scale-acceptance/src/hkdf_availability_tests.rs",
+    "tools/native-live-scale-acceptance/src/hkdf_owner_diagnostics_controls_tests.rs",
+    "tools/native-live-scale-acceptance/src/hkdf_owner_diagnostics_tests.rs",
+    "tools/native-live-scale-acceptance/src/hkdf_parent_diagnostics_controls_tests.rs",
+    "tools/native-live-scale-acceptance/src/hkdf_parent_diagnostics_tests.rs"
+  ],
+  "changed_diagnostic_rust_paths": [
+    "tools/native-live-scale-acceptance/src/hkdf_availability_tests.rs",
+    "tools/native-live-scale-acceptance/src/hkdf_owner_diagnostics_controls_tests.rs",
+    "tools/native-live-scale-acceptance/src/hkdf_owner_diagnostics_tests.rs",
+    "tools/native-live-scale-acceptance/src/hkdf_parent_diagnostics_controls_tests.rs",
+    "tools/native-live-scale-acceptance/src/hkdf_parent_diagnostics_tests.rs"
+  ],
+  "changed_internal_note_paths": [
+    "docs/security/p11-owner-diagnostic-capture-20260916.md",
+    "docs/security/p11-parent-ledger-timing-20260916.md"
+  ],
+  "all_other_tracked_git_objects_and_modes_identical": true,
+  "full_successor_source_hashes_verified": true,
+  "native_tests_executed_on_successor": false,
+  "scope": "Exact tracked inputs excluding only five reviewed standalone diagnostic harness files and two named internal documentation notes. Historical 301+7 native execution remains attributed to 41ca; successor release/harness execution is separate. This is not binary identity, environment equivalence or a fresh availability result."
+}
