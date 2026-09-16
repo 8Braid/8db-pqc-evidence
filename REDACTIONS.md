@@ -1,5 +1,36 @@
 # Publication provenance
 
+## Live HKDF migration package, September 16, 2026
+
+The [live HKDF package](migration/live-hkdf-2026-09-15/) retains both the rejected
+R5 run and accepted R6 run. All nine independent-auditor inputs for each run,
+their original audit reports, exit files, chain results and pre-copy oracle
+receipts are byte-identical copies. No authority counters, request identities,
+timestamps, response bytes or oracle fields were redacted or replaced. The
+[original/public provenance table](migration/live-hkdf-2026-09-15/ORIGINAL-PROVENANCE.json)
+records the file identities and hashes.
+
+The four auditor Rust/Cargo files and its README are unchanged. The new offline
+runner compiles that auditor and requires its original 31 controls, R5 rejection
+and R6 acceptance. Public dependency sources retain their original licenses and
+Cargo checksums. [CUSTODY-PINS.json](migration/live-hkdf-2026-09-15/CUSTODY-PINS.json)
+records engine identities and original closed-corpus digests. The original
+auditor build receipt contains local absolute paths and is retained by digest;
+its source/executable pins are reproduced without those paths.
+
+The R6 host-context JSON is a clearly identified derivative of recorded CPU,
+memory, load and kernel receipts, with their original hashes. It contains
+relevant machine characteristics and omits private host identifiers. Private
+engine source, executable, protected stores, authority databases and root
+material are excluded from the package.
+
+The new complete package `SHA256SUMS` includes Rust, Cargo, typed fixtures and
+vendored dependencies. The updated root raw-artifact manifest also pins that
+package manifest; the two verifiers retain separate scopes. Existing raw
+cryptographic and two-host recovery artifacts are unchanged from public main
+`213f394cd8d5fcc19156201e216cd9c422a7d2e8`. Root README, claims and verification
+instructions now link the completed live result and its negative predecessor.
+
 ## Required recovery publication, September 15, 2026
 
 The new [two-host recovery package](mesh/required-two-host-2026-09-15/) publishes

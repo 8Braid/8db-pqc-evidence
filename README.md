@@ -27,12 +27,16 @@ HKDF-SHA256-derived page keys into a new generation using HKDF-SHA384, verified
 each record and activated the new generation atomically. That run's concurrent
 read probe recorded zero served reads.[^1]
 
-The live-migration API separately provides an authenticated serving facade
-across copying, index construction, verification and activation. As of September
-15, 2026, an exact 100,000-record campaign is testing that path with scheduled
-concurrent reads, a process kill and cold resume. Its availability result is
-pending. These are separate operations and evidence sets; see the
-[dated migration scope](CLAIMS-AND-SCOPE.md#key-derivation-transition).
+The separate live-migration API now has a
+[100,000-record run with verified scheduled reads](migration/live-hkdf-2026-09-15/).
+On September 15, 2026, it met a one-second scheduled-to-response budget while
+changing HKDF-SHA256 to HKDF-SHA384, including an owned process kill and cold
+resume. The declared process outage and one qualifying interrupted request are
+accounted for separately. All 877 scheduled requests have retained outcomes.
+The package includes the unchanged independent Rust auditor, its 31 controls,
+offline dependencies and the rejected predecessor run. See the
+[dated migration scope](CLAIMS-AND-SCOPE.md#key-derivation-transition) for the
+distinction from the earlier managed-copy operation.
 
 This work addresses a practical part of the migration agenda. NIST's
 [crypto-agility guidance](https://csrc.nist.gov/pubs/cswp/39/upd1/considerations-for-achieving-crypto-agility/final)
@@ -50,6 +54,7 @@ into the database.
 | Do the cryptographic outputs interoperate? | [OpenSSL 3.5 interoperability](interop/README.md): 15 of 15 checks passed on each of x86_64 and aarch64, covering both directions and negative controls. |
 | What are the storage and processing costs? | [Release microbenchmarks](bench/) on three hosts record object sizes and operation timings, with build details. The same-AEAD comparison produced 131-byte encrypted records from 115-byte inputs with either classical or post-quantum key establishment.[^3] |
 | Can a replica recover its exact protected records after a process kill? | [September 15 two-host recovery](mesh/required-two-host-2026-09-15/): both hosts finished with all 512 exact typed records; the receiver retained 172 and read new content 1,074 ms after same-store reopen. The package includes originals, explicit redaction provenance, negative history and a Rust artifact verifier. |
+| Can stored-data protection change while scheduled reads continue through a crash and resume? | [September 15 live HKDF migration](migration/live-hkdf-2026-09-15/): the R6 100,000-record run passed the unchanged auditor with zero missed deadlines outside the declared exclusions. The original R5 rejection and an offline Rust replay package remain available. |
 | How can I inspect the security evidence? | [Known-answer vectors](kat/), [test results](acvp/), and [timing reports](timing/README.md) include the inputs, methods and recorded outcomes needed for a technical review. |
 
 ## How 8DB protects records

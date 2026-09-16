@@ -1,0 +1,6 @@
+{
+  "expected_last_id": 876,
+  "issued_count": 877,
+  "rule": "every nonnegative id with id*period_ns <= stop_ns is issued",
+  "stop_ns": 438051363709
+}

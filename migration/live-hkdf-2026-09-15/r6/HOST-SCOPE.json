@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "scope": "R6 recorded host context, derived from closed pre-run receipts; shared-workstation result, no idle or isolated-host assertion",
+  "architecture": "x86_64",
+  "reported_processor_model": "AMD Ryzen 9 9950X3D 16-Core Processor",
+  "guest_logical_processors": 16,
+  "virtualization_vendor": "Microsoft",
+  "kernel_contains_wsl2_marker": true,
+  "guest_memory_total_bytes": 42057990144,
+  "prerun_load_average_1_5_15_minutes": [
+    5.33,
+    5.33,
+    6.01
+  ],
+  "original_receipts_sha256": {
+    "cpu.txt": "6ccb7b2f45034bc6c9fb6ab488b422c0dceee0fead3689bd15eeb715d66a880c",
+    "memory-before.txt": "51e445424bff699352d2258d291b7f690448d468f8e3c042ae34b768fe0668d3",
+    "load-before.txt": "2d83256697fced35f39cab1456bfd81be80f65b6d2ddac8e72e1f004f62504df",
+    "kernel.txt": "0e9262785f49420809bc3f8ee43dac022616acbcfdb08cca396d73888140f53f"
+  }
+}

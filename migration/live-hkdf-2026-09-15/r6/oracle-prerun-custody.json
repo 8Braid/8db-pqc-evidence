@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "captured_at_utc": "2026-09-15T23:22:29Z",
+  "source_sha256": "dc16933f75a04fe3af6baaad3a4dcbe4454a9ef485156eadd79395ef363faee7",
+  "binary_sha256": "2d92663bb69608ecc911d9f2a08bf807775982e4b3f5a8360202df1a870a753b",
+  "oracle_sha256": "6fada689973c19dc9ed7772f9f96ba2c9c67c3902802dfc4cd05b79671770135",
+  "owned_supervisor_pid": 2767023,
+  "copy_start_absent": true,
+  "scope": "External new campaign oracle captured during import before scheduling starts"
+}

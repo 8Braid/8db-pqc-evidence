@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "scope": "Original externally retained identities for public artifact replay; engine source and executable remain evaluation-access artifacts",
+  "auditor": {
+    "original_elf_sha256": "8ab6b0d08a6e0912f3cfea623195e89bd1f26bb0bed6530332bd5e2f38ab566c",
+    "original_source_binary_receipt_sha256": "356e2cb5b220c5e6d296760142eb6fc245ea309d0add31ab810a0e0b3db0b578",
+    "original_control_count": 31,
+    "source_files_sha256": {
+      "Cargo.toml": "ca0478b1ed9d01885f3a8db8d47a665216cc9ef4505cc9e81a04b726d7fa4c7c",
+      "Cargo.lock": "bf33dd55bda25031210ad9f6d8447f639cf34af7814224d93fca512aa94a20c2",
+      "src/main.rs": "a0c308d29273642f396cd2212fe38a834ee229b11dd2f8206f542f3fc368a7b1",
+      "src/tests.rs": "3f2adf26efd462325be5385c7acba185c0a232465607e53e80b7a758e83b90ea",
+      "README.md": "dcb9f06e883d75b5d2a5a70406b650507cba082aa50f1223298ae0d02b0f22ec"
+    }
+  },
+  "runs": {
+    "r5": {
+      "engine_commit": "283d7759f54f5860b59e9a77d5f0cd2d08c31410",
+      "engine_tree": "e186e045ddbd6bc481699718900f161a3862dfde",
+      "source_manifest_sha256": "503b24adb008a918dfaecb2358181c0880dcc6a61bc1b9c7cf4409cc4d9d076b",
+      "engine_elf_sha256": "3cf0b545cf042343aedf50e4bd317580425d4fb437af9ab275f4e5243fbf1df8",
+      "oracle_sha256": "29003532af97e7a114acb8df2e76963aefa7007b9f09e578215ec58a3f9e9516",
+      "closed_corpus_manifest_sha256": "82d0a5ce48f79ed846ac84121a48e79e5c842846f0797674a93fbb5ead46032a",
+      "original_audit_report_sha256": "641b0eda7330c4ca40a92c3a08814594e77a878bf8103eda73e14c292fa9e606",
+      "original_chain_result_sha256": "8f799981e37b2d322f1db8c4a4464af5190567bd0ae0014ea6d8636f84a1f7c2",
+      "closed_at_utc": "2026-09-15T22:38:20Z",
+      "original_accepted": false
+    },
+    "r6": {
+      "engine_commit": "206f1a626f74699cad9c63e8276aa324d61bb48d",
+      "engine_tree": "46ae6200191a3d3dc522a14b71df7c95044d644a",
+      "source_manifest_sha256": "dc16933f75a04fe3af6baaad3a4dcbe4454a9ef485156eadd79395ef363faee7",
+      "engine_elf_sha256": "2d92663bb69608ecc911d9f2a08bf807775982e4b3f5a8360202df1a870a753b",
+      "oracle_sha256": "6fada689973c19dc9ed7772f9f96ba2c9c67c3902802dfc4cd05b79671770135",
+      "closed_corpus_manifest_sha256": "d33fb44e7d95e95a704ce8e6369a4568f75cf16fbc3203cb0643362abd901dff",
+      "original_audit_report_sha256": "5921326b4e31d5dc477dd08d7c71796d9d6c706a2aa2c6079c80ac8ac68ca340",
+      "original_chain_result_sha256": "e80cd4b00a18eb971eabcdc0ad7e009436d46d8ceead96f74822e7d287859d58",
+      "closed_at_utc": "2026-09-15T23:36:44Z",
+      "original_accepted": true
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "actual_finish_succeeded": true,
+  "clock": "one resumed child std::time::Instant; not parent-aligned",
+  "clock_domain": "c9d90bf0-0a22-4918-a553-117c9dd32739",
+  "endpoint_generation": "7a7583c4-ce54-4c2e-b2ea-d40e690400da",
+  "hold_budget_ns": 25000000,
+  "markers": {
+    "callback_release_ns": 404222976857,
+    "finish_invocation_ns": 404197924760,
+    "finish_return_ns": 404242056206,
+    "request_held_ns": 404197888958,
+    "request_id": 903,
+    "response_end_ns": 404241658088,
+    "response_written": true
+  },
+  "scope": "actual protected emit_section callback retains read lease while owner attempts proof.finish; consumer hold included in parent latency",
+  "version": 1
+}

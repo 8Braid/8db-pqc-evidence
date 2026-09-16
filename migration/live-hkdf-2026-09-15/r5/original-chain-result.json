@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "commit": "283d7759f54f5860b59e9a77d5f0cd2d08c31410",
+  "tree": "e186e045ddbd6bc481699718900f161a3862dfde",
+  "source_sha256": "503b24adb008a918dfaecb2358181c0880dcc6a61bc1b9c7cf4409cc4d9d076b",
+  "binary_sha256": "3cf0b545cf042343aedf50e4bd317580425d4fb437af9ab275f4e5243fbf1df8",
+  "oracle_sha256": "29003532af97e7a114acb8df2e76963aefa7007b9f09e578215ec58a3f9e9516",
+  "auditor_sha256": "8ab6b0d08a6e0912f3cfea623195e89bd1f26bb0bed6530332bd5e2f38ab566c",
+  "diagnostic_exit": 0,
+  "campaign_exit": 101,
+  "audit_exit": 1,
+  "custody_exit": 0,
+  "accepted": false
+}

@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "method": "cargo +1.94.1 vendor --offline --locked --manifest-path verify/Cargo.toml vendor",
+  "source": "Cached public crates.io packages identified by unchanged Cargo.lock",
+  "purpose": "Offline auditor compilation with existing Rust 1.94.1 toolchain",
+  "license_notice": "Each original vendored package retains its license and copyright files",
+  "engine_source_included": false,
+  "crate_count": 21,
+  "crates": [
+    {
+      "directory": "vendor/block-buffer",
+      "cargo_package_checksum": "3078c7629b62d3f0439517fa394996acacc5cbc91c5a20d8c658e77abd503a71",
+      "cargo_file_inventory_sha256": "7f0f369a2ec2f88a2a4cda9a5daa97c6dfdcc2110d33b52d1e6ac4fcfa2ffa0d"
+    },
+    {
+      "directory": "vendor/cfg-if",
+      "cargo_package_checksum": "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801",
+      "cargo_file_inventory_sha256": "49dfe36998e233735fc07a4a7cc3df8fcdef7d09a3ae991622666d934c0a0908"
+    },
+    {
+      "directory": "vendor/cpufeatures",
+      "cargo_package_checksum": "59ed5838eebb26a2bb2e58f6d5b5316989ae9d08bab10e0e6d103e656d1b0280",
+      "cargo_file_inventory_sha256": "c679b6563298b498deb2b2766a7c52966bf943cd83bb42e5b937fb3d93e2faeb"
+    },
+    {
+      "directory": "vendor/crypto-common",
+      "cargo_package_checksum": "78c8292055d1c1df0cce5d180393dc8cce0abec0a7102adb6c7b1eef6016d60a",
+      "cargo_file_inventory_sha256": "d2d031e96935ddc30a92c30c276c90d3e27dbab3c51a55a7d56abb07660d25bd"
+    },
+    {
+      "directory": "vendor/digest",
+      "cargo_package_checksum": "9ed9a281f7bc9b7576e61468ba615a66a5c8cfdff42420a70aa82701a3b1e292",
+      "cargo_file_inventory_sha256": "6031e7ffa87539939ddd24756561c2eec18bde6b560cc1343689b9242c62b2f4"
+    },
+    {
+      "directory": "vendor/generic-array",
+      "cargo_package_checksum": "85649ca51fd72272d7821adaf274ad91c288277713d9c18820d8499a7ff69e9a",
+      "cargo_file_inventory_sha256": "87e85df9db7f5334e87c47ba6038bea9670492dbb1a81283663334aa3d2f93d6"
+    },
+    {
+      "directory": "vendor/itoa",
+      "cargo_package_checksum": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682",
+      "cargo_file_inventory_sha256": "abb523eca480a570e8b97654138c7530a9167927bf5fe7ce047637952c986a13"
+    },
+    {
+      "directory": "vendor/libc",
+      "cargo_package_checksum": "3eaf3ede3fee6db1a4c2ee091bf8a8b4dccdc6d17f656fb07896ee72867612f2",
+      "cargo_file_inventory_sha256": "1df2768ea8b10dcfaeabbc65485b890d1b2c045f3bdc4882153ea77f0cfeaad7"
+    },
+    {
+      "directory": "vendor/memchr",
+      "cargo_package_checksum": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
+      "cargo_file_inventory_sha256": "b213e5962e9ba9eb91d04db8f4d592564a99e409d919c7ba4005859b1625d5ab"
+    },
+    {
+      "directory": "vendor/proc-macro2",
+      "cargo_package_checksum": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+      "cargo_file_inventory_sha256": "2fc58a08340ecaa507bdbc0457670c0f3e1173e92177413e21f09ae2b595a713"
+    },
+    {
+      "directory": "vendor/quote",
+      "cargo_package_checksum": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+      "cargo_file_inventory_sha256": "fae5f077e7cd9ec1b69e63b945d1b5144bada3aeb38826a561801571e8ba9a31"
+    },
+    {
+      "directory": "vendor/serde",
+      "cargo_package_checksum": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+      "cargo_file_inventory_sha256": "b31a1bf4f49328a1d36f0c5be1fff8b85d073350c5d4c9867b19fd3feec6753b"
+    },
+    {
+      "directory": "vendor/serde_core",
+      "cargo_package_checksum": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+      "cargo_file_inventory_sha256": "c75c72911cff8dcb2d386f536f47073558dbc3d7979bb0f666c275b20179f399"
+    },
+    {
+      "directory": "vendor/serde_derive",
+      "cargo_package_checksum": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+      "cargo_file_inventory_sha256": "bcdbca7786f23339d4b9332d94ab59a471874f942eb0ae946ac070c29265147f"
+    },
+    {
+      "directory": "vendor/serde_json",
+      "cargo_package_checksum": "83fc039473c5595ace860d8c4fafa220ff474b3fc6bfdb4293327f1a37e94d86",
+      "cargo_file_inventory_sha256": "f916ab0a82bcead0be878cb7b2a74218c27079281a33c0c6512160e7103df08f"
+    },
+    {
+      "directory": "vendor/sha2",
+      "cargo_package_checksum": "a7507d819769d01a365ab707794a4084392c824f54a7a6a7862f8c3d0892b283",
+      "cargo_file_inventory_sha256": "81dc0505ebd2db4d9d588fc90442ac4d6ae4aba5a406d4b1fc14fe95643bae5a"
+    },
+    {
+      "directory": "vendor/syn",
+      "cargo_package_checksum": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297",
+      "cargo_file_inventory_sha256": "54b72e89f59dd252dbb35ab66f03a4e356772dbdd4d61744c2dc0fde76b59449"
+    },
+    {
+      "directory": "vendor/typenum",
+      "cargo_package_checksum": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20",
+      "cargo_file_inventory_sha256": "81a4e868756286091f8200273c2ed14675b3db2daa40123f16ef51290b891531"
+    },
+    {
+      "directory": "vendor/unicode-ident",
+      "cargo_package_checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "cargo_file_inventory_sha256": "dff7dd1628554ddf74d218f9823200a57be4c5898128d4ce6a1bb776358d2d56"
+    },
+    {
+      "directory": "vendor/version_check",
+      "cargo_package_checksum": "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a",
+      "cargo_file_inventory_sha256": "2c3e69d49eb86cf8f00c5d7c94ac9611a37c674f3c1fc5658d59be75e9e15911"
+    },
+    {
+      "directory": "vendor/zmij",
+      "cargo_package_checksum": "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b",
+      "cargo_file_inventory_sha256": "9e9683de9ffe4b12096110ddd77d51efaeced83e743290feb2cfa3c642c205dd"
+    }
+  ]
+}
