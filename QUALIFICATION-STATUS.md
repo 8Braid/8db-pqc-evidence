@@ -1,6 +1,6 @@
 # Evaluate the evidence, then the workload
 
-**Updated September 16, 2026, 16:06 UTC.** The public package supports immediate
+**Updated September 16, 2026, 16:39 UTC.** The public package supports immediate
 review of cryptographic interoperability, record costs, live migration and
 recovery. The latest integrated engine is frozen for qualification. Its results
 will be recorded against that exact source before we mark its release complete.
@@ -40,6 +40,13 @@ rejections as well as the acceptances. A later passing run leaves earlier
 deadline misses in the record; it does not establish their resolution.
 
 ## Latest engine qualification
+
+The third short delivery rehearsal passed its execution and audit checks on
+the separately identified optimized test build. It completed 2,176 exact
+synthetic records, with receipt signatures, cold-reopened content, actual clock
+observations and cleanup checked. The [short-rehearsal checkpoint](mesh/protected-node-2026-09-16/SHORT-REHEARSAL-CHECKPOINT-1639Z.md)
+preserves the two earlier refusals and identifies the independent review.
+Main-source integration and the 24-hour mission remain open.
 
 The corrected candidate's retained release executable has now passed one
 positive case and all three injected worker clock-fault cases. Independent
@@ -113,7 +120,7 @@ test package and transfers none of those passes to the successor.
 | Integrated candidate | Source `326ab` has completed its default native job, both release-profile jobs and the separately audited four-case release-worker supplement. | Remaining native roles, CI review and normal merge, bound to the corrected source and execution records. |
 | Evaluator delivery | Recipes prepared; final assembly and offline replay await the completed producer records. | Successful assembly, durable artifact publication, clean extraction and replay, followed by the required main-built and platform checks. |
 | Temporal and delivery-worker behavior | The corrected retained release executable passed its positive case and all three injected worker clock-fault cases; independent replay checked clock witnesses and cold state. | Remaining profile and package checks stay separate from this bounded four-case result. |
-| Sustained operation | The first short startup refused before execution. A corrected second attempt ran its native phase, but the audit refused its time-namespace capture. The 24-hour mission has not started. | Successful short admission, then a full 86,400-second run, independent receipt/content accounting, failure and cold-recovery observations, and a completed audit. |
+| Sustained operation | The third short rehearsal passed on the identified `a96ab` test build; the first startup refusal and second audit refusal remain retained. The 24-hour mission has not started. | Normal main integration and a main-bound mission executable, then a full 86,400-second run with independent receipt/content accounting, failure and cold-recovery observations, and a completed audit. |
 
 The [earlier protected-node snapshot](mesh/protected-node-2026-09-16/QUALIFICATION.md)
 preserves its source-specific architecture and schema limits. The latest

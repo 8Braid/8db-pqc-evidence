@@ -257,3 +257,14 @@ and review identities remain distinct. The two short-mission refusals and the
 unstarted 24-hour mission are recorded as observed at this timestamp. Private
 executables, stores, synthetic keys and internal paths are excluded. Existing
 raw artifacts, manifests, replay tools and dated checkpoints remain unchanged.
+
+## Short-rehearsal checkpoint, September 16, 2026, 16:39 UTC
+
+`SHORT-REHEARSAL-CHECKPOINT-1639Z.md`, the README and current qualification status
+summarize the third short local rehearsal and its independent review. They
+retain the test source, executable, wrapper, result, audit and capture hashes.
+The two earlier refusals remain recorded. Main-source integration, evaluator
+delivery and the unstarted 24-hour mission remain separate gates. Private
+source, binaries, stores, synthetic keys, raw logs and internal paths are
+excluded. Existing public raw artifacts, manifests, verifiers and historical
+checkpoints are unchanged.
