@@ -34,6 +34,8 @@ For data moving between nodes, read the
 [dated qualification matrix](mesh/protected-node-2026-09-16/QUALIFICATION.md).
 The reviewed composition seals messages for the receiving endpoint before
 network transit, then protects the received content under local storage keys.
+At the reviewed source, that Required profile admits canonical native WordNet
+lemma sections; additional application schemas need integration and qualification.
 Its per-frame cryptographic work has a separate cost from the at-rest
 key-and-batch measurements below. Current integrated release qualification
 remains in progress.

@@ -11,6 +11,15 @@ describes the inspected implementation and its trust boundaries. The
 [dated qualification matrix](QUALIFICATION.md) separates this source review
 from executed tests, historical public measurements and pending release work.
 
+**Current admission scope:** this RequiredMeshNode profile accepts only
+canonical native WordNet lemma sections, with the schema paths
+`lexical/wordnet-lemma` or `wordnet/lemma`. The importer enforces this allowlist
+before proposing a replicated mutation. It is an implementation limit, not
+just the choice of test data. The underlying message-sealing wrapper accepts
+opaque bytes; that generality does not qualify chat or other application
+schemas through this protected-storage composition. Separate application
+messaging and MLS paths require their own source and qualification review.
+
 ## The path between two authorized nodes
 
 | Step | What happens |
