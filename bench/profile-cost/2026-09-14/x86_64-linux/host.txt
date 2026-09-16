@@ -1,0 +1,12 @@
+utc: 2026-09-14T07:12:44Z
+Linux 7.0.0-1012-aws x86_64
+model name	: Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz
+cpus: 8
+load_before: 3.56 3.00 3.53 1/302 317513
+commit: cc994fc6e1ecdede60eb679c3c964fafc2c92946
+runner: df-runner-trustdb-surge-1
+/usr/bin/cmake
+/usr/bin/go
+/usr/bin/clang
+load_after: 9.25 8.75 6.53 1/292 368727
+exit: 0

@@ -1,0 +1,18 @@
+[1m[33mwarning[0m: [build-root-redacted]/Cargo.toml: file `[build-root-redacted]/src/bin/trustdb_eval.rs` found to be present in multiple build targets:
+  * `bin` target `trustdb-eval`
+  * `bin` target `trustdb_eval`
+[1m[92m   Compiling[0m bitflags v2.11.1
+[1m[92m   Compiling[0m linux-raw-sys v0.12.1
+[1m[92m   Compiling[0m num-complex v0.4.6
+[1m[92m   Compiling[0m option-ext v0.2.0
+[1m[92m   Compiling[0m trustdb v0.1.0 ([build-root-redacted])
+[1m[92m   Compiling[0m dirs-sys v0.4.1
+[1m[92m   Compiling[0m rustix v1.1.4
+[1m[92m   Compiling[0m dirs v5.0.1
+[1m[92m   Compiling[0m simba v0.9.1
+[1m[92m   Compiling[0m tempfile v3.27.0
+[1m[92m   Compiling[0m rusty-fork v0.3.1
+[1m[92m   Compiling[0m proptest v1.11.0
+[1m[92m   Compiling[0m nalgebra v0.33.3
+[1m[92m    Finished[0m `release` profile [optimized] target(s) in 19m 50s
+EXIT=0

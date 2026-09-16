@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "source_commit": "4efb7653b91216d0ed6e8c5aa463e7bb1806a211",
+  "benchmark_source_path": "tests/cnsa_m1_bench.rs",
+  "benchmark_source_sha256": "78fe5c21a7d8d3eb43d571cfdeeb2f85bcbb5a71093a617b92ad7de7cc5c0725",
+  "source_method": {
+    "record_bytes": 115,
+    "cipher": "AES-256-GCM-SIV via encrypt_page/decrypt_page",
+    "key_setup_outside_record_timer": true,
+    "minimum_samples_per_arm": 2000,
+    "warmups_per_aead_arm": 16,
+    "median": "sorted[n/2], integer division",
+    "p95": "sorted[floor((n-1)*0.95)]",
+    "clock_probe": "smallest nonzero Instant delta from 20000 successive reads",
+    "individual_samples_retained": false,
+    "arm_order": "classical encrypt, PQC encrypt, classical decrypt, PQC decrypt",
+    "scope": "Page-cipher microbenchmark. Legacy PBKDF/KEM setup ratios, signing projections and unlike query-plan timings are not matched database or full-verification comparisons."
+  },
+  "scope": "Source inspected, not republished. No new engine run or independent engine rebuild performed for this publication."
+}
