@@ -37,6 +37,12 @@ fails cryptographic verification despite matching an updated hash.
 
 ## Start with the question you need to answer
 
+The [protected-node explanation](mesh/protected-node-2026-09-16/) maps the
+reviewed message and key path. Its [qualification matrix](mesh/protected-node-2026-09-16/QUALIFICATION.md)
+separates source inspection, public artifact replay, internal executed results
+and unfinished release work. Reading that note does not execute a new engine
+or network test.
+
 | Review question | Evidence to read | Access needed to repeat the measurement |
 |---|---|---|
 | Do the cryptographic implementations agree with known answers? | [Offline correctness report](acvp/Offline-KAT-Report-35of35.txt), [vectors](kat/) | 8DB evaluation engine to re-run its suite; public vectors can be checked with a compatible independent implementation |

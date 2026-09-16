@@ -4,6 +4,12 @@ Use this guide to assess 8DB's cryptographic tests, storage costs and migration
 behavior. Each section identifies the evidence available in this repository
 and the additional material available with an evaluation.
 
+For node-to-node protection, use the
+[September 16 architecture note](mesh/protected-node-2026-09-16/) and
+[source/profile qualification matrix](mesh/protected-node-2026-09-16/QUALIFICATION.md).
+They distinguish message encryption, local storage, recovery and the current
+release gates.
+
 ## Algorithm correctness and interoperability
 
 | Test | Recorded result | Evidence |
@@ -178,22 +184,41 @@ The historical raw results and both engine harnesses are available to evaluators
 on request. Additional transitions and production operating limits should be
 agreed and tested against the intended deployment.
 
-### Per-row signing comparison
+### Composed signatures and database allocation
 
-The internal record also contains storage measurements for a composition that
-adds one ML-DSA-87 signature per row at the application layer, with encryption
-at rest:
+**Interpretation correction, September 16, 2026:** the internal record contains
+two different experiments. The July 19 application-composed runs used encryption
+and signatures. The September 14 allocation runs used signature-sized random
+fields without encryption or actual signing. They cannot be combined into a
+single cryptographic-performance result.
 
-| Configuration | Recorded storage |
-|---|---|
-| PostgreSQL 18.4 with pgcrypto | 579,452,928 bytes |
-| MongoDB | 500,445,184 bytes |
+| Experiment, 100,000 records | PostgreSQL allocation | MongoDB collection allocation |
+|---|---:|---:|
+| July 19, per-record signatures | 579,452,928 bytes | 495,194,112 bytes |
+| July 19, one batch signature | 24,477,696 bytes | 19,369,984 bytes |
+| September 14, random signature-sized fields | 572,801,024 bytes | 500,445,184 bytes |
 
-The same record set was measured on a Windows host on July 19, 2026. The internal
-record reports reproduction within 1.2% in Linux containers on September 14,
-with a second-party check. Request the raw runs and configuration details for
-review. These figures compare the stated per-row-signing composition; they
-measure a different representation from 8DB's batch-signing design.
+The July scripts do not establish a matched whole-database Category 5
+comparison. They contain no ML-KEM or node replication. The PostgreSQL recipe
+does not override pgcrypto's default cipher options, so its AES-256 label is
+unsupported. The verification loops reconstruct fixture values and check
+in-memory signatures rather than rereading and decrypting the persisted
+database. MongoDB's batched encryption preparation and fsync also sit outside
+its timed write region, and its collection allocation excludes indexes, key
+vault and the separate batch-signature collection.
+
+The September experiment measures actual database allocation for random bytes.
+Its proximity to July sizes does not reproduce July's cryptographic work or
+verification semantics. The archived July output does not independently pin
+its historical 8DB source commit; inspecting current code cannot repair that
+source-identity gap. Original records are retained and available to evaluators
+on request.
+
+Both competitors' July batch configurations materially reduce signature
+storage. Per-row signing is one design choice, not a mandatory cost of PQC.
+A decisive comparison needs competent batch baselines, matched protection and
+durability, complete allocation accounting, and cold full-data verification as
+specified above.
 
 ## Timing analysis
 
@@ -223,9 +248,9 @@ package uses deterministic signing, which has a separate informational row.
 | Post-quantum parameter sets | ML-KEM-1024 (FIPS 203) and ML-DSA-87 (FIPS 204), the Category 5 parameter sets specified in CNSA 2.0. |
 | Default record AEAD | AES-256-GCM-SIV (RFC 8452). This mode is outside the NIST-approved AES-GCM profile. |
 | `fips` record AEAD | AES-256-GCM (SP 800-38D), with HMAC-SHA-384 key commitment. The profile name identifies a build configuration. |
-| Cryptographic providers | The compliance path uses aws-lc-rs for AES, HKDF, HMAC and ML-KEM; ML-DSA-87 uses RustCrypto. Any underlying module certificate applies only to its specified version, configuration and boundary. |
+| Cryptographic providers | In the Required mesh composition reviewed at `fa491158…`, ML-KEM-1024 and ML-DSA-87 use RustCrypto; the selected symmetric operations use AWS-LC. Any underlying module certificate applies only to its specified version, configuration and boundary. See the [exact-source provider and custody scope](mesh/protected-node-2026-09-16/README.md#keys-providers-and-custody). |
 | 8DB validation | No 8DB CAVP certificate or CMVP module validation is held for the implementation described here. ACVP demonstration results establish the tested algorithm behavior. |
-| Transport | The described device-mesh path transfers sealed record objects. The TLS layer in this package uses a Category 3 hybrid group; transport qualification is assessed separately. |
+| Transport | The reviewed Required mesh path seals typed endpoint content in a recipient-specific Category 5 message construction; the receiver opens it and reseals under local storage keys. It does not forward the sender's unchanged on-disk ciphertext. The separate hybrid TLS group's Category 3 designation does not describe this inner message layer. See the [source/profile matrix](mesh/protected-node-2026-09-16/QUALIFICATION.md). |
 
 The record-level descriptions apply to the paths covered by this package.
 For deployment review, confirm the selected build, write and import paths,

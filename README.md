@@ -29,6 +29,15 @@ competitive uniqueness remain questions for matched tests.
 [Verify the evidence](HOW-TO-VERIFY.md) ·
 [Request an evaluation](mailto:ashley@8braid.com?subject=8DB%20PQC%20evaluation)
 
+For data moving between nodes, read the
+[protected-node architecture](mesh/protected-node-2026-09-16/) and its
+[dated qualification matrix](mesh/protected-node-2026-09-16/QUALIFICATION.md).
+The reviewed composition seals messages for the receiving endpoint before
+network transit, then protects the received content under local storage keys.
+Its per-frame cryptographic work has a separate cost from the at-rest
+key-and-batch measurements below. Current integrated release qualification
+remains in progress.
+
 ## Built for the data you already hold
 
 Long-lived records can outlast the keys, algorithms and policies that first
