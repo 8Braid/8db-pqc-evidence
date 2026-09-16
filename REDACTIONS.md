@@ -223,3 +223,13 @@ source, binaries, database files, credentials or internal filesystem paths.
 Existing raw artifacts, manifests, verifiers and historical snapshots are
 unchanged. The checkpoint distinguishes internal execution evidence from the
 publicly replayable packages already in this repository.
+
+## Delivery checkpoint, September 16, 2026, 14:38 UTC
+
+`DELIVERY-CHECKPOINT-1430Z.md` and the current qualification status add summaries
+of the corrected default release and independently reviewed local delivery
+rehearsals. They retain distinct source, executable, original-receipt and review
+identities. Retry observations, the original clock-test failure and the wrapper
+README provenance exception remain explicit. Private engine source, binaries,
+test keys, database files and internal paths are excluded. Existing raw public
+artifacts, manifests, verifiers and historical checkpoints are unchanged.
