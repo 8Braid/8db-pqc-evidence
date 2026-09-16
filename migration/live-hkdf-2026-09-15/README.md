@@ -46,7 +46,7 @@ For a direct audit, use the binary built by the script and the three original ex
   6fada689973c19dc9ed7772f9f96ba2c9c67c3902802dfc4cd05b79671770135
 ```
 
-The [repository verification guide](../../HOW-TO-VERIFY.md) separately checks the recorded cryptographic artifacts and OpenSSL interoperability. Its global raw-file manifest and this package's complete `SHA256SUMS` have complementary coverage.
+The [repository verification guide](https://github.com/8Braid/8db-pqc-evidence/blob/1a9b750013e03e10d9fb3f60708216d1b61a3c0f/HOW-TO-VERIFY.md) separately checks the recorded cryptographic artifacts and OpenSSL interoperability. Its global raw-file manifest and this package's complete `SHA256SUMS` have complementary coverage.
 
 ## What the replay establishes
 
@@ -56,7 +56,7 @@ The 31 controls challenge missing and duplicated outcomes, concealed dispatch de
 
 Public replay checks the retained record of cold validation. Reopening and validating an actual protected store requires the evaluation engine and harness. Engine source and executable hashes identify the vendor-run implementation; matching those identities is distinct from rebuilding the engine or independently attesting the host. Publication provenance records every original/public hash and retains the inputs byte-identically.
 
-This run uses a synthetic Wordnet lexical workload on Linux x86_64, with 16 guest logical processors and an AMD Ryzen 9 9950X3D reported CPU. The [recorded host context](r6/HOST-SCOPE.json) identifies a shared workstation rather than an isolated benchmark host. Separate engine tests cover additional authorization and restoration cases; this page's availability result comes from the full campaign and independent audit. The broader cryptographic algorithm and module validation status remains in [claims and scope](../../CLAIMS-AND-SCOPE.md).
+This run uses a synthetic Wordnet lexical workload on Linux x86_64, with 16 guest logical processors and an AMD Ryzen 9 9950X3D reported CPU. The [recorded host context](r6/HOST-SCOPE.json) identifies a shared workstation rather than an isolated benchmark host. Separate engine tests cover additional authorization and restoration cases; this page's availability result comes from the full campaign and independent audit. The broader cryptographic algorithm and module validation status remains in [claims and scope](https://github.com/8Braid/8db-pqc-evidence/blob/1a9b750013e03e10d9fb3f60708216d1b61a3c0f/CLAIMS-AND-SCOPE.md).
 
 Which additional acceptance condition would make this lifecycle example useful for your evaluation? We can provide the engine and harness for a fresh run against an agreed workload. Contact [Ashley Dunfield](mailto:ashley@8braid.com?subject=8DB%20stored-data%20migration%20evaluation).
 
