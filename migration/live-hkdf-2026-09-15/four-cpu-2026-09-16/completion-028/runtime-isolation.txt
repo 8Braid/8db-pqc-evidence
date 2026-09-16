@@ -1,0 +1,1 @@
+No compiler on PATH, no engine source mounted, network disabled with loopback only.

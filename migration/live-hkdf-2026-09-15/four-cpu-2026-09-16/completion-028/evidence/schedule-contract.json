@@ -1,0 +1,17 @@
+{
+  "binary_sha256": "0271554acc27b1d45a637573bbc8f252c34c9e353c8404ec448dca0867c4b922",
+  "clock": "parent std::time::Instant; UTC anchor is descriptive only",
+  "cutover_consumer_hold_ns": 25000000,
+  "cutover_scope": "one fixed-schedule facade emission holds its current read lease during attempted activation; hold included in latency",
+  "deadline_ns": 1000000000,
+  "initial_authority_floor": 11,
+  "latency_scope": "fixed scheduled timestamp through loopback RPC response or retained failure",
+  "origin_utc_ns": "1789521002907964273",
+  "period_ns": 500000000,
+  "queue_per_worker": 4,
+  "rpc_read_timeout_ns": 5000000000,
+  "source_sha256": "69cdbd07f480a2de06d5773e69327b23136038b6144e03771691cb66eb9844be",
+  "threshold_scope": "preregistered minimum two-request-per-second interactive availability; not a NIST latency requirement",
+  "version": 1,
+  "workers": 2
+}

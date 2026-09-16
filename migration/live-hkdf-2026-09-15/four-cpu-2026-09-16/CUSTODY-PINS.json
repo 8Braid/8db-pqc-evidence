@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "prepared_utc": "2026-09-16T03:33:01.7853685Z",
+  "scope": "Original externally pinned identities for four additional runs of the existing frozen Rust auditor.",
+  "auditor_elf_sha256": "8ab6b0d08a6e0912f3cfea623195e89bd1f26bb0bed6530332bd5e2f38ab566c",
+  "runs": {
+    "r6-offline-206f": {
+      "engine_commit": "206f1a626f74699cad9c63e8276aa324d61bb48d",
+      "engine_tree": "46ae6200191a3d3dc522a14b71df7c95044d644a",
+      "source_manifest_sha256": "dc16933f75a04fe3af6baaad3a4dcbe4454a9ef485156eadd79395ef363faee7",
+      "engine_elf_sha256": "2d92663bb69608ecc911d9f2a08bf807775982e4b3f5a8360202df1a870a753b",
+      "oracle_sha256": "a9fb77cfbde8a13d2c9f520f4a5cc28042538900d1514334671a9122db6e2dfc",
+      "closed_corpus_manifest_sha256": "02f258a369e11dfe612e741f59c1c5d338dadcb09abd67bf0cb48d689bc3f653",
+      "original_audit_report_sha256": "50eef7392d41998b4c81fce54a6176278e60b29ddc739f20653b4dea47d62d65",
+      "original_wrapper_result_sha256": "a5b8ac512af2c3f2083160c4fe0a73dd3fde4084f34071cf4b267fb39bad8a87",
+      "closed_at_utc": "2026-09-16T00:23:48Z",
+      "original_accepted": false,
+      "nonexcluded_deadline_observations": 843,
+      "scheduled_deadline_misses": 2
+    },
+    "completion-028": {
+      "engine_commit": "0280898e8695a26330ce82006e129a98af1ca146",
+      "engine_tree": "aa18494736529a80c870a596f067e84856025941",
+      "source_manifest_sha256": "69cdbd07f480a2de06d5773e69327b23136038b6144e03771691cb66eb9844be",
+      "engine_elf_sha256": "0271554acc27b1d45a637573bbc8f252c34c9e353c8404ec448dca0867c4b922",
+      "oracle_sha256": "9e1a022bae9d3f93ca63619239680370e9250a23b57ec3a018ed9201e88f257b",
+      "closed_corpus_manifest_sha256": "47071064f7dd0e3fd798c865a60b471458ac25a754bd4b963489bc9ae042f76a",
+      "original_audit_report_sha256": "e98899ce76294b0ec0310b4ca6d694790226c3284dc25b829c6748f88320fbb8",
+      "original_wrapper_result_sha256": "3bcf437103eb0fcf216f4616c7c2572f2a3e03d537e757f58a773679a5a69181",
+      "closed_at_utc": "2026-09-16T01:18:09Z",
+      "original_accepted": false,
+      "nonexcluded_deadline_observations": 882,
+      "scheduled_deadline_misses": 26
+    },
+    "copy-41ca": {
+      "engine_commit": "41ca1c8d2f9c2e24959fe980b99257f58829a4de",
+      "engine_tree": "9020a77370e1f0d8babf683fb99dad228a212cef",
+      "source_manifest_sha256": "1b719c4cf7defc3e483893f1541a5623a983830e74c44c026b22de481faa3745",
+      "engine_elf_sha256": "690bfa7ca3bdfd2df4f69eae539b7959d6a23d5b21c54e46e78664c53350a3ee",
+      "oracle_sha256": "13f7291bfed95790105acb237401d4b4dfaccade53e1bf8806c6e7cf2eb4dd82",
+      "closed_corpus_manifest_sha256": "e4ffa862c29c35c5337cd6e79cfd1abcb1c4410005f950ed2d87b36e3b4d1be0",
+      "original_audit_report_sha256": "a68b32cee34be3f4bb765ebb48739d9967f6864c01e0382e6bbae18ba2ebd6a0",
+      "original_wrapper_result_sha256": "d16f4b916a434342e9c7b9da8d444af2e4470d17a9a84215f7b079e87aa6d1e4",
+      "closed_at_utc": "2026-09-16T02:05:35Z",
+      "original_accepted": false,
+      "nonexcluded_deadline_observations": 724,
+      "scheduled_deadline_misses": 9
+    },
+    "diagnostic-9c5": {
+      "engine_commit": "9c5ae6c9a4d1fa84b11fdf8ead679bab657e6af7",
+      "engine_tree": "4bbd373cb1583fcb4a43ac08494321b788e2c91c",
+      "source_manifest_sha256": "c824699b1c523699e1d9751d29a8d7ddcc713644d072372090280695b5a263d2",
+      "engine_elf_sha256": "fecb52a1364e8dbd575e5f2f91361276cb7afd494d486ce3d218f8347f4c3694",
+      "oracle_sha256": "7cfa70ea2b3d5aa049c6237f9d263cf4556c8ff4925542a96c1619d031d57831",
+      "closed_corpus_manifest_sha256": "1fa16cc7d2ace1c4091741d6fcc066c5e9a66ac915909e704e15a9a9dfbe2f8f",
+      "original_audit_report_sha256": "a436aa9a35afa458e9fe2c094a8c594fae678f5981987d95657ec894f8a60e10",
+      "original_wrapper_result_sha256": "ca868c080d8fe52f46168f214a370229237370c42708d6c970c8690b6d991574",
+      "closed_at_utc": "2026-09-16T03:00:58Z",
+      "original_accepted": true,
+      "nonexcluded_deadline_observations": 689,
+      "scheduled_deadline_misses": 0
+    }
+  }
+}

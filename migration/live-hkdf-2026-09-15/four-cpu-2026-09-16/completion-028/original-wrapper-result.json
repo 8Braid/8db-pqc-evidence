@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "status": "FAIL",
+  "reason": "engine_campaign_rejected",
+  "mode": "run",
+  "exit": 1,
+  "raw_wrapper_exit": 1,
+  "finished_utc": "2026-09-16T01:18:08Z"
+}

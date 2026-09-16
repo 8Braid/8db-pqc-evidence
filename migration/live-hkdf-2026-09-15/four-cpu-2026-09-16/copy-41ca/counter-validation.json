@@ -1,0 +1,16 @@
+{
+  "expected": [
+    99998,
+    1,
+    1,
+    0
+  ],
+  "failures": [],
+  "observed": [
+    99998,
+    1,
+    1,
+    0
+  ],
+  "scope": "dispositions at source traversal; acknowledged later overlays do not rewrite prior dispositions"
+}

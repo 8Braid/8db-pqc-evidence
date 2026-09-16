@@ -19,7 +19,7 @@ If OpenSSL is installed elsewhere, specify its executable:
 python verify-evidence.py --openssl /path/to/openssl
 ```
 
-The [verifier](verify-evidence.py) checks all 339 raw artifacts against the
+The [verifier](verify-evidence.py) checks every listed raw artifact against the
 [published manifest](ARTIFACT-SHA256SUMS), compares four recorded ML-KEM
 shared-secret pairs, and checks valid and modified 8DB ML-DSA signatures with
 OpenSSL in both run folders. It reads the files without changing them.
@@ -51,10 +51,12 @@ fails cryptographic verification despite matching an updated hash.
 The [live HKDF migration package](migration/live-hkdf-2026-09-15/) includes an
 independent Rust auditor, all 31 controls and vendored dependencies. Its
 `verify-package.sh` checks the complete package manifest and reproduces the
-original R5 rejection and R6 acceptance. It exits 0 for matching verified
+original R5 rejection and R6 acceptance, plus the [four September 16 results](migration/live-hkdf-2026-09-15/four-cpu-2026-09-16/).
+Those additional runs retain three rejections and one acceptance. It exits 0 for matching verified
 outcomes, 1 for a mismatch, and 2 when tools or evidence are missing. The
 underlying auditor's R5 exit remains 1. This makes the original failed run a
-required check rather than discarding it.
+required check rather than discarding it. All six JSON reports must match their
+original bytes; the Rust acceptance logic and its 31 controls are unchanged.
 
 That package's `SHA256SUMS` covers every file, including Rust, Cargo, vendored
 dependencies and the typed `.bincode` fixture. The root raw-artifact manifest

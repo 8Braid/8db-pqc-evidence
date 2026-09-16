@@ -38,6 +38,14 @@ offline dependencies and the rejected predecessor run. See the
 [dated migration scope](CLAIMS-AND-SCOPE.md#key-derivation-transition) for the
 distinction from the earlier managed-copy operation.
 
+**September 16 update:** the [four-CPU replay supplement](migration/live-hkdf-2026-09-15/four-cpu-2026-09-16/)
+retains four newer 100,000-record runs. Every run cold-verified the exact content;
+the unchanged auditor rejected three for missed deadlines (2/843, 26/882 and
+9/724 nonexcluded observations) and accepted the latest (0/689). That final run
+added diagnostics to the preceding product inputs. It establishes a measured
+pass while leaving the earlier misses unresolved. All six original ledgers
+remain independently replayable with the same Rust auditor.
+
 This work addresses a practical part of the migration agenda. NIST's
 [crypto-agility guidance](https://csrc.nist.gov/pubs/cswp/39/upd1/considerations-for-achieving-crypto-agility/final)
 covers replacing algorithms and handling data already encrypted under them.
