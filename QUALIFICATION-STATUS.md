@@ -1,6 +1,6 @@
 # Evaluate the evidence, then the workload
 
-**Updated September 16, 2026, 14:38 UTC.** The public package supports immediate
+**Updated September 16, 2026, 15:34 UTC.** The public package supports immediate
 review of cryptographic interoperability, record costs, live migration and
 recovery. The latest integrated engine is frozen for qualification. Its results
 will be recorded against that exact source before we mark its release complete.
@@ -41,6 +41,22 @@ deadline misses in the record; it does not establish their resolution.
 
 ## Latest engine qualification
 
+The selected candidate has now completed its default native qualification:
+875 distinct named passes across 83 execution groups, seven key-prefix
+integration cases, and both seven-case restore campaigns. Independent review
+rehashed all 4,867 retained original files and replayed the unchanged validators.
+The [dated native checkpoint](mesh/protected-node-2026-09-16/NATIVE-CHECKPOINT-1529Z.md)
+identifies the tested executable and the remaining producer roles. The named
+inventory includes test helpers; these are bounded correctness results with
+synthetic inputs.
+
+The corrected candidate's AES-GCM release job also completed: 67 named
+protected-node tests and the generated-client checks passed. Its retained
+executable is now the input to the separate clock-fault supplement. The same
+[checkpoint](mesh/protected-node-2026-09-16/NATIVE-CHECKPOINT-1529Z.md#corrected-aes-gcm-release-job)
+records the release receipt and artifact-membership review. The skipped archive
+step leaves evaluator-package delivery open.
+
 The corrected candidate `326ab0a1333dd7f6f13d4c0fff503f9d5eefaa5e`
 has completed its default-profile release job: 44 named protected-node tests,
 the generated-client checks, and local sender/receiver checks with 2,048 exact
@@ -71,7 +87,9 @@ cold-read audit unnecessarily reserved a write context, advancing the authority
 revision it was checking. The corrected fixture retains the initial write
 reservation and explicitly checks the unchanged revision after cold reopen.
 Production code and the original fault assertions are unchanged. Static review
-passed. The full native producer and AES-GCM release qualification remain open.
+passed. The default native and both release-profile jobs are complete; the
+remaining native producer roles and release-executable fault supplement remain
+open.
 
 The earlier baseline at `fa4911581ba4dc901be5582730c4c2813d221c16`, tree
 `d8b87230e9d57b20604f08d05a93ff7b89c36615`, has since completed its native
@@ -84,7 +102,7 @@ test package and transfers none of those passes to the successor.
 
 | Release gate | Current state | Evidence needed to close it |
 |---|---|---|
-| Integrated candidate | Source `326ab` has a completed default-profile release job. Predecessor `9467` has a completed AES-GCM release job. | Remaining native and AES-GCM release tests bound to the corrected candidate source, binaries and execution records. |
+| Integrated candidate | Source `326ab` has completed its default native job and both release-profile jobs. | Remaining native roles and the release-executable fault supplement bound to the corrected candidate source, binaries and execution records. |
 | Evaluator delivery | Recipes prepared; final assembly and offline replay await the completed producer records. | Successful assembly, durable artifact publication, clean extraction and replay, followed by the required main-built and platform checks. |
 | Temporal and delivery-worker behavior | The optimized test overlay passed the ordinary controls and three clock-fault cases, including unchanged cold-read authority revisions. | The separate fault supplement on the retained corrected release executable, with its clock and authority evidence. |
 | Sustained operation | The 24-hour mission has not started. | A full 86,400-second run, independent receipt/content accounting, failure and cold-recovery observations, and a completed audit. |
