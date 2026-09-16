@@ -233,3 +233,17 @@ identities. Retry observations, the original clock-test failure and the wrapper
 README provenance exception remain explicit. Private engine source, binaries,
 test keys, database files and internal paths are excluded. Existing raw public
 artifacts, manifests, verifiers and historical checkpoints are unchanged.
+
+## Native and release checkpoint, September 16, 2026, 15:34 UTC
+
+`NATIVE-CHECKPOINT-1529Z.md` and the current qualification status summarize the
+corrected candidate's completed default native role. Original source, executable,
+receipt, inventory and independent-review identities are retained in the public
+summary. The initial review-adapter refusal and the distinct temporal and
+snapshot evidence scopes remain explicit. Private source, executables, database
+files, synthetic test keys and internal paths are excluded. Existing raw public
+artifacts and replay tools are unchanged.
+
+The same checkpoint adds the corrected AES-GCM release job and its original
+receipt and artifact-membership review. It records the skipped evaluator-archive
+step and keeps the release-executable fault supplement open.
